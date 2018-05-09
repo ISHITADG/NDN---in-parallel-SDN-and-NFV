@@ -1,5 +1,5 @@
 ##Run this first: This installs all the dependencies
-
+#!/bin/bash
 sudo apt-get update
 sudo apt-get install vim
 sudo apt-get purge libvirt-bin
