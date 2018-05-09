@@ -1,3 +1,5 @@
+#!/bin/bash
+#install ryu on controller
 sudo -s
 apt-get update
 apt-get install --yes libxml2-dev libxslt1-dev python-dev python-eventlet python-routes python-webob python-paramiko python-setuptools python-pip
