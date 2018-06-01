@@ -43,3 +43,13 @@ sudo ovs-vsctl add-port ovsbr0 virbr1
 sudo ovs-vsctl add-port ovsbr0 virbr2
 sudo ovs-vsctl add-port ovsbr0 virbr3
 sudo ovs-vsctl set-controller ovsbr0 tcp:128.104.222.68:6633
+
+#instantiate VMs
+wget 'http://emmy10.casa.umass.edu/CNP/ipVM.qcow2'
+wget 'https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ipVM.xml'
+wget 'http://emmy10.casa.umass.edu/CNP/ndnVM.qcow2'
+wget 'https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ndnVM.xml'
+virsh define ipVM.xml
+virsh define ndnVM.xml
+virsh start ipVM
+virsh start ndnVM
