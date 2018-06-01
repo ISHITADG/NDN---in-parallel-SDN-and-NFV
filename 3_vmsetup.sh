@@ -5,37 +5,41 @@ sudo apt-get install vim
 sudo apt-get purge libvirt-bin
 sudo apt-get install libvirt-bin
 sudo apt-get install qemu-kvm libvirt-bin ubuntu-vm-builder bridge-utils
-virsh connect qemu:///system
-brctl addbr virbr1
-brctl addbr virbr2
-brctl addbr virbr3
+sudo virsh connect qemu:///system
+sudo brctl addbr virbr1
+sudo brctl addbr virbr2
+sudo brctl addbr virbr3
+sudo brctl stp virbr1 on
+sudo brctl stp virbr2 on
+sudo brctl stp virbr3 on 
+
 cd /tmp
 virsh dumpxml ndnVM > ndnVM.xml
 virsh dumpxml ipVM > ipVM.xml
 
 #Run this second: Recreates the ovs bridge and linux bridges
-ovs-vsctl del-br ovsbr0
-ovs-vsctl add-br ovsbr0
-ifconfig virbr0 down
-ifconfig virbr1 down
-ifconfig virbr2 down
-ifconfig virbr3 down
-brctl delbr virbr0
-brctl delbr virbr1
-brctl delbr virbr2
-brctl delbr virbr3
-brctl addbr virbr0
-brctl addbr virbr1
-brctl addbr virbr2
-brctl addbr virbr3
-ifconfig virbr0 down
-ifconfig virbr1 down
-ifconfig virbr2 down
-ifconfig virbr3 down
-brctl addif virbr1 vnet1
-brctl addif virbr2 vnet2
-brctl addif virbr3 vnet3
-ovs-vsctl add-port ovsbr0 virbr1
-ovs-vsctl add-port ovsbr0 virbr2
-ovs-vsctl add-port ovsbr0 virbr3
-ovs-vsctl set-controller ovsbr0 tcp:**ip address of the controller**:6633
+sudo ovs-vsctl del-br ovsbr0
+sudo ovs-vsctl add-br ovsbr0
+sudo ifconfig virbr0 down
+sudo ifconfig virbr1 down
+sudo ifconfig virbr2 down
+sudo ifconfig virbr3 down
+sudo brctl delbr virbr0
+sudo brctl delbr virbr1
+sudo brctl delbr virbr2
+sudo brctl delbr virbr3
+sudo brctl addbr virbr0
+sudo brctl addbr virbr1
+sudo brctl addbr virbr2
+sudo brctl addbr virbr3
+sudo ifconfig virbr0 down
+sudo ifconfig virbr1 down
+sudo ifconfig virbr2 down
+sudo ifconfig virbr3 down
+sudo brctl addif virbr1 vnet1
+sudo brctl addif virbr2 vnet2
+sudo brctl addif virbr3 vnet3
+sudo ovs-vsctl add-port ovsbr0 virbr1
+sudo ovs-vsctl add-port ovsbr0 virbr2
+sudo ovs-vsctl add-port ovsbr0 virbr3
+sudo ovs-vsctl set-controller ovsbr0 tcp:128.104.222.68:6633
