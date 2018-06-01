@@ -19,7 +19,7 @@
     <emulator>/usr/bin/kvm</emulator>
     <disk type='file' device='disk'>
       <driver name='qemu' type='qcow2'/>
-      <source file='/users/bsures0/ipVM.qcow2'/>
+      <source file='/users/ishitadg/ipVM.qcow2'/>
       <target dev='hda' bus='ide'/>
       <address type='drive' controller='0' bus='0' target='0' unit='0'/>
     </disk>
