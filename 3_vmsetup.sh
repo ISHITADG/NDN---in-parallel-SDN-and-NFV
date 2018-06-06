@@ -54,7 +54,7 @@ sudo ovs-vsctl set-controller ovsbr0 tcp:128.104.222.76:6633
 
 #instantiate VMs
 wget 'http://emmy10.casa.umass.edu/CNP/ipVM.qcow2'
-wget 'https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ipVM.xml'
+wget -L 'https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ipVM.xml'
 wget 'http://emmy10.casa.umass.edu/CNP/ndnVM.qcow2'
 wget -L 'https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ndnVM.xml'
 sudo virsh define ipVM.xml
