@@ -14,8 +14,8 @@ sudo brctl stp virbr2 on
 sudo brctl stp virbr3 on 
 
 cd /tmp
-virsh dumpxml ndnVM > ndnVM.xml
-virsh dumpxml ipVM > ipVM.xml
+sudo virsh dumpxml ndnVM > ndnVM.xml
+sudo virsh dumpxml ipVM > ipVM.xml
 
 #Run this second: Recreates the ovs bridge and linux bridges
 sudo ovs-vsctl del-br ovsbr0
@@ -57,7 +57,7 @@ wget 'http://emmy10.casa.umass.edu/CNP/ipVM.qcow2'
 wget 'https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ipVM.xml'
 wget 'http://emmy10.casa.umass.edu/CNP/ndnVM.qcow2'
 wget 'https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ndnVM.xml'
-virsh define ipVM.xml
-virsh define ndnVM.xml
-virsh start ipVM
-virsh start ndnVM
+sudo virsh define ipVM.xml
+sudo virsh define ndnVM.xml
+sudo virsh start ipVM
+sudo virsh start ndnVM
