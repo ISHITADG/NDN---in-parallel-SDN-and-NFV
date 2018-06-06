@@ -42,7 +42,15 @@ sudo brctl addif virbr3 vnet3
 sudo ovs-vsctl add-port ovsbr0 virbr1
 sudo ovs-vsctl add-port ovsbr0 virbr2
 sudo ovs-vsctl add-port ovsbr0 virbr3
-sudo ovs-vsctl set-controller ovsbr0 tcp:128.104.222.68:6633
+sudo brctl stp virbr0 on
+sudo brctl stp virbr1 on
+sudo brctl stp virbr2 on
+sudo brctl stp virbr3 on
+sudo ifconfig virbr0 up
+sudo ifconfig virbr1 up
+sudo ifconfig virbr2 up
+sudo ifconfig virbr3 up
+sudo ovs-vsctl set-controller ovsbr0 tcp:128.104.222.76:6633
 
 #instantiate VMs
 wget 'http://emmy10.casa.umass.edu/CNP/ipVM.qcow2'
