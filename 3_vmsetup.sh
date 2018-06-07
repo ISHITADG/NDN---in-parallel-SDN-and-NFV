@@ -13,10 +13,6 @@ sudo brctl stp virbr1 on
 sudo brctl stp virbr2 on
 sudo brctl stp virbr3 on 
 
-cd /tmp
-sudo virsh dumpxml ndnVM > ndnVM.xml
-sudo virsh dumpxml ipVM > ipVM.xml
-
 #Run this second: Recreates the ovs bridge and linux bridges
 sudo ovs-vsctl del-br ovsbr0
 sudo ovs-vsctl add-br ovsbr0
@@ -61,3 +57,6 @@ sudo virsh define ipVM.xml
 sudo virsh define ndnVM.xml
 sudo virsh start ipVM
 sudo virsh start ndnVM
+cd /tmp
+sudo virsh dumpxml ndnVM > ndnVM.xml
+sudo virsh dumpxml ipVM > ipVM.xml
