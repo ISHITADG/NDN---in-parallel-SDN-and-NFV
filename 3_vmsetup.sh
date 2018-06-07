@@ -60,3 +60,4 @@ sudo virsh start ndnVM
 cd /tmp
 sudo virsh dumpxml ndnVM > ndnVM.xml
 sudo virsh dumpxml ipVM > ipVM.xml
+cd ~
