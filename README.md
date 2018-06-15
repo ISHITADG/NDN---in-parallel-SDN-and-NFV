@@ -6,6 +6,10 @@ bash 1_ndn.sh
 ### Additional step at server: 
 wget -r --no-parent --reject \"index.html*\" http://www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/
 ### Additional step at client:
+</br>scp -r ~/Desktop/client/ ishitadg@c220g1-031130.wisc.cloudlab.us:
+</br>git clone https://github.com/pari685/AStream.git
+</br>cd AStream/dist; rm -rf client; mv ../../client/ .;
+
 
 
 ## Controller:
