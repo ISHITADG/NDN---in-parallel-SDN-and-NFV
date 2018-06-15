@@ -2,15 +2,15 @@
 # An Evaluation of SDN and NFV Support for Parallel, Alternative Protocol Stack Operations on CloudLab
 ## Server & client:
 <br> wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_ndn.sh </br>
-<br> bash 1_ndn.sh </br>
+bash 1_ndn.sh
 ### Additional step at server: 
 wget -r --no-parent --reject \"index.html*\" http://www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/
 ### Additional step at client:
 
 
 ## Controller:
->wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/2_ryu.sh
->bash 2_ryu.sh
+</br>wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/2_ryu.sh
+</br>bash 2_ryu.sh
 cd ryu/
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/controller.py
 sudo pip install six --upgrade
