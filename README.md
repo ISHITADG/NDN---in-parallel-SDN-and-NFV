@@ -30,6 +30,6 @@ sudo apt-get update
 </br>ovs-vsctl list-ifaces ovsbr0
 </br>ovs-vsctl show 
 </br>ovs-ofctl show ovsbr0 
->### (gives same result as doing this): ovs-vsctl get Bridge ovsbr0 datapath-id
->### On controller-end: manipulated the code to print dpid: (got this instead) 191445057984326
+>(gives same result as doing this): ovs-vsctl get Bridge ovsbr0 datapath-id
+> On controller-end: manipulated the code to print dpid: (got this instead) 191445057984326
 
