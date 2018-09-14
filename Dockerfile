@@ -62,10 +62,10 @@ ENV LOG_FILE=/logs/nfd.log
 CMD /usr/local/bin/nfd -c $CONFIG > $LOG_FILE 2>&1
 
 # install Astreamer
-RUN sudo apt-get install wget \
+RUN apt-get install wget \
     && wget -L https://github.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/blob/master/client.zip?raw=true \
     && mv client.zip\?raw\=true client.zip \
-    && sudo apt-get install unzip \
+    && apt-get install unzip \
     && unzip client.zip \
     && rm client.zip \
     && unzip client.zip \
