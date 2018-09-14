@@ -61,15 +61,14 @@ ENV LOG_FILE=/logs/nfd.log
 
 CMD /usr/local/bin/nfd -c $CONFIG > $LOG_FILE 2>&1
 
+CMD /usr/local/bin/nfd -c $CONFIG > $LOG_FILE 2>&1
+
 # install Astreamer
 RUN apt-get install wget \
     && wget -L https://github.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/blob/master/client.zip?raw=true \
     && mv client.zip\?raw\=true client.zip \
     && apt-get install unzip \
-    && unzip client.zip \
-    && rm client.zip \
-    && unzip client.zip \
-    && git clone https://github.com/pari685/AStream.git \
-    && cd AStream/dist \
-    && rm -rf client \
-    && mv ../../client/ \
+    && unzip client.zip
+
+RUN apt-get install git \
+    && git clone --recursive https://github.com/pari685/AStream.git
