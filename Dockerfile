@@ -59,8 +59,11 @@ EXPOSE 6363/udp
 ENV CONFIG=/usr/local/etc/ndn/nfd.conf
 ENV LOG_FILE=/logs/nfd.log
 
+CMD /usr/local/bin/nfd -c $CONFIG > $LOG_FILE 2>&1
+
 # install Astreamer
-RUN wget -L https://github.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/blob/master/client.zip?raw=true \
+RUN sudo apt-get install wget \
+    && wget -L https://github.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/blob/master/client.zip?raw=true \
     && mv client.zip\?raw\=true client.zip \
     && sudo apt-get install unzip \
     && unzip client.zip \
@@ -70,6 +73,3 @@ RUN wget -L https://github.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/blob/maste
     && cd AStream/dist \
     && rm -rf client \
     && mv ../../client/ \
-
-
-CMD /usr/local/bin/nfd -c $CONFIG > $LOG_FILE 2>&1
