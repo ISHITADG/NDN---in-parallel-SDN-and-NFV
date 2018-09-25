@@ -32,9 +32,11 @@ sudo ifconfig virbr0 down
 sudo ifconfig virbr1 down
 sudo ifconfig virbr2 down
 sudo ifconfig virbr3 down
-sudo brctl addif virbr1 vnet1
-sudo brctl addif virbr2 vnet2
-sudo brctl addif virbr3 vnet3
+sudo brctl addif virbr0 vnet1
+sudo brctl addif virbr1 vnet3
+sudo brctl addif virbr2 vnet4
+sudo brctl addif virbr3 vnet5
+sudo ovs-vsctl add-port ovsbr0 virbr0
 sudo ovs-vsctl add-port ovsbr0 virbr1
 sudo ovs-vsctl add-port ovsbr0 virbr2
 sudo ovs-vsctl add-port ovsbr0 virbr3
@@ -46,7 +48,7 @@ sudo ifconfig virbr0 up
 sudo ifconfig virbr1 up
 sudo ifconfig virbr2 up
 sudo ifconfig virbr3 up
-sudo ovs-vsctl set-controller ovsbr0 tcp:128.104.222.76:6633
+sudo ovs-vsctl set-controller ovsbr0 tcp:128.104.222.93:6633
 
 #instantiate VMs
 wget 'http://emmy10.casa.umass.edu/CNP/ipVM.qcow2'
