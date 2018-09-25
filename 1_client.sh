@@ -1,5 +1,8 @@
 #!/bin/bash
 
+sudo apt-get install python-pip python-dev build-essential
+sudo pip install httplib2 --upgrade
+
 #SETUP DOCKER AND OPENVSWITCH
 sudo wget https://raw.githubusercontent.com/ISHITADG/dockerNDN/master/dockovs.sh
 bash dockovs.sh
