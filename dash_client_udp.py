@@ -239,7 +239,7 @@ def download_segment_bola(domain, dp_list, segment_number, segment_url, dash_fol
                     chunk_dl_time = timenow - chunk_start_time
  		    segment_filename=segment_url.split('/')[-1]
                     #segment_file_handle = open(segment_filename, 'wb')
-		    segment_size+=os.stat("/users/ishitadg/astream_dash_bolau/"+segment_filename).st_size 
+		    segment_size+=os.stat(segment_path).st_size 
                     config_dash.LOG.info(segment_size)
                     #segment_file_handle.write(stream)
 
