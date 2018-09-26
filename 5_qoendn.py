@@ -26,7 +26,7 @@ num_of_rebuffers = []
 spectrum_array = []
 DASH_BUFFER_FILENAME=glob.glob("/users/ishitadg/NDN/DASH_BUFFER/DASH_BUFFER*")
 #'<Absolute path of file, e.g /Users/10runs_sara_v*/dash_buffer*/DASH_BUFFER*>'
-SERVER_LOG_FILENAME=glob.glob("/users/ishitadg/NDN/DASH_BUFFER/DASH_BUFFER*")
+SERVER_LOG_FILENAME=glob.glob("/users/ishitadg/NDN/BOLA_LOG/BOLA_LOG*")
 #'<Absolute path of file, e.g /Users/10runs_sara_v*/dash_buffer*/SERVER_LOG*>'
 
 print(SERVER_LOG_FILENAME)
