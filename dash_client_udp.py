@@ -139,7 +139,7 @@ def get_mpd(url):
     #mpd_data = mpd_conn.read()
 
     #connection.close()
-    quic_cmd="/users/ishitadg/ndnperf/c++/client/ndnperf -p ndn:/edu/umass -d "+url+" -w 16"
+    quic_cmd="/users/ishitadg/ndnperf/c++/client/bin/ndnperf -p ndn:/edu/umass -d "+url+" -w 16"
     config_dash.LOG.info(quic_cmd)
     stream=os.popen(quic_cmd)
     mpd_file = url.split('/')[-1]
@@ -233,7 +233,7 @@ def download_segment_bola(domain, dp_list, segment_number, segment_url, dash_fol
                     '''             
                     chunk_start_time = timeit.default_timer()
 		    segment_url=segment_url.strip("://")
-    		    quic_cmd="/users/ishitadg/ndnperf/c++/client/ndnperf -p ndn:/edu/umass -d "+segment_url+" -w 16"
+    		    quic_cmd="/users/ishitadg/ndnperf/c++/client/bin/ndnperf -p ndn:/edu/umass -d "+segment_url+" -w 16"
                     stream=os.system(quic_cmd)
     		    timenow = timeit.default_timer()
                     chunk_dl_time = timenow - chunk_start_time
@@ -461,7 +461,7 @@ def start_playback_smart(dp_object, domain, playback_type=None, download=False, 
     # Initialize the DASH buffer
     video_segment_duration = 2
     bola_init_state = False
-    timer_cmd="/users/ishitadg/ndnperf/c++/client/ndnperf -p ndn:/edu/umass -d livestream.txt -w 16"
+    timer_cmd="/users/ishitadg/ndnperf/c++/client/bin/ndnperf -p ndn:/edu/umass -d livestream.txt -w 16"
     stream=os.system(timer_cmd)
     f_timer=open("livestream.txt",'r')
     for line in f_timer.readlines():
