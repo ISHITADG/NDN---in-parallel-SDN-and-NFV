@@ -91,7 +91,7 @@ for name in DASH_BUFFER_FILENAME:#glob.glob(DASH_BUFFER_FILENAME):
 		rebuffering_perc = (list_time[len(list_time)-1] - 299.0)*100/ 299.0
 		#Check if player terminates during playback (e.g. unreachable server)
 		if (list_time[len(list_time)-1] - 299.0)<0:
-			print(name)
+			rebuf_arr.append(0.0)
 		else:
 			rebuf_arr.append(rebuffering_perc)
 
