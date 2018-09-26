@@ -24,9 +24,9 @@ bitrate_array =[]
 cnt_of_switches = []
 num_of_rebuffers = []
 spectrum_array = []
-DASH_BUFFER_FILENAME=glob.glob("/users/bsuresh/bola/Proposedwork4/NDN - SDN cache=0 on 1 2 3 4/IP/*/*/BOLA*")
+DASH_BUFFER_FILENAME=glob.glob("/mnt/QUIClientServer0/ASTREAM_LOGS/DASH_BUFFER_LOG_2018-09-25.22_58_34.csv")
 #'<Absolute path of file, e.g /Users/10runs_sara_v*/dash_buffer*/DASH_BUFFER*>'
-SERVER_LOG_FILENAME=glob.glob("/users/bsuresh/bola/Proposedwork4/NDN - SDN cache=0 on 1 2 3 4/IP/*/*/BOLA*")
+SERVER_LOG_FILENAME=glob.glob("/mnt/QUIClientServer0/ASTREAM_LOGS/BOLA_LOG_2018-09-25.22_58_34.csv")
 #'<Absolute path of file, e.g /Users/10runs_sara_v*/dash_buffer*/SERVER_LOG*>'
 
 print(SERVER_LOG_FILENAME)
