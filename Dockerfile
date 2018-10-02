@@ -71,4 +71,7 @@ RUN apt-get install wget \
     && unzip client.zip
 
 RUN apt-get install git \
-    && git clone --recursive https://github.com/pari685/AStream.git
+    && git clone --recursive https://github.com/pari685/AStream.git \
+    && cd AStream/dist \
+    && rm -rf client \
+    && mv ../../client/ .
