@@ -25,6 +25,12 @@ docker build -t ndndock --build-arg VERSION_CXX=ndn-cxx-0.6.1 --build-arg VERSIO
 #Run NDN docker
 docker run -d --rm --name ndn1 -p 6364:6363 -p 6365:6363/udp ndndock
 
+#this installs Astreamer on Client host too
+wget -L https://github.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/blob/master/client.zip?raw=true \
+mv client.zip\?raw\=true client.zip
+sudo apt-get install unzip
+unzip client.zip
+git clone --recursive https://github.com/pari685/AStream.git
 rm client.zip;
 cd AStream/dist; rm -rf client; mv ../../client/ .;
 
