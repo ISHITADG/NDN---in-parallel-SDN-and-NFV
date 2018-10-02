@@ -1,11 +1,14 @@
 #!/bin/bash
 
+sudo apt-get install tmux; 
+sudo apt-get install vim;
 sudo apt-get install python-httplib2;
 sudo apt-get install python-setuptools;
 sudo apt-get install python-pip python-dev build-essential;
 sudo pip install --upgrade pip;
 sudo pip install numpy scipy;
 sudo pip install sortedcontainers;
+
 
 #SETUP DOCKER AND OPENVSWITCH
 sudo wget https://raw.githubusercontent.com/ISHITADG/dockerNDN/master/dockovs.sh
