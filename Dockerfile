@@ -92,6 +92,23 @@ RUN git clone https://github.com/Kanemochi/ndnperf.git \
     && rm client.cpp \
     && mv ../client.cpp . \
     && cmake . && make \
+    
+# creating ndn-route
+RUN nfdc face create udp://173.16.1.1 \
+    && nfdc route add /edu/umass udp://173.16.1.1 
+    
+# install dependencies for Astreamer
+RUN apt-get install tmux \
+    && apt-get install vim \
+    && apt-get install python-httplib2 \
+    && apt-get install python-setuptools \
+    && apt-get install python-pip python-dev build-essential \
+    && python -m pip install numpy scipy \
+    && python -m pip install sortedcontainers \
+    && python -m pip install urllib3 \
     && apt-get install net-tools \
     && apt-get install iputils-ping \
-    && apt-get install iproute2
+    && apt-get install iproute2 \
+    && cd /AStream/dist/client \
+    && rm dash_client_udpD.py \
+    && wget -L 'http://emmy10.casa.umass.edu/CNP/dash_client_udpD.py
