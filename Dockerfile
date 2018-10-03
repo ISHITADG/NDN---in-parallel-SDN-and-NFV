@@ -94,10 +94,6 @@ RUN git clone https://github.com/Kanemochi/ndnperf.git \
     && mv ../client.cpp . \
     && cmake . && make 
     
-# creating ndn-route
-RUN nfdc face create udp://173.16.1.1 \
-    && nfdc route add /edu/umass udp://173.16.1.1 
-    
 # install dependencies for Astreamer
 RUN apt-get install tmux \
     && apt-get install vim \
