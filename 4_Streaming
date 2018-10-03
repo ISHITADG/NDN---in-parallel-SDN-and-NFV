@@ -1,16 +1,42 @@
 #### Streaming over NDN ####
-On the client:
-wget 'http://emmy10.casa.umass.edu/CNP/dash_client_udp_bhushan.py'
-python dist/client/dash_client_udp_bhushan.py -m /www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/BigBuckBunny_2s.mpd -p bola
+## On the client:
+#install cmake
+version=3.12
+build=2
+mkdir ~/temp
+cd ~/temp
+wget https://cmake.org/files/v$version/cmake-$version.$build.tar.gz
+tar -xzvf cmake-$version.$build.tar.gz
+cd cmake-$version.$build/
+./bootstrap
+make -j4
+sudo make install
+cmake --version
+# compile ndnperf client: 
+cd /users/ishitadg/ndnperf/c++/client/
+cmake . && make
+#run client
+cd /users/ishitadg/AStream/dist/client
+rm dash_client_udp.py
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/dash_client_udp.py
+python dist/client/dash_client_udp.py -m /www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/BigBuckBunny_2s.mpd -p bola
 
-On the server:
-$users/bsures0/ndnperf/c++/server# ./ndnperf -p ndn:/edu/umass -c 1500
-$users/bsures0/ndnperf/c++/server# python livestream_timer.py
+## On the server:
+cd users/ishitadg/ndnperf/c++/server;
+mv /users/ishitadg/www-itec.uni-klu.ac.at/ .
+tmux attach -t ndnserver
+./ndnperfserver -p ndn:/edu/umass -c 1500
+<ctrl-b-d>
+rm livestream.txt
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/livestream_timer.py
+tmux attach -t liven
+python livestream_timer.py
+
 
 #### Streaming over IP ####
-On the client:
+##On the client:
 wget 'http://emmy10.casa.umass.edu/CNP/dash_client.py'
 python dist/client/dash_client.py -m http://***ip address of server***/www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/BigBuckBunny_2s.mpd -p bola
 
-On the server:
+##On the server:
 $/var/www/html# python livestream_timer.py
