@@ -95,18 +95,18 @@ RUN git clone https://github.com/Kanemochi/ndnperf.git \
     && cmake . && make 
     
 # install dependencies for Astreamer
-RUN apt-get install tmux \
-    && apt-get install vim \
-    && apt-get install python-httplib2 \
-    && apt-get install python-setuptools \
-    && apt-get install python-pip python-dev build-essential \
+RUN apt-get install -y tmux \
+    && apt-get install -y vim \
+    && apt-get install -y python-httplib2 \
+    && apt-get install -y python-setuptools \
+    && apt-get install -y python-pip python-dev build-essential \
     && python -m pip install numpy scipy \
     && python -m pip install sortedcontainers \
     && python -m pip install urllib3 \
     && python -m pip install requests \
-    && apt-get install net-tools \
-    && apt-get install iputils-ping \
-    && apt-get install iproute2 \
+    && apt-get install -y net-tools \
+    && apt-get install -y iputils-ping \
+    && apt-get install -y iproute2 \
     && cd /AStream/dist/client \
     && rm dash_client_udpD.py \
     && wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/dash_client_udpD.py
