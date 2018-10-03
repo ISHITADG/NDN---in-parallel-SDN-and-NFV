@@ -92,4 +92,6 @@ RUN git clone https://github.com/Kanemochi/ndnperf.git \
     && rm client.cpp \
     && mv ../client.cpp . \
     && cmake . && make \
-    && apt-get install net-tools
+    && apt-get install net-tools \
+    && apt-get install iputils-ping \
+    && apt-get install iproute2
