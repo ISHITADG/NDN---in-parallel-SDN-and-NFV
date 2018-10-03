@@ -111,4 +111,4 @@ RUN apt-get install tmux \
     && apt-get install iproute2 \
     && cd /AStream/dist/client \
     && rm dash_client_udpD.py \
-    && wget -L 'http://emmy10.casa.umass.edu/CNP/dash_client_udpD.py
+    && wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/dash_client_udpD.py
