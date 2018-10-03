@@ -77,12 +77,16 @@ RUN apt-get install git \
     && mv ../../client/ .
     
 
-# install NFD
-RUN git clone --recursive https://github.com/named-data/NFD \
-    && cd NFD \
-    && git checkout $VERSION_NFD \
-    && ./waf configure \
+# install cmake & ndnperf-client 
+RUN git clone https://github.com/Kanemochi/ndnperf.git \
+    && wget https://cmake.org/files/v3.12/cmake-3.12.2.tar.gz \
+    && tar -xzvf cmake-3.12.2.tar.gz \
+    && cd cmake-3.12.2 \
+    && ./bootstrap \
+    && make -j4 \
+    && sudo make install \
+    && cd ndnperf/c++/client/ \
     && ./waf \
     && ./waf install \
-    && cd .. \
-    && rm -Rf NFD
+    && cmake . && make \
+    && apt-get install net-tools
