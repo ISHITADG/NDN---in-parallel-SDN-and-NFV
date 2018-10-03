@@ -24,6 +24,34 @@ docker build -t ndndock --build-arg VERSION_CXX=ndn-cxx-0.6.1 --build-arg VERSIO
 
 #Run NDN docker
 docker run -d --rm --name ndn1 -p 6364:6363 -p 6365:6363/udp ndndock
+docker run -d --rm --name ndn2 -p 6366:6363 -p 6367:6363/udp ndndock
+docker run -d --rm --name ndn3 -p 6368:6363 -p 6369:6363/udp ndndock
+docker run -d --rm --name ndn4 -p 6370:6363 -p 6371:6363/udp ndndock
+docker run -d --rm --name ndn5 -p 6372:6363 -p 6373:6363/udp ndndock
+docker run -d --rm --name ndn6 -p 6374:6363 -p 6375:6363/udp ndndock
+docker run -d --rm --name ndn7 -p 6376:6363 -p 6377:6363/udp ndndock
+docker run -d --rm --name ndn8 -p 6378:6363 -p 6379:6363/udp ndndock
+docker run -d --rm --name ndn9 -p 6380:6363 -p 6381:6363/udp ndndock
+docker run -d --rm --name ndn0 -p 6381:6363 -p 6383:6363/udp ndndock
+
+# create bridge
+sudo ovs-vsctl del-br ovs-br1
+sudo ovs-vsctl add-br ovs-br1
+sudo ifconfig ovs-br1 173.16.1.1 netmask 255.255.255.0 up
+sudo ovs-vsctl show
+
+#configure this bridge with NDN container
+sudo ovs-docker add-port ovs-br1 eth1 ndn1 --ipaddress=173.16.1.2/24
+sudo ovs-docker add-port ovs-br1 eth1 ndn2 --ipaddress=173.16.1.3/24
+sudo ovs-docker add-port ovs-br1 eth1 ndn3 --ipaddress=173.16.1.4/24
+sudo ovs-docker add-port ovs-br1 eth1 ndn4 --ipaddress=173.16.1.5/24
+sudo ovs-docker add-port ovs-br1 eth1 ndn5 --ipaddress=173.16.1.6/24
+sudo ovs-docker add-port ovs-br1 eth1 ndn6 --ipaddress=173.16.1.7/24
+sudo ovs-docker add-port ovs-br1 eth1 ndn7 --ipaddress=173.16.1.8/24
+sudo ovs-docker add-port ovs-br1 eth1 ndn8 --ipaddress=173.16.1.9/24
+sudo ovs-docker add-port ovs-br1 eth1 ndn9 --ipaddress=173.16.2.0/24
+sudo ovs-docker add-port ovs-br1 eth1 ndn0 --ipaddress=173.16.2.1/24
+
 
 #this installs Astreamer on Client host too
 wget -L https://github.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/blob/master/client.zip?raw=true \
