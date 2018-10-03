@@ -86,6 +86,10 @@ RUN git clone https://github.com/Kanemochi/ndnperf.git \
     && make -j4 \
     && make install \
     && cd .. \
-    && cd ndnperf/c++/client/ \
+    && cd ndnperf/c++ \
+    && wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/client.cpp \
+    && cd client \
+    && rm client.cpp \
+    && mv ../client.cpp . \
     && cmake . && make \
     && apt-get install net-tools
