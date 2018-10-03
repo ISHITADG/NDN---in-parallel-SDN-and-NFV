@@ -74,7 +74,8 @@ RUN apt-get install git \
     && git clone --recursive https://github.com/pari685/AStream.git \
     && cd AStream/dist \
     && rm -rf client \
-    && mv ../../client/ .
+    && mv ../../client/ . \
+    && cd ../../
     
 
 # install cmake & ndnperf-client app & net-tools
@@ -91,7 +92,7 @@ RUN git clone https://github.com/Kanemochi/ndnperf.git \
     && cd client \
     && rm client.cpp \
     && mv ../client.cpp . \
-    && cmake . && make \
+    && cmake . && make 
     
 # creating ndn-route
 RUN nfdc face create udp://173.16.1.1 \
