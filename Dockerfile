@@ -84,7 +84,7 @@ RUN git clone https://github.com/Kanemochi/ndnperf.git \
     && cd cmake-3.12.2 \
     && ./bootstrap \
     && make -j4 \
-    && sudo make install \
+    && make install \
     && cd .. \
     && cd ndnperf/c++/client/ \
     && cmake . && make \
