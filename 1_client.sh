@@ -8,6 +8,8 @@ sudo apt-get install python-pip python-dev build-essential;
 sudo pip install --upgrade pip;
 sudo pip install numpy scipy;
 sudo pip install sortedcontainers;
+sudo pip install pandas;
+sudo apt-get install -y python-numpy python-scipy python-matplotlib;
 
 
 #SETUP DOCKER AND OPENVSWITCH
