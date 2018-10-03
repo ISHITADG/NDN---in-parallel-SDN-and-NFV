@@ -19,10 +19,10 @@ cmake . && make
 cd /users/ishitadg/AStream/dist/client
 rm dash_client_udp.py
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/dash_client_udp.py
-python dist/client/dash_client_udp.py -m /www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/BigBuckBunny_2s.mpd -p bola
+python dash_client_udp.py -m /www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/BigBuckBunny_2s.mpd -p bola
 
 ## On the server:
-cd users/ishitadg/ndnperf/c++/server;
+cd /users/ishitadg/ndnperf/c++/server;
 mv /users/ishitadg/www-itec.uni-klu.ac.at/ .
 tmux attach -t ndnserver
 ./ndnperfserver -p ndn:/edu/umass -c 1500
