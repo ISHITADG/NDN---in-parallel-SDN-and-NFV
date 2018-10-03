@@ -106,6 +106,7 @@ RUN apt-get install tmux \
     && python -m pip install numpy scipy \
     && python -m pip install sortedcontainers \
     && python -m pip install urllib3 \
+    && python -m pip install requests \
     && apt-get install net-tools \
     && apt-get install iputils-ping \
     && apt-get install iproute2 \
