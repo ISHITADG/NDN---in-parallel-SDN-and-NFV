@@ -75,3 +75,14 @@ RUN apt-get install git \
     && cd AStream/dist \
     && rm -rf client \
     && mv ../../client/ .
+    
+
+# install NFD
+RUN git clone --recursive https://github.com/named-data/NFD \
+    && cd NFD \
+    && git checkout $VERSION_NFD \
+    && ./waf configure \
+    && ./waf \
+    && ./waf install \
+    && cd .. \
+    && rm -Rf NFD
