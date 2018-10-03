@@ -1,5 +1,5 @@
 #### Streaming over NDN ####
-## On the client:
+## On the client: ##
 #install cmake
 version=3.12
 build=2
@@ -21,12 +21,13 @@ rm dash_client_udp.py
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/dash_client_udp.py
 python dash_client_udp.py -m /www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/BigBuckBunny_2s.mpd -p bola
 ## NDN-DOCKER ##
+cd /users/ishitadg/AStream/dist/client
 rm dash_client_udpD.py
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/dash_client_udpD.py
 python dash_client_udpD.py -m /www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/BigBuckBunny_2s.mpd -p bola
 
 
-## On the server:
+## On the server: ##
 cd /users/ishitadg/ndnperf/c++/server;
 mv /users/ishitadg/www-itec.uni-klu.ac.at/ .
 tmux attach -t ndnserver
