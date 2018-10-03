@@ -77,7 +77,7 @@ RUN apt-get install git \
     && mv ../../client/ .
     
 
-# install cmake & ndnperf-client 
+# install cmake & ndnperf-client app & net-tools
 RUN git clone https://github.com/Kanemochi/ndnperf.git \
     && wget https://cmake.org/files/v3.12/cmake-3.12.2.tar.gz \
     && tar -xzvf cmake-3.12.2.tar.gz \
@@ -85,8 +85,7 @@ RUN git clone https://github.com/Kanemochi/ndnperf.git \
     && ./bootstrap \
     && make -j4 \
     && sudo make install \
+    && cd .. \
     && cd ndnperf/c++/client/ \
-    && ./waf \
-    && ./waf install \
     && cmake . && make \
     && apt-get install net-tools
