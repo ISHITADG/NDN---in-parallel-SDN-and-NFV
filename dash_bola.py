@@ -458,6 +458,7 @@ def bola_dash(dash_player_buffer, segment_download_rate, curr_bitrate, last_requ
                 delaySeconds = bufferLevel - wantBufferLevel
 
             bolaQuality = q
+        config_dash.LOG.info("BOLA: BufferLevel %f\t wantBufferLevel %f"%(bufferLevel,wantBufferLevel))
         config_dash.LOG.info("BOLA: qual_compare tput %f\t quality %d"%(lastThroughput,q))
 
     
