@@ -456,7 +456,6 @@ def bola_dash(dash_player_buffer, segment_download_rate, curr_bitrate, last_requ
                 # We are dropping to an encoded bitrate which is a little less than the network bandwidth because bitrate levels are discrete. Quality q might lead to buffer inflation, so we deflate buffer to the level that q gives postive utility.
                 wantBufferLevel = bolaObj.Vp * (bolaObj.utility[bolaObj.bitrates.index(q)] + bolaObj.gp)
                 delaySeconds = bufferLevel - wantBufferLevel
-            config_dash.LOG.info("BOLA: BufferLevel %f\t wantBufferLevel %f"%(bufferLevel,wantBufferLevel))
             bolaQuality = q
         config_dash.LOG.info("BOLA: qual_compare tput %f\t quality %d"%(lastThroughput,q))
 
