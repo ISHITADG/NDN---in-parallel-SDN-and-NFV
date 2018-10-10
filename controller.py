@@ -61,8 +61,48 @@ class NDNRouter(app_manager.RyuApp):
         # 128, OVS will send Packet-In with invalid buffer_id and
         # truncated packet data. In that case, we cannot output packets
         # correctly.  The bug has been fixed in OVS v2.1.0.
-
         # Router1
+        print datapath.id
+        if datapath.id == 77781502685763:
+            #Following are for NDN Packets
+            match = parser.OFPMatch(in_port=8, dl_type=0x8624)
+            out_port = 7
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 8, match, actions)
+            match = parser.OFPMatch(in_port=7, dl_type=0x8624)
+            out_port = 8
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 7, match, actions)
+
+            match = parser.OFPMatch(in_port=9, dl_type=0x8624)
+            out_port = 6
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 9, match, actions)
+            match = parser.OFPMatch(in_port=6, dl_type=0x8624)
+            out_port = 9
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 6, match, actions)
+
+            match = parser.OFPMatch(in_port=14, dl_type=0x8624)
+            out_port = 13
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 14, match, actions)
+            match = parser.OFPMatch(in_port=13, dl_type=0x8624)
+            out_port = 14
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 13, match, actions)
+
+            #Following are for IPv4 Packets
+            match = parser.OFPMatch(in_port=8, dl_type=0x0800)
+            out_port = 7
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 8, match, actions)
+            match = parser.OFPMatch(in_port=7, dl_type=0x0800)
+            out_port = 8
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 7, match, actions)
+        print datapath.id
+        # Router2
         if datapath.id == 77781502685763:
             #Following are for NDN Packets
             match = parser.OFPMatch(in_port=8, dl_type=0x8624)
