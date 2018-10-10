@@ -2,7 +2,7 @@
 #install all NDN dependencies and tools
 sudo apt-get update
 sudo apt-get install -y software-properties-common
-sudo add-apt-repository ppa:named-data/ppa
+sudo add-apt-repository ppa:named-data/ppa -y
 sudo apt-get update
 sudo apt-get install -y nfd
 sudo apt-get install -y ndn-cxx
