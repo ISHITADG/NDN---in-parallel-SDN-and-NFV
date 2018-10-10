@@ -7,5 +7,5 @@ cd ryu
 sudo pip install -r tools/pip-requires
 sudo python setup.py install
 wget https://bootstrap.pypa.io/ez_setup.py -O - | sudo python
-sudo pip install oslo.config
-sudo pip install tinyrpc
+sudo pip install -y oslo.config
+sudo pip install -y tinyrpc
