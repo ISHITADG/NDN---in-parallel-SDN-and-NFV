@@ -56,7 +56,7 @@ sudo ovs-docker add-port ovs-br1 eth1 ndn0 --ipaddress=173.16.2.1/24
 
 
 #this installs Astreamer on Client host too
-wget -L https://github.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/blob/master/client.zip?raw=true \
+wget -L https://github.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/blob/master/client.zip?raw=true
 mv client.zip\?raw\=true client.zip
 sudo apt-get install unzip
 unzip client.zip
