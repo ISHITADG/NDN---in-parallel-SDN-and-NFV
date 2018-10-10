@@ -4,9 +4,9 @@ sudo apt-get update
 sudo apt-get install software-properties-common
 sudo add-apt-repository ppa:named-data/ppa
 sudo apt-get update
-sudo apt-get install nfd
-sudo apt-get install ndn-cxx
-sudo apt-get install ndn-cxx-dev
+sudo apt-get install -y nfd
+sudo apt-get install -y ndn-cxx
+sudo apt-get install -y ndn-cxx-dev
 
 #adding security element
 sudo ndnsec-keygen /`whoami` | ndnsec-install-cert -
@@ -15,7 +15,7 @@ sudo ndnsec-cert-dump -i /`whoami` > default.ndncert
 sudo mv default.ndncert /usr/local/etc/ndn/keys/default.ndncert
 
 #install ndnperf & tools
-sudo apt-get install ndn-tools
+sudo apt-get install -y ndn-tools
 nfd-start
 git clone https://github.com/Kanemochi/ndnperf.git
 cd ndnperf/c++/server/
