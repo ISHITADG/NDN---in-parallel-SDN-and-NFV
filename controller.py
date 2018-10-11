@@ -63,7 +63,7 @@ class NDNRouter(app_manager.RyuApp):
         # correctly.  The bug has been fixed in OVS v2.1.0.
         # Router1
         print datapath.id
-        if datapath.id == 77781502685763:
+        if datapath.id == 152522316184652:
             #Following are for NDN Packets
             match = parser.OFPMatch(in_port=8, dl_type=0x8624)
             out_port = 7
@@ -101,9 +101,8 @@ class NDNRouter(app_manager.RyuApp):
             out_port = 8
             actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
             self.add_ipflow(datapath, 7, match, actions)
-        print datapath.id
         # Router2
-        if datapath.id == 77781502685763:
+        else if datapath.id == 160944881878343:
             #Following are for NDN Packets
             match = parser.OFPMatch(in_port=8, dl_type=0x8624)
             out_port = 7
