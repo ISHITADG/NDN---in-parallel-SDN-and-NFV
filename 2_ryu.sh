@@ -9,3 +9,4 @@ sudo python setup.py install
 wget https://bootstrap.pypa.io/ez_setup.py -O - | sudo python
 sudo pip install -y oslo.config
 sudo pip install -y tinyrpc
+sudo pip install six --upgrade
