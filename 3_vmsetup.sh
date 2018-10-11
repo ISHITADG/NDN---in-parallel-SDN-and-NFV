@@ -48,7 +48,7 @@ sudo ifconfig virbr0 up
 sudo ifconfig virbr1 up
 sudo ifconfig virbr2 up
 sudo ifconfig virbr3 up
-sudo ovs-vsctl set-controller ovsbr0 tcp:155.98.39.95:6633
+sudo ovs-vsctl set-controller ovsbr0 tcp:128.104.222.18:6633
 
 #instantiate VMs
 wget 'http://emmy10.casa.umass.edu/CNP/ipVM.qcow2'
