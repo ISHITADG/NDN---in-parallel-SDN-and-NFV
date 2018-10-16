@@ -40,16 +40,10 @@
       <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x0'/>
     </interface>
     <interface type='bridge'>
-      <mac address='90:e2:ba:29:f6:40'/>
+      <mac address='fc:5b:39:aa:64:58'/>
       <source bridge='virbr0'/>
       <model type='virtio'/>
       <address type='pci' domain='0x0000' bus='0x00' slot='0x06' function='0x0'/>
-    </interface>
-    <interface type='bridge'>
-      <mac address='90:e2:ba:29:f6:41'/>
-      <source bridge='virbr3'/>
-      <model type='virtio'/>
-      <address type='pci' domain='0x0000' bus='0x00' slot='0x07' function='0x0'/>
     </interface>
     <serial type='pty'>
       <target port='0'/>
