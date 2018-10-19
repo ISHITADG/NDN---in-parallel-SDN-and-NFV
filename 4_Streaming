@@ -27,6 +27,11 @@ cd /AStream/dist/client; rm Big*; rm *.txt; rm -rf TEMP*; rm /mnt/QUIClientServe
 cd adaptation; rm dash_bola.py; wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/dash_bola.py; cd ..;
 python dash_client_udpD.py -m /www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/BigBuckBunny_2s.mpd -p bola
 
+## NDN-DOCKER SQUAD RUNS ##
+cd /AStream/dist/client; rm Big*; rm *.txt; rm -rf TEMP*; rm /mnt/QUIClientServer0/ASTREAM_LOGS/*;
+rm dash_client.py; 
+wget -L https://raw.githubusercontent.com/deshmukhrajvardhan/streamer/master/astream_dash/dist/client/dash_client.py
+
 
 ## On the server: ##
 cd /users/ishitadg/ndnperf/c++/server;
@@ -38,7 +43,8 @@ rm livestream.txt
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/livestream_timer.py
 tmux attach -t liven
 python livestream_timer.py
-
+rm config_dash.py;
+wget -L https://raw.githubusercontent.com/deshmukhrajvardhan/streamer/master/squad_astream_with_retransmission_buffer_based/dist/client/config_dash.py
 
 #### Streaming over IP ####
 ##On the client:
