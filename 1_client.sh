@@ -54,7 +54,22 @@ sudo ovs-docker add-port ovs-br1 eth1 ndn8 --ipaddress=173.16.1.9/24
 sudo ovs-docker add-port ovs-br1 eth1 ndn9 --ipaddress=173.16.2.0/24
 sudo ovs-docker add-port ovs-br1 eth1 ndn0 --ipaddress=173.16.2.1/24
 
-
+#FOR RUNNING ON THE HOST CLIENT
+#install cmake
+version=3.12
+build=2
+mkdir ~/temp
+cd ~/temp
+wget https://cmake.org/files/v$version/cmake-$version.$build.tar.gz
+tar -xzvf cmake-$version.$build.tar.gz
+cd cmake-$version.$build/
+./bootstrap
+make -j4
+sudo make install
+cmake --version
+# compile ndnperf client: 
+cd /users/ishitadg/ndnperf/c++/client/
+cmake . && make
 #this installs Astreamer on Client host too
 wget -L https://github.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/blob/master/client.zip?raw=true
 mv client.zip\?raw\=true client.zip
