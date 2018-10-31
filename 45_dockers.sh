@@ -1,4 +1,6 @@
 ############################### NDN Runs#####
+#kill all dockers
+docker kill ndn0;docker kill ndn1;docker kill ndn2;docker kill ndn3;docker kill ndn4;docker kill ndn5;docker kill ndn6;docker kill ndn7;docker kill ndn8;docker kill ndn9;
 @client:
 Bridge setup is in 1_client.sh
 docker ps
