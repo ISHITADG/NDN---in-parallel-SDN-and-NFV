@@ -33,7 +33,7 @@ docker cp ndn0:/mnt/QUIClientServer0/ASTREAM_LOGS/ .;sudo  mv ASTREAM_LOGS/DASH_
 cd /users/ishitadg/NDN/BOLA_LOG; rm *;
 docker cp ndn0:/mnt/QUIClientServer0/ASTREAM_LOGS/ .;sudo  mv ASTREAM_LOGS/BOLA_LOG* BOLA_LOG0.csv; sudo rm -rf ASTREAM_LOGS/;docker cp ndn1:/mnt/QUIClientServer0/ASTREAM_LOGS/ .;sudo  mv ASTREAM_LOGS/BOLA_LOG* BOLA_LOG1.csv; sudo rm -rf ASTREAM_LOGS/;docker cp ndn2:/mnt/QUIClientServer0/ASTREAM_LOGS/ .;sudo  mv ASTREAM_LOGS/BOLA_LOG* BOLA_LOG2.csv; sudo rm -rf ASTREAM_LOGS/;docker cp ndn3:/mnt/QUIClientServer0/ASTREAM_LOGS/ .;sudo  mv ASTREAM_LOGS/BOLA_LOG* BOLA_LOG3.csv; sudo rm -rf ASTREAM_LOGS/;docker cp ndn4:/mnt/QUIClientServer0/ASTREAM_LOGS/ .;sudo  mv ASTREAM_LOGS/BOLA_LOG* BOLA_LOG4.csv; sudo rm -rf ASTREAM_LOGS/;docker cp ndn5:/mnt/QUIClientServer0/ASTREAM_LOGS/ .;sudo  mv ASTREAM_LOGS/BOLA_LOG* BOLA_LOG5.csv; sudo rm -rf ASTREAM_LOGS/;docker cp ndn6:/mnt/QUIClientServer0/ASTREAM_LOGS/ .;sudo  mv ASTREAM_LOGS/BOLA_LOG* BOLA_LOG6.csv; sudo rm -rf ASTREAM_LOGS/;docker cp ndn7:/mnt/QUIClientServer0/ASTREAM_LOGS/ .;sudo  mv ASTREAM_LOGS/BOLA_LOG* BOLA_LOG7.csv; sudo rm -rf ASTREAM_LOGS/;docker cp ndn8:/mnt/QUIClientServer0/ASTREAM_LOGS/ .;sudo  mv ASTREAM_LOGS/BOLA_LOG* BOLA_LOG8.csv; sudo rm -rf ASTREAM_LOGS/;docker cp ndn9:/mnt/QUIClientServer0/ASTREAM_LOGS/ .;sudo  mv ASTREAM_LOGS/BOLA_LOG* BOLA_LOG9.csv; sudo rm -rf ASTREAM_LOGS/;
 #run pythonscript on results
-cd /users/ishitadg/; rm 5_qoendn.py;
+cd /users/ishitadg/; rm abr*; rm 5_qoendn.py;
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/5_qoendn.py
 python 5_qoendn.py
 
