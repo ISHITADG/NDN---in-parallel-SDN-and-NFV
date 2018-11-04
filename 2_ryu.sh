@@ -10,4 +10,4 @@ wget https://bootstrap.pypa.io/ez_setup.py -O - | sudo python
 sudo pip install oslo.config
 sudo pip install tinyrpc
 sudo pip install six --upgrade
-sudo apt-get install tmux
+sudo apt-get -y install tmux
