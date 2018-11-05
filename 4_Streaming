@@ -31,7 +31,7 @@ python livestream_timer.py
 rm config_dash.py;
 wget -L https://raw.githubusercontent.com/deshmukhrajvardhan/streamer/master/squad_astream_with_retransmission_buffer_based/dist/client/config_dash.py
 
-####### On the client: ###### run client test with: "./ndnperf -p ndn:/edu/umass -d BigBuckBunny_2s.mpd -w 16"
+####### On the client: ###### run client test with: "./ndnperf -p ndn:/edu/umass -d www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/BigBuckBunny_2s.mpd -w 16"
 Go to 4_dockerrun.sh
 
 
