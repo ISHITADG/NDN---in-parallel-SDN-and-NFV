@@ -8,10 +8,8 @@ sudo apt-get -y install qemu-kvm libvirt-bin ubuntu-vm-builder bridge-utils
 sudo virsh connect qemu:///system
 sudo brctl addbr virbr1
 sudo brctl addbr virbr2
-sudo brctl addbr virbr3
 sudo brctl stp virbr1 on
 sudo brctl stp virbr2 on
-sudo brctl stp virbr3 on 
 
 #Run this second: Recreates the ovs bridge and linux bridges
 sudo ovs-vsctl del-br ovsbr0
@@ -19,36 +17,28 @@ sudo ovs-vsctl add-br ovsbr0
 sudo ifconfig virbr0 down
 sudo ifconfig virbr1 down
 sudo ifconfig virbr2 down
-sudo ifconfig virbr3 down
 sudo brctl delbr virbr0
 sudo brctl delbr virbr1
 sudo brctl delbr virbr2
-sudo brctl delbr virbr3
 sudo brctl addbr virbr0
 sudo brctl addbr virbr1
 sudo brctl addbr virbr2
-sudo brctl addbr virbr3
 sudo ifconfig virbr0 down
 sudo ifconfig virbr1 down
 sudo ifconfig virbr2 down
-sudo ifconfig virbr3 down
 sudo brctl addif virbr0 vnet1
 sudo brctl addif virbr1 vnet3
 sudo brctl addif virbr2 vnet4
-sudo brctl addif virbr3 vnet5
 sudo ovs-vsctl add-port ovsbr0 virbr0
 sudo ovs-vsctl add-port ovsbr0 virbr1
 sudo ovs-vsctl add-port ovsbr0 virbr2
-sudo ovs-vsctl add-port ovsbr0 virbr3
 sudo brctl stp virbr0 on
 sudo brctl stp virbr1 on
 sudo brctl stp virbr2 on
-sudo brctl stp virbr3 on
 sudo ifconfig virbr0 up
 sudo ifconfig virbr1 up
 sudo ifconfig virbr2 up
-sudo ifconfig virbr3 up
-sudo ovs-vsctl set-controller ovsbr0 tcp:128.104.222.18:6633
+sudo ovs-vsctl set-controller ovsbr0 tcp:<IP for controller>:6633
 
 #instantiate VMs
 wget 'http://emmy10.casa.umass.edu/CNP/ipVM.qcow2'
