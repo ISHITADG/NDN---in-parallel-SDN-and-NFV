@@ -108,4 +108,6 @@ RUN apt-get install -y tmux \
     && apt-get install -y iputils-ping \
     && apt-get install -y iproute2 \
     && cd /AStream/dist/client \
-    && wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/dash_client_udpD.py
+    && wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/dash_client_udpD.py \
+    && wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/config_dash_squad.py \
+    && wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/dash_squad_ndnlive.py
