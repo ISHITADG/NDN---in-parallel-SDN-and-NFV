@@ -21,14 +21,12 @@ nfdc route add prefix /edu/umass nexthop <face with eth id>
 cd /users/ishitadg/ndnperf/c++/server;
 mv /users/ishitadg/www-itec.uni-klu.ac.at/ .
 tmux attach -t ndnserver
-./ndnperfserver -p ndn:/edu/umass -c 1500
+./ndnperfserver -p ndn:/edu/umass -c 1500 -f 3600000
 <ctrl-b-d>
 rm livestream.txt
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/livestream_timer.py
 tmux attach -t liven
 python livestream_timer.py
-rm config_dash.py;
-wget -L https://raw.githubusercontent.com/deshmukhrajvardhan/streamer/master/squad_astream_with_retransmission_buffer_based/dist/client/config_dash.py
 
 ####### On the client: ###### run client test with: "./ndnperf -p ndn:/edu/umass -d www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/BigBuckBunny_2s.mpd -w 16"
 Go to 4_dockerrun.sh
