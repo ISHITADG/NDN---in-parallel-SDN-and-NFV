@@ -1,22 +1,21 @@
 #### Streaming over NDN Docker ####
-@server
+@server,@router,@client
 ndnsec-keygen /`whoami` | ndnsec-install-cert -
 sudo mkdir -p /usr/local/etc/ndn/keys
 ndnsec-cert-dump -i /`whoami` > default.ndncert
 sudo mv default.ndncert /usr/local/etc/ndn/keys/default.ndncert
 @router:
-ndnsec-keygen /`whoami` | ndnsec-install-cert -
-sudo mkdir -p /usr/local/etc/ndn/keys
-ndnsec-cert-dump -i /`whoami` > default.ndncert
-sudo mv default.ndncert /usr/local/etc/ndn/keys/default.ndncert
+UDP
 sudo nfdc face create remote udp://10.10.1.1
 sudo nfdc route add prefix /edu/umass nexthop udp://10.10.1.1
+ETH: sudo su; nfd-stop; vim /etc/ndn/nfd.conf; //comment out user group; nfd-start;
+nfdc route add prefix /edu/umass nexthop <face with eth id>
 @client
-sudo mkdir -p /usr/local/etc/ndn/keys
-ndnsec-cert-dump -i /`whoami` > default.ndncert
-sudo mv default.ndncert /usr/local/etc/ndn/keys/default.ndncert
+UDP
 nfdc face create udp://10.10.2.2
 sudo nfdc route add prefix /edu/umass nexthop udp://10.10.2.2
+ETH sudo su; nfd-stop; vim /etc/ndn/nfd.conf; //comment out user group; nfd-start;
+nfdc route add prefix /edu/umass nexthop <face with eth id>
 
 ###### On the server: ######
 cd /users/ishitadg/ndnperf/c++/server;
