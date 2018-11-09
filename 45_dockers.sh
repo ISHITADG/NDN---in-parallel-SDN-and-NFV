@@ -20,8 +20,10 @@ sudo docker exec -it ndn7 bash
 sudo docker exec -it ndn8 bash
 sudo docker exec -it ndn9  bash
 
-#establish docker ndn cnxns
+#establish docker ndn cnxns over udp
 docker exec -ti ndn0 nfdc face create udp://173.16.1.1;docker exec -ti ndn0 nfdc route add /edu/umass udp://173.16.1.1;docker exec -ti ndn1 nfdc face create udp://173.16.1.1; docker exec -ti ndn1 nfdc route add /edu/umass udp://173.16.1.1;docker exec -ti ndn2 nfdc face create udp://173.16.1.1;docker exec -ti ndn2 nfdc route add /edu/umass udp://173.16.1.1;docker exec -ti ndn3 nfdc face create udp://173.16.1.1;docker exec -ti ndn3 nfdc route add /edu/umass udp://173.16.1.1;docker exec -ti ndn4 nfdc face create udp://173.16.1.1;docker exec -ti ndn4 nfdc route add /edu/umass udp://173.16.1.1;docker exec -ti ndn5 nfdc face create udp://173.16.1.1;docker exec -ti ndn5 nfdc route add /edu/umass udp://173.16.1.1;docker exec -ti ndn6 nfdc face create udp://173.16.1.1;docker exec -ti ndn6 nfdc route add /edu/umass udp://173.16.1.1;docker exec -ti ndn7 nfdc face create udp://173.16.1.1;docker exec -ti ndn7 nfdc route add /edu/umass udp://173.16.1.1;docker exec -ti ndn8 nfdc face create udp://173.16.1.1;docker exec -ti ndn8 nfdc route add /edu/umass udp://173.16.1.1;docker exec -ti ndn9 nfdc face create udp://173.16.1.1;docker exec -ti ndn9 nfdc route add /edu/umass udp://173.16.1.1;
+#OR establish docker ndn cnxns over ethernet
+
 #clear prev runs ON ALL:
 cd /AStream/dist/client; rm Big*; rm *.txt; rm -rf TEMP*; rm /mnt/QUIClientServer0/ASTREAM_LOGS/*;
 #Run ASTREAMER on 10 clients: NDN 
