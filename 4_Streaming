@@ -9,13 +9,13 @@ UDP
 sudo nfdc face create remote udp://10.10.1.1
 sudo nfdc route add prefix /edu/umass nexthop udp://10.10.1.1
 ETH: sudo su; nfd-stop; vim /etc/ndn/nfd.conf; //comment out user group; nfd-start;
-nfdc route add prefix /edu/umass nexthop <face with eth id>
+nfd-stop;nfd-start; nfdc route add prefix /edu/umass nexthop 258;
 @client
 UDP
 nfdc face create udp://10.10.2.2
 sudo nfdc route add prefix /edu/umass nexthop udp://10.10.2.2
 ETH sudo su; nfd-stop; vim /etc/ndn/nfd.conf; //comment out user group; nfd-start;
-nfdc route add prefix /edu/umass nexthop <face with eth id>
+ nfd-stop;nfd-start; nfdc route add prefix /edu/umass nexthop 257;
 
 ###### On the server: ######
 cd /users/ishitadg/ndnperf/c++/server;
