@@ -1,35 +1,30 @@
 # NDN---in-parallel-SDN-and-NFV
 # An Evaluation of SDN and NFV Support for Parallel, Alternative Protocol Stack Operations on CloudLab
-## Server & client:
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_ndn.sh </br>
+
+## STEP1: Server & client setup:
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_ndn.sh
 bash 1_ndn.sh
-### Additional step at server: 
-wget -r --no-parent --reject \"index.html*\" http://www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/
-### Additional step at client:
-scp -r ~/Desktop/client/ ishitadg@c220g1-031130.wisc.cloudlab.us:
-</br>git clone https://github.com/pari685/AStream.git
-</br>cd AStream/dist; rm -rf client; mv ../../client/ .;
+### Additional step at server: (install vim,tmux,BB video files,apache2)
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_server.sh
+bash 1_server.sh
+### Additional step at client: (run Dockerfile, download client, Astreamer)
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_client.sh
+bash 1_client.sh
 
-
-
-## Controller:
+## STEP 2: Controller setup:
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/2_ryu.sh
-</br>bash 2_ryu.sh
-</br>cd ryu/
-</br>wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/controller.py
-</br>sudo pip install six --upgrade
-</br>ryu-manager controller.py
+bash 2_ryu.sh
+cd ryu/
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/controller.py
+ryu-manager controller.py
+### (print dpid and modify line 66 accordingly)
+### Run controller again
 
-## Routers:
-### Install & start VMs
+## Step 3: Bridge setup on Routers:
+### INSTALL & START VMs
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/3_vmsetup.sh
-</br>bash 3_vmsetup.sh
-### Connect to controller
-sudo apt-get update
-</br>ovs-vsctl get-controller ovsbr0
-</br>ovs-vsctl list-ifaces ovsbr0
-</br>ovs-vsctl show 
-</br>ovs-ofctl show ovsbr0 
->(gives same result as doing this): ovs-vsctl get Bridge ovsbr0 datapath-id
-> On controller-end: manipulated the code to print dpid: (got this instead) 191445057984326
-
+bash 3_vmsetup.sh
+virsh console ndnVM
+ipVM login: mzink
+Password: test
+sudo ovs-vsctl set bridge ovsbr0 protocols=OpenFlow10,OpenFlow13
