@@ -66,7 +66,7 @@ class NDNRouter(app_manager.RyuApp):
         src = eth_pkt.src
 
         # get the received port number from packet_in message.
-        in_port = msg.match['in_port']
+        in_port = msg.in_port
 
         self.logger.info("packet in %s %s %s %s", dpid, src, dst, in_port)
 
