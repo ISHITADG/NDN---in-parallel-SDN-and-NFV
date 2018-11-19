@@ -113,11 +113,11 @@ class NDNRouter(app_manager.RyuApp):
         print datapath.id
         if datapath.id == 191984707390531:
             #Following are for NDN Packets
-            match = parser.OFPMatch(in_port=5, dl_type=0x8624)
+            match = parser.OFPMatch(in_port=7, dl_type=0x8624)
             out_port = 6
             actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
-            self.add_ipflow(datapath, 5, match, actions)
+            self.add_ipflow(datapath, 7, match, actions)
             match = parser.OFPMatch(in_port=6, dl_type=0x8624)
-            out_port = 5
+            out_port = 7
             actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
-            self.add_ipflow(datapath, 6, match, actions)                                                         
+            self.add_ipflow(datapath, 6, match, actions)     
