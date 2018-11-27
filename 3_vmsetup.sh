@@ -23,6 +23,14 @@ ovs-vsctl set-controller ovsbr0 tcp:128.104.222.13:6633
 ovs-ofctl dump-ports-desc ovsbr0
 ovs-appctl fdb/show ovsbr0
 
+#creating virtual interface and adding to ovs-bridge (http://www.pocketnix.org/posts/Linux%20Networking:%20Dummy%20Interfaces%20and%20Virtual%20Bridges)
+/sbin/ip li add virbr1 type bridge
+/sbin/ip li add virbr2 type bridge
+ovs-vsctl add-port ovsbr0 virbr1
+ovs-vsctl add-port ovsbr0 virbr2
+
+#made changes in ndnVM --added eth1,eth2 with MAC addresses of virbr1,virbr2 and then ifconfig up inside the VM
+
 #instantiate VMs
 wget 'http://emmy10.casa.umass.edu/CNP/ipVM.qcow2'
 wget -L 'https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ipVM.xml'
