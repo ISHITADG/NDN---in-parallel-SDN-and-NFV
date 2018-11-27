@@ -11,16 +11,17 @@ sudo brctl addbr virbr2
 sudo brctl stp virbr1 on
 sudo brctl stp virbr2 on
 
-#Run this second: Recreates the ovs bridge and linux bridges
-sudo ovs-vsctl add-br ovsbr0
-sudo ifconfig virbr0 down
-sudo brctl delbr virbr0
-sudo brctl addbr virbr0
-sudo brctl addif virbr0 vnet1
-sudo ovs-vsctl add-port ovsbr0 virbr0
-sudo brctl stp virbr0 on
-sudo ifconfig virbr0 up
-sudo ovs-vsctl set-controller ovsbr0 tcp:<IP for controller>:6633
+#Run this second: add physical interfaces to eth without OVS bridge copying it
+sudo su 
+ovs-vsctl add-br ovsbr0
+ovs-vsctl add-port ovsbr0 eth1
+ovs-vsctl add-port ovsbr0 eth2
+ovs-vsctl set Bridge ovsbr0 other_config:hwaddr="22:9d:2b:82:cf:4a"
+ovs-vsctl set-controller ovsbr0 tcp:128.104.222.13:6633
+
+#test with
+ovs-ofctl dump-ports-desc ovsbr0
+ovs-appctl fdb/show ovsbr0
 
 #instantiate VMs
 wget 'http://emmy10.casa.umass.edu/CNP/ipVM.qcow2'
