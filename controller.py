@@ -109,15 +109,24 @@ class NDNRouter(app_manager.RyuApp):
         # truncated packet data. In that case, we cannot output packets
         # correctly.  The bug has been fixed in OVS v2.1.0.
         # Router1
-        # virbr1 - port 2, virbr3 - port 4
+        # virbr1 - port 4, virbr2 - port 5, eth2(client) - port 1 , eth3- port 2
         print datapath.id
-        if datapath.id == 191984707390531:
+        if datapath.id == 38058435202890:
             #Following are for NDN Packets
-            match = parser.OFPMatch(in_port=7, dl_type=0x8624)
-            out_port = 6
+            match = parser.OFPMatch(in_port=1, dl_type=0x8624)
+            out_port = 4
             actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
-            self.add_ipflow(datapath, 7, match, actions)
-            match = parser.OFPMatch(in_port=6, dl_type=0x8624)
-            out_port = 7
+            self.add_ipflow(datapath, 1, match, actions)
+            match = parser.OFPMatch(in_port=4, dl_type=0x8624)
+            out_port = 1
             actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
-            self.add_ipflow(datapath, 6, match, actions)     
+            self.add_ipflow(datapath, 4, match, actions)     
+
+            match = parser.OFPMatch(in_port=5, dl_type=0x8624)
+            out_port = 2
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 5, match, actions)
+            match = parser.OFPMatch(in_port=2, dl_type=0x8624)
+            out_port = 5
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 2, match, actions) 
