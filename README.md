@@ -28,19 +28,26 @@ virsh console ndnVM<br/>
 ipVM login: mzink<br/>
 Password: test<br/>
 sudo ovs-vsctl set bridge ovsbr0 protocols=OpenFlow10,OpenFlow13<br/>
+## Step 4: Configure VM
+sudo su<br/>
+ifconfig eth1 up<br/>
+ifconfig eth2 up<br/>
+vim /etc/network/interfaces<br/> 
+/etc/init.d/networking restart
+reboot
 
-## Step 4: Create and initialise an ubuntu VM from scratch
+## Step 5: OR Create and initialise an ubuntu VM from scratch
 
 echo ' <network>
-		<name>vmbr0</name>
+		<name>ip</name>
 		<forward mode="route"/>
-		<bridge name="vmbr0" stp="on" delay="0"/>
-		<ip address="10.10.3.1" netmask="255.255.255.252">
-			<dhcp>
-				<range start="10.10.3.2" end="10.10.3.3"/>
-			</dhcp>
+		<bridge name="virbr1" stp="on" delay="0"/>
+		<ip address="10.10.2.4" netmask="255.255.255.0">
 		</ip>
-	</network>' >> network.xml
+	        <bridge name="virbr2" stp="on" delay="0"/>
+		<ip address="10.10.1.4" netmask="255.255.255.0">
+		</ip>
+	</network>' >> ip.xml
 
   virsh net-define network.xml
   virsh net-autostart vmbr0
