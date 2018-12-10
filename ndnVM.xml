@@ -30,7 +30,7 @@
     </controller>
     <controller type='pci' index='0' model='pci-root'/>
     <interface type='bridge'>
-      <mac address='2e:0e:e8:a6:7b:49'/>
+     <mac address='0a:c2:f9:c0:b6:49'/>
       <source bridge='ovsbr0'/>
       <virtualport type='openvswitch'>
         <parameters interfaceid='38752f77-e9ad-4143-ad6b-d89f57ad0e31'/>
@@ -39,13 +39,13 @@
       <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x0'/>
     </interface>
     <interface type='bridge'>
-      <mac address='86:27:9b:27:78:70'/>
+      <mac address='c2:47:79:60:0e:8a'/>
       <source bridge='virbr1'/>
       <model type='virtio'/>
       <address type='pci' domain='0x0000' bus='0x00' slot='0x06' function='0x0'/>
     </interface>
     <interface type='bridge'>
-      <mac address='2e:b2:88:51:94:65'/>
+      <mac address='22:6a:75:65:cc:30'/>
       <source bridge='virbr2'/>
       <model type='virtio'/>
       <address type='pci' domain='0x0000' bus='0x00' slot='0x07' function='0x0'/>
