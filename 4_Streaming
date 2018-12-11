@@ -26,6 +26,8 @@ python livestream_timer.py
 
 ##On the client: run client test with: "./ndnperf -p ndn:/edu/umass -d www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/BigBuckBunny_2s.mpd -w 16"
 Go to 4_dockerrun.sh
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ndnrun.sh;
+bash ndnrun.sh;
 
 
 
@@ -37,9 +39,12 @@ rm livestream.txt
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/livestream_timer.py;
 python livestream_timer.py;
 
-##On the client:
-cd /users/ishitadg/AStream/dist/client; rm dash_client.py;
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/dash_client.py
-python dash_client.py -m http://10.10.1.1/www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/BigBuckBunny_2s.mpd -p bola
+##On the client:test with: "wget http://10.10.1.1/www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/BigBuckBunny_2s.mpd"
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/iprun.sh;
+bash iprun.sh;
 
+
+##### Streaming over IP & NDN ####
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ipndn.sh;
+bash ipndn.sh;
 
