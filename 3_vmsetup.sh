@@ -32,6 +32,13 @@ ip link set virbr2 up
 ovs-vsctl add-port ovsbr0 virbr1
 ovs-vsctl add-port ovsbr0 virbr2
 
+#at server
+sudo route del -net 10.0.0.0 netmask 255.0.0.0
+sudo ip route add 10.0.0.0/8 via 10.10.1.4
+#at client
+sudo route del -net 10.0.0.0 netmask 255.0.0.0
+sudo ip route add 10.0.0.0/8 via 10.10.2.4
+
 #made changes in ndnVM --added eth1,eth2 for the VM with MAC addresses of virbr1,virbr2 and then ifconfig up inside the VM
 
 #instantiate VMs
