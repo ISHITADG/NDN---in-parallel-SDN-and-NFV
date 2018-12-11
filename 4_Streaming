@@ -33,4 +33,6 @@ wget 'http://emmy10.casa.umass.edu/CNP/dash_client.py'
 python dist/client/dash_client.py -m http://10.10.1.1/www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/BigBuckBunny_2s.mpd -p bola
 
 ##On the server:
-$/var/www/html# python livestream_timer.py
+cd /var/www/html; 
+cp -r /users/ishitadg/ndnperf/c++/server/www-itec.uni-klu.ac.at .;
+python livestream_timer.py
