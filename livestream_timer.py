@@ -1,8 +1,8 @@
 import datetime
 import time
-timer=0
+timer=1
 while True:
 	with open("livestream.txt", mode='w') as file:
-    		file.write('%s\n' %(timer/2))
-	timer+=2
+    		file.write('%s\n' %(timer/1))
+	timer+=0
 	time.sleep(2)
