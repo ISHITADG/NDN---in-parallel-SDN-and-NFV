@@ -18,8 +18,6 @@ sudo nfdc route add prefix /edu/umass nexthop udp://10.10.2.2
  nfd-stop;nfd-start; nfdc route add prefix /edu/umass nexthop 257;
 
 ###### On the server: ######
-cd /users/ishitadg/ndnperf/c++/server;
-mv /users/ishitadg/www-itec.uni-klu.ac.at/ .
 tmux attach -t ndnserver
 ./ndnperfserver -p ndn:/edu/umass -c 1500 -f 3600000
 <ctrl-b-d>
