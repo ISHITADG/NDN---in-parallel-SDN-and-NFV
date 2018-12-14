@@ -8,7 +8,7 @@ sudo mv default.ndncert /usr/local/etc/ndn/keys/default.ndncert
 @router:
 ##ETH: ip addr flush dev ethXYZ; 
 sudo su; nfd-stop; vim /etc/ndn/nfd.conf; //comment out user group; nfd-start;
-nfd-stop;nfd-start; nfdc route add prefix /edu/umass nexthop 258;
+nfd-stop;nfd-start; nfdc register ndn:/edu/umass 257
 
 @client
 ##ETH: ip addr flush dev ethXYZ;
