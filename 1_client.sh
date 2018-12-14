@@ -37,22 +37,22 @@ docker run -d --rm --name ndn9 -p 6380:6363 -p 6381:6363/udp ndndock
 docker run -d --rm --name ndn0 -p 6381:6363 -p 6383:6363/udp ndndock
 
 # create bridge
-sudo ovs-vsctl del-br ovs-br1
-sudo ovs-vsctl add-br ovs-br1
-sudo ifconfig ovs-br1 173.16.1.1 netmask 255.255.255.0 up
-sudo ovs-vsctl show
+#sudo ovs-vsctl del-br ovs-br1
+#sudo ovs-vsctl add-br ovs-br1
+#sudo ifconfig ovs-br1 173.16.1.1 netmask 255.255.255.0 up
+#sudo ovs-vsctl show
 
 #configure this bridge with NDN container
-sudo ovs-docker add-port ovs-br1 eth1 ndn1 --ipaddress=173.16.1.2/24
-sudo ovs-docker add-port ovs-br1 eth1 ndn2 --ipaddress=173.16.1.3/24
-sudo ovs-docker add-port ovs-br1 eth1 ndn3 --ipaddress=173.16.1.4/24
-sudo ovs-docker add-port ovs-br1 eth1 ndn4 --ipaddress=173.16.1.5/24
-sudo ovs-docker add-port ovs-br1 eth1 ndn5 --ipaddress=173.16.1.6/24
-sudo ovs-docker add-port ovs-br1 eth1 ndn6 --ipaddress=173.16.1.7/24
-sudo ovs-docker add-port ovs-br1 eth1 ndn7 --ipaddress=173.16.1.8/24
-sudo ovs-docker add-port ovs-br1 eth1 ndn8 --ipaddress=173.16.1.9/24
-sudo ovs-docker add-port ovs-br1 eth1 ndn9 --ipaddress=173.16.2.0/24
-sudo ovs-docker add-port ovs-br1 eth1 ndn0 --ipaddress=173.16.2.1/24
+#sudo ovs-docker add-port ovs-br1 eth1 ndn1 --ipaddress=173.16.1.2/24
+#sudo ovs-docker add-port ovs-br1 eth1 ndn2 --ipaddress=173.16.1.3/24
+#sudo ovs-docker add-port ovs-br1 eth1 ndn3 --ipaddress=173.16.1.4/24
+#sudo ovs-docker add-port ovs-br1 eth1 ndn4 --ipaddress=173.16.1.5/24
+#sudo ovs-docker add-port ovs-br1 eth1 ndn5 --ipaddress=173.16.1.6/24
+#sudo ovs-docker add-port ovs-br1 eth1 ndn6 --ipaddress=173.16.1.7/24
+#sudo ovs-docker add-port ovs-br1 eth1 ndn7 --ipaddress=173.16.1.8/24
+#sudo ovs-docker add-port ovs-br1 eth1 ndn8 --ipaddress=173.16.1.9/24
+#sudo ovs-docker add-port ovs-br1 eth1 ndn9 --ipaddress=173.16.2.0/24
+#sudo ovs-docker add-port ovs-br1 eth1 ndn0 --ipaddress=173.16.2.1/24
 
 #FOR RUNNING ON THE HOST CLIENT
 #install cmake
