@@ -17,8 +17,8 @@ ovs-vsctl set-controller ovsbr0 tcp:128.104.222.95:6633
 
 #test with
 ovs-ofctl dump-ports-desc ovsbr0
-ovs-appctl fdb/show ovsbr0
-ovs-ofctl dump-flows ovsbr0
+#ovs-appctl fdb/show ovsbr0
+#ovs-ofctl dump-flows ovsbr0
 
 #creating virtual interface and adding to ovs-bridge (http://www.pocketnix.org/posts/Linux%20Networking:%20Dummy%20Interfaces%20and%20Virtual%20Bridges)
 ip link del virbr1
@@ -32,15 +32,6 @@ ip link set virbr2 up
 ovs-vsctl add-port ovsbr0 virbr1
 ovs-vsctl add-port ovsbr0 virbr2
 
-#at server
-sudo route del -net 10.0.0.0 netmask 255.0.0.0
-sudo ip route add 10.0.0.0/8 via 10.10.1.4
-#at client
-sudo route del -net 10.0.0.0 netmask 255.0.0.0
-sudo ip route add 10.0.0.0/8 via 10.10.2.4
-
-#made changes in ndnVM --added eth1,eth2 for the VM with MAC addresses of virbr1,virbr2 and then ifconfig up inside the VM
-
 #instantiate VMs
 wget 'http://emmy10.casa.umass.edu/CNP/ipVM.qcow2'
 wget -L 'https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ipVM.xml'
@@ -50,7 +41,3 @@ sudo virsh define ipVM.xml
 sudo virsh define ndnVM.xml
 sudo virsh start ipVM
 sudo virsh start ndnVM
-cd /tmp
-sudo virsh dumpxml ndnVM > ndnVM.xml
-sudo virsh dumpxml ipVM > ipVM.xml
-cd ~
