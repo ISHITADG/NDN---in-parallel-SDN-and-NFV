@@ -71,6 +71,7 @@ SEGMENT_LIMIT = None
 
 connection = requests.Session()
 bola_buffer_log_file = config_dash.BOLA_BUFFER_LOG_FILENAME
+idr = config_dash.idr
 
 class BOLAObject(object):
     """Object to handel audio and video stream """
@@ -139,7 +140,7 @@ def get_mpd(url):
     #mpd_data = mpd_conn.read()
     
     #connection.close()
-    mpd_file = url.split('/')[-1]
+    mpd_file = idr+url.split('/')[-1]
     
     mpd_file_handle = open(mpd_file, 'wb')
     mpd_file_handle.write(mpd_conn.text)
