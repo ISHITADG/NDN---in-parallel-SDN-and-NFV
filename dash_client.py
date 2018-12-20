@@ -451,12 +451,13 @@ def start_playback_smart(dp_object, domain, playback_type=None, download=False, 
     # Initialize the DASH buffer
     video_segment_duration = 2
     bola_init_state = False
-    get_mpd("livestream.txt")
-    global idr
-    livestreamfile = idr+"livestream.txt"
-    timer_url=str(domain)+livestreamfile
+    #get_mpd("livestream.txt")
+    #global idr
+    #livestreamfile = idr+"livestream.txt"
+    timer_url=str(domain)+"livestream.txt"
     print timer_url
-    f_timer=open(livestreamfile,'r')
+    get_mpd("livestream.txt")
+    f_timer=open("livestream.txt",'r')
     for line in f_timer.readlines():
         print int(line)
     segment_number = int(line)
@@ -519,10 +520,13 @@ def start_playback_smart(dp_object, domain, playback_type=None, download=False, 
     # Start playback of all the segments
     #for segment_number, segment in enumerate(dp_list, dp_object.video[current_bitrate].start):
     #for segment_number in dp_list:s
-    get_mpd("livestream.txt")
-    timer_url=str(domain)+livestreamfile
+    #get_mpd("livestream.txt")
+    #timer_url=str(domain)+livestreamfile
+    timer_url=str(domain)+"livestream.txt"
     print timer_url
-    f_timer=open(livestreamfile,'r')
+    get_mpd("livestream.txt")
+    f_timer=open("livestream.txt",'r')
+    #f_timer=open(livestreamfile,'r')
     for line in f_timer.readlines():
         print int(line)
     segment_number = int(line)
