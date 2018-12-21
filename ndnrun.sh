@@ -28,6 +28,7 @@ done
 for (( i=0; i<$answer; i++ )); do
   docker exec -w /AStream/dist/client ndn$i python /AStream/dist/client/dash_client_udpD.py -m /www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/BigBuckBunny_2s.mpd -p bola &
 done
+disown
 
 #COPY RESULTS
 mkdir /users/ishitadg/NDN; mkdir /users/ishitadg/NDN/DASH_BUFFER; mkdir /users/ishitadg/NDN/BOLA_LOG/;
