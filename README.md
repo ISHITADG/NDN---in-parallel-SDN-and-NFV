@@ -28,16 +28,44 @@ virsh console ndnVM<br/>
 ipVM login: mzink<br/>
 Password: test<br/>
 sudo ovs-vsctl set bridge ovsbr0 protocols=OpenFlow10,OpenFlow13<br/>
-## Step 4: Configure VM
+
+## Step 4: Streaming & QoE calcualtion over IP / NDN / IP+NDN:
+### IP
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/iprun.sh <br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ipqoe.sh <br/>
+bash iprun.sh <br/>
+bash ipqoe.sh <br/>
+### NDN
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ndnrun.sh <br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ndnqoe.sh <br/>
+bash ndnrun.sh <br/>
+bash ndnqoe.sh <br/>
+### IP+NDN
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ipndnrun.sh <br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ipndnqoe.sh <br/>
+bash ipndnrun.sh <br/>
+bash ipndnqoe.sh <br/>
+
+
+
+## Others: Create and initialise an ubuntu VM from scratch
+
 sudo su<br/>
 ifconfig eth1 up<br/>
 ifconfig eth2 up<br/>
 vim /etc/network/interfaces<br/> 
 /etc/init.d/networking restart
+echo ' <network>
+		<name>ip</name>
+		<forward mode="route"/>
+		<bridge name="virbr1" stp="on" delay="0"/>
+		<ip address="10.10.2.4" netmask="255.255.255.0">
+		</ip>
+	        <bridge name="virbr2" stp="on" delay="0"/>
+		<ip address="10.10.1.4" netmask="255.255.255.0">
+		</ip>
+	</network>' >> ip.xml
 reboot
-
-## Step 5: OR Create and initialise an ubuntu VM from scratch
-
 echo ' <network>
 		<name>ip</name>
 		<forward mode="route"/>
