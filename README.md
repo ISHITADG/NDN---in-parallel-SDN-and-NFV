@@ -31,6 +31,16 @@ sudo ovs-vsctl set bridge ovsbr0 protocols=OpenFlow10,OpenFlow13<br/>
 
 ## Step 4: Streaming & QoE calcualtion over IP / NDN / IP+NDN:
 ### IP
+cd /users/ishitadg/AStream/dist/client;
+rm dash_client.py;
+rm dash_client_ondemand.py;
+rm configure_log_file.py;
+rm config_dash.py;
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/configure_log_file.py <br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/dash_client_ondemand.py <br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/config_dash.py <br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/dash_client.py <br/>
+
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/iprun.sh <br/>
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ipqoe.sh <br/>
 bash iprun.sh <br/>
