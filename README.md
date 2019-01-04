@@ -52,13 +52,13 @@ bash ndnrun.sh <br/>
 bash ndnqoe.sh <br/>
 ### IP+NDN
 #### IP on-demand+ NDN live
-cd /users/ishitadg/AStream/dist/client;
-rm dash_client.py;
-rm dash_client_ondemand.py;
-rm configure_log_file.py;
-rm config_dash.py;
+cd /users/ishitadg/AStream/dist/client;<br/>
+rm dash_client.py;<br/>
+rm dash_client_od.py;<br/>
+rm configure_log_file.py;<br/>
+rm config_dash.py;<br/>
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/configure_log_file.py <br/>
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/dash_client_ondemand.py <br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/dash_client_od.py <br/>
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/config_dash.py <br/>
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/dash_client.py <br/>
 
