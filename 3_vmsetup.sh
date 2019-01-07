@@ -11,9 +11,12 @@ sudo virsh connect qemu:///system
 sudo su 
 ovs-vsctl add-br ovsbr0
 ovs-vsctl add-port ovsbr0 eth1
-ovs-vsctl add-port ovsbr0 eth3
-ovs-vsctl set Bridge ovsbr0 other_config:hwaddr="42:f6:4a:97:92:46"
-ovs-vsctl set-controller ovsbr0 tcp:128.104.222.164:6633
+ovs-vsctl add-port ovsbr0 eth2
+ovs-vsctl add-port ovsbr0 eth4
+#ovs-vsctl add-port ovsbr0 eth3
+#ovs-vsctl set Bridge ovsbr0 other_config:hwaddr="42:f6:4a:97:92:46"
+ovs-vsctl set Bridge ovsbr0 other_config:hwaddr="86:de:af:48:d7:42"
+ovs-vsctl set-controller ovsbr0 tcp:155.98.39.152:6633
 
 #test with
 ovs-ofctl dump-ports-desc ovsbr0
@@ -27,10 +30,13 @@ ovs-vsctl del-port ovsbr0 virbr1
 ovs-vsctl del-port ovsbr0 virbr2
 ip link add name virbr1 type bridge
 ip link add name virbr2 type bridge
+ip link add name virbr3 type bridge
 ip link set virbr1 up
 ip link set virbr2 up
+ip link set virbr3 up
 ovs-vsctl add-port ovsbr0 virbr1
 ovs-vsctl add-port ovsbr0 virbr2
+ovs-vsctl add-port ovsbr0 virbr3
 
 #instantiate VMs
 wget 'http://emmy10.casa.umass.edu/CNP/ishita/ipVM.qcow2'
