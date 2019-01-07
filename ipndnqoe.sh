@@ -1,6 +1,7 @@
 #!/bin/bash
 read -p "Run how many IP & NDN clients each? " answer
 
+
 #COPY RESULTS
 mkdir /users/ishitadg/IPNDN; mkdir /users/ishitadg/IPNDN/DASH_BUFFER; mkdir /users/ishitadg/IPNDN/BOLA_LOG/;
 cd /users/ishitadg/IPNDN/DASH_BUFFER; sudo rm *;
@@ -10,7 +11,6 @@ for (( i=0; i<$answer; i++ )); do
 done
 sudo rm -rf ASTREAM_LOGS/;
 cp /mnt/QUIClientServer0/ASTREAM_LOGS/DASH_BUFFER* .;
-
 cd /users/ishitadg/NDN/BOLA_LOG; rm *;
 for (( i=0; i<$answer; i++ )); do
   docker cp ndn$i:/mnt/QUIClientServer0/ASTREAM_LOGS/ .;
