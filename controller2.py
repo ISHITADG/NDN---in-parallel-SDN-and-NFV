@@ -111,7 +111,7 @@ class NDNRouter(app_manager.RyuApp):
         # Router1
         # virbr1 - port 4, virbr2 - port 5, eth2(client) - port 1 , eth3- port 2
         print datapath.id
-        if datapath.id == 148290981648194:
+        if datapath.id == 200355638508867:
             #Following are for NDN Packets
             match = parser.OFPMatch(in_port=1, dl_type=0x8624)
             out_port = 4
