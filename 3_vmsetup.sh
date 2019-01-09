@@ -9,13 +9,14 @@ sudo virsh connect qemu:///system
 
 #Run this second: add physical interfaces to eth without OVS bridge copying it
 sudo su 
+ovs-vsctl del-br ovsbr0
 ovs-vsctl add-br ovsbr0
 ovs-vsctl add-port ovsbr0 eth1
 ovs-vsctl add-port ovsbr0 eth2
 ovs-vsctl add-port ovsbr0 eth4
 #ovs-vsctl add-port ovsbr0 eth3
 #ovs-vsctl set Bridge ovsbr0 other_config:hwaddr="42:f6:4a:97:92:46"
-ovs-vsctl set Bridge ovsbr0 other_config:hwaddr="86:de:af:48:d7:42"
+ovs-vsctl set Bridge ovsbr0 other_config:hwaddr="b6:38:ee:a9:7d:43"
 ovs-vsctl set-controller ovsbr0 tcp:155.98.39.152:6633
 
 #test with
