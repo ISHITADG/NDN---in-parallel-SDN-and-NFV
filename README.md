@@ -30,25 +30,38 @@ Password: test<br/>
 sudo ovs-vsctl set bridge ovsbr0 protocols=OpenFlow10,OpenFlow13<br/>
 
 ## Step 4: Streaming & QoE calcualtion over IP / NDN / IP+NDN:
-### IP
+### IP OD
+@server: <br/>
+cd /var/www/html; 
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ondemand.py; <br/>
+mkdir www-itec.uni-klu.ac.at;
+cp -r /users/ishitadg/ndnperf/c++/server/www-itec.uni-klu.ac.at/* www-itec.uni-klu.ac.at/;
+
+@client1(virbr3): <br/>
 cd /users/ishitadg/AStream/dist/client;
 rm dash_client.py;
-rm dash_client_ondemand.py;
+rm dash_client_od.py;
 rm configure_log_file.py;
 rm config_dash.py;
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/configure_log_file.py <br/>
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/dash_client_ondemand.py <br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/dash_client_od.py <br/>
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/config_dash.py <br/>
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/dash_client.py <br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ipod.sh <br/>
+bash ipod.sh <br/>
 
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/iprun.sh <br/>
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ipqoe.sh <br/>
-bash iprun.sh <br/>
 bash ipqoe.sh <br/>
-### NDN
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ndnrun.sh <br/>
+### NDN LIVE
+@server: <br/>
+cd /users/ishitadg/ndnperf/c++/server/; <br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/livestream_timer.py; <br/>
+./ndnperfserver -p ndn:/edu/umass -c 1500 -f 3600000 <br/>
+
+@client2(virbr1): <br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ndnlive.sh <br/>
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ndnqoe.sh <br/>
-bash ndnrun.sh <br/>
+bash ndnlive.sh <br/>
 bash ndnqoe.sh <br/>
 ### IP+NDN
 #### IP on-demand+ NDN live
