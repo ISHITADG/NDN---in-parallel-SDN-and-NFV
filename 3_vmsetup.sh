@@ -16,7 +16,7 @@ ovs-vsctl add-port ovsbr0 eth2
 ovs-vsctl add-port ovsbr0 eth4
 #ovs-vsctl add-port ovsbr0 eth3
 #ovs-vsctl set Bridge ovsbr0 other_config:hwaddr="42:f6:4a:97:92:46"
-ovs-vsctl set Bridge ovsbr0 other_config:hwaddr="b6:38:ee:a9:7d:43"
+ovs-vsctl set Bridge ovsbr0 other_config:hwaddr="1e:70:f6:a4:0a:48"
 ovs-vsctl set-controller ovsbr0 tcp:155.98.39.152:6633
 
 #test with
