@@ -19,6 +19,15 @@ wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV
 ryu-manager controller.py <br/>
 (print dpid and modify line 66 accordingly) <br/>
 (Run controller again) <br/>
+ ovs-ofctl add-flow ovsbr0 "table=0, in_port=5, dl_type=0x0800, actions=output:1" <br/>
+ ovs-ofctl add-flow ovsbr0 "table=0, in_port=1, dl_type=0x0800, actions=output:5" <br/>
+ ovs-ofctl add-flow ovsbr0 "table=0, in_port=6, dl_type=0x0800, actions=output:2" <br/>
+ ovs-ofctl add-flow ovsbr0 "table=0, in_port=2, dl_type=0x0800, actions=output:6" <br/>
+ ovs-ofctl add-flow ovsbr0 "table=0, in_port=2, dl_type=0x8624, actions=output:4" <br/>
+ ovs-ofctl add-flow ovsbr0 "table=0, in_port=4, dl_type=0x8624, actions=output:2" <br/>
+ ovs-ofctl add-flow ovsbr0 "table=0, in_port=3, dl_type=0x8624, actions=output:1" <br/>
+ ovs-ofctl add-flow ovsbr0 "table=0, in_port=1, dl_type=0x8624, actions=output:3" <br/>
+ 
 
 ## Step 3: Bridge setup on Routers:
 ### INSTALL & START VMs
