@@ -10,6 +10,10 @@ sudo ip route add 10.0.0.0/8 via 10.10.2.4; <br/>
 ### Additional step at server: (install vim,tmux,BB video files,apache2)
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_server.sh <br/>
 bash 1_server.sh <br/>
+*OR* <br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_serverdld.sh <br/>
+bash 1_serverdld.sh <br/>
+
 ### Additional step at client: (run Dockerfile, download client, Astreamer)
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_client.sh <br/>
 bash 1_client.sh <br/>
@@ -36,36 +40,76 @@ sudo ovs-vsctl set bridge ovsbr0 protocols=OpenFlow10,OpenFlow13<br/>
 ## Step 4: Streaming & QoE calcualtion over IP / NDN / IP+NDN:
 ### IP+NDN
 #### IP on-demand+ NDN live
-@client1: <br/>
+@client1 IP ondemand: <br/>
 cd /users/ishitadg/AStream/dist/client;<br/>
-rm dash_client.py;<br/>
 rm dash_client_od.py;<br/>
 rm configure_log_file.py;<br/>
 rm config_dash.py;<br/>
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/configure_log_file.py <br/>
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/dash_client_od.py <br/>
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/config_dash.py <br/>
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/dash_client.py <br/>
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ipodndnlive.sh <br/>
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ipndnqoe.sh <br/>
-bash ipodndnlive.sh <br/>
-bash ipndnqoe.sh <br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ipod.sh <br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ipodqoe.sh <br/>
+bash ipod.sh <br/>
+bash ipodqoe.sh <br/>
 
-@client2(virbr1): <br/>
+@client2 NDN LIVE: <br/>
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ndnlive.sh <br/>
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ndnqoe.sh <br/>
 bash ndnlive.sh <br/>
 bash ndnqoe.sh <br/>
 
-scp -r ishitadg@c220g1-030809.wisc.cloudlab.us:IP ~/ResearchZink/ndn-results/IPNDN/;
-scp -r ishitadg@c220g1-030809.wisc.cloudlab.us:NDN ~/ResearchZink/ndn-results/IPNDN/;
+scp -r ishitadg@c220g1-030809.wisc.cloudlab.us:IP ~/ResearchZink/ndn-results/linetopo/IPNDN/;
+scp -r ishitadg@c220g1-030809.wisc.cloudlab.us:NDN ~/ResearchZink/ndn-results/linetopo/IPNDN/;
 
 ### IP+IP
 #### IP on-demand+ IP live
+@client1 IP ondemand: <br/>
+cd /users/ishitadg/AStream/dist/client;<br/>
+rm dash_client_od.py;<br/>
+rm configure_log_file.py;<br/>
+rm config_dash.py;<br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/configure_log_file.py <br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/dash_client_od.py <br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/config_dash.py <br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ipod.sh <br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ipodqoe.sh <br/>
+bash ipod.sh <br/>
+bash ipodqoe.sh <br/>
 
+@client2 IP LIVE: <br/>
+cd /users/ishitadg; <br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/iplive.sh <br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/iplqoe.sh <br/>
+bash iplive.sh <br/>
+bash iplqoe.sh <br/>
+
+scp -r ishitadg@c220g1-030809.wisc.cloudlab.us:IP ~/ResearchZink/ndn-results/linetopo/IPIP/;
+scp -r ishitadg@c220g1-030809.wisc.cloudlab.us:IPL ~/ResearchZink/ndn-results/linetopo/IPIP/;
 
 ### NDN+NDN
 #### NDN on-demand+ NDN live
+@client1 NDN ondemand: <br/>
+cd /users/ishitadg/AStream/dist/client;<br/>
+rm dash_client_udpDod.py;<br/>
+rm configure_log_file.py;<br/>
+rm config_dash.py;<br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/configure_log_file.py <br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/config_dash.py <br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/dash_client_udpDod.py <br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ndnod.sh <br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ndnodqoe.sh <br/>
+bash ndnod.sh <br/>
+bash ndnodqoe.sh <br/>
+
+@client2 NDN LIVE: <br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ndnlive.sh <br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ndnliveqoe.sh <br/>
+bash ndnlive.sh <br/>
+bash ndnliveqoe.sh <br/>
+
+scp -r ishitadg@c220g1-030809.wisc.cloudlab.us:NDNO ~/ResearchZink/ndn-results/linetopo/NDNDN/;
+scp -r ishitadg@c220g1-030809.wisc.cloudlab.us:NDN ~/ResearchZink/ndn-results/linetopo/NDNDN/;
 
 ## Others: Create and initialise an ubuntu VM from scratch
 
