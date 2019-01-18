@@ -104,7 +104,7 @@ print(avg_avgbr2)
 print(sd_avgbr2)
 
 
-with open('abr_rebuffers_20Qualities-parallelIPforIP.csv', 'w') as f:
+with open('abr_rebuffers_20Qualities-parallelIPforIPL.csv', 'w') as f:
     writer = csv.writer(f)
     writer.writerow(rebuf_arr)
 f.close()
@@ -142,7 +142,7 @@ print(avg_cntsw)
 print(sd_cntsw)
 
 
-with open('abr_numofswitches_20Qualities-parallelIPforIP.csv', 'w') as f:
+with open('abr_numofswitches_20Qualities-parallelIPforIPL.csv', 'w') as f:
     writer = csv.writer(f)
     writer.writerow(cnt_of_switches)
 f.close()
@@ -177,12 +177,12 @@ print("Spectrum")
 print(avg_avgspec)
 print(sd_avgspec)
 
-with open('abr_fullcap_rate_20Qualities-parallelIPforIP.csv', 'w') as f:
+with open('abr_fullcap_rate_20Qualities-parallelIPforIPL.csv', 'w') as f:
     writer = csv.writer(f)
     writer.writerow(bitrate_array)
 f.close()
 
-with open('abr_spectrum_20Qualities-parallelIPforIP.csv', 'w') as f:
+with open('abr_spectrum_20Qualities-parallelIPforIPL.csv', 'w') as f:
     writer = csv.writer(f)
     writer.writerow(spectrum_array)
 f.close()
