@@ -20,6 +20,7 @@ sudo apt-get update;
 sudo apt-get -y install apache2;
 /etc/init.d/apache2 restart;
 cp -r /users/ishitadg/ndnperf/c++/server/www-itec.uni-klu.ac.at .;
+ln -s www-itec.uni-klu.ac.at livedata;
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ondemand.py; 
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/livestream_timer.py
 sudo route del -net 10.0.0.0 netmask 255.0.0.0
