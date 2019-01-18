@@ -71,7 +71,7 @@ class NDNRouter(app_manager.RyuApp):
             actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
             self.add_ipflow(datapath, 2, match, actions)
 
-            #Following for IP Packets
+            #Following for IP+ARP Packets
             match = parser.OFPMatch(in_port=1, dl_type=0x0800)
             out_port = 5
             actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
