@@ -4,6 +4,9 @@
 ## STEP1: Server & client setup:
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_ndn.sh <br/>
 bash 1_ndn.sh <br/>
+<<routes to client>>  <br/>
+sudo route del -net 10.0.0.0 netmask 255.0.0.0;  <br/>
+sudo ip route add 10.0.0.0/8 via 10.10.2.4; <br/>
 ### Additional step at server: (install vim,tmux,BB video files,apache2)
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_server.sh <br/>
 bash 1_server.sh <br/>
@@ -19,14 +22,6 @@ wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV
 ryu-manager controller.py <br/>
 (print dpid and modify line 66 accordingly) <br/>
 (Run controller again) <br/>
- ovs-ofctl add-flow ovsbr0 "table=0, in_port=5, dl_type=0x0800, actions=output:1" <br/>
- ovs-ofctl add-flow ovsbr0 "table=0, in_port=1, dl_type=0x0800, actions=output:5" <br/>
- ovs-ofctl add-flow ovsbr0 "table=0, in_port=6, dl_type=0x0800, actions=output:2" <br/>
- ovs-ofctl add-flow ovsbr0 "table=0, in_port=2, dl_type=0x0800, actions=output:6" <br/>
- ovs-ofctl add-flow ovsbr0 "table=0, in_port=2, dl_type=0x8624, actions=output:4" <br/>
- ovs-ofctl add-flow ovsbr0 "table=0, in_port=4, dl_type=0x8624, actions=output:2" <br/>
- ovs-ofctl add-flow ovsbr0 "table=0, in_port=3, dl_type=0x8624, actions=output:1" <br/>
- ovs-ofctl add-flow ovsbr0 "table=0, in_port=1, dl_type=0x8624, actions=output:3" <br/>
  
 
 ## Step 3: Bridge setup on Routers:
@@ -39,41 +34,9 @@ Password: test<br/>
 sudo ovs-vsctl set bridge ovsbr0 protocols=OpenFlow10,OpenFlow13<br/>
 
 ## Step 4: Streaming & QoE calcualtion over IP / NDN / IP+NDN:
-### IP OD
-@server: <br/>
-cd /var/www/html; 
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ondemand.py; <br/>
-mkdir www-itec.uni-klu.ac.at;
-cp -r /users/ishitadg/ndnperf/c++/server/www-itec.uni-klu.ac.at/* www-itec.uni-klu.ac.at/;
-
-@client1(virbr3): <br/>
-cd /users/ishitadg/AStream/dist/client;
-rm dash_client.py;
-rm dash_client_od.py;
-rm configure_log_file.py;
-rm config_dash.py;
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/configure_log_file.py <br/>
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/dash_client_od.py <br/>
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/config_dash.py <br/>
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/dash_client.py <br/>
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ipod.sh <br/>
-bash ipod.sh <br/>
-
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ipqoe.sh <br/>
-bash ipqoe.sh <br/>
-### NDN LIVE
-@server: <br/>
-cd /users/ishitadg/ndnperf/c++/server/; <br/>
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/livestream_timer.py; <br/>
-./ndnperfserver -p ndn:/edu/umass -c 1500 -f 3600000 <br/>
-
-@client2(virbr1): <br/>
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ndnlive.sh <br/>
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ndnqoe.sh <br/>
-bash ndnlive.sh <br/>
-bash ndnqoe.sh <br/>
 ### IP+NDN
 #### IP on-demand+ NDN live
+@client1: <br/>
 cd /users/ishitadg/AStream/dist/client;<br/>
 rm dash_client.py;<br/>
 rm dash_client_od.py;<br/>
@@ -88,7 +51,21 @@ wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV
 bash ipodndnlive.sh <br/>
 bash ipndnqoe.sh <br/>
 
+@client2(virbr1): <br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ndnlive.sh <br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ndnqoe.sh <br/>
+bash ndnlive.sh <br/>
+bash ndnqoe.sh <br/>
 
+scp -r ishitadg@c220g1-030809.wisc.cloudlab.us:IP ~/ResearchZink/ndn-results/IPNDN/;
+scp -r ishitadg@c220g1-030809.wisc.cloudlab.us:NDN ~/ResearchZink/ndn-results/IPNDN/;
+
+### IP+IP
+#### IP on-demand+ IP live
+
+
+### NDN+NDN
+#### NDN on-demand+ NDN live
 
 ## Others: Create and initialise an ubuntu VM from scratch
 
