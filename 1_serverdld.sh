@@ -7,6 +7,7 @@ wget -r --no-parent --reject \"index.html*\" http://www-itec.uni-klu.ac.at/ftp/d
 cd www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/;
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/BigBuckBunny_2s.mpd
 cd /users/ishitadg/ndnperf/c++/server;
+ln -s www-itec.uni-klu.ac.at ondemand;
 ndnsec-keygen /`whoami` | ndnsec-install-cert -;
 sudo mkdir -p /usr/local/etc/ndn/keys;
 ndnsec-cert-dump -i /`whoami` > default.ndncert;
