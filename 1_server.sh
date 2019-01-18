@@ -4,6 +4,7 @@ sudo apt-get -y install vim
 sudo apt-get -y install tmux
 cd /users/ishitadg/ndnperf/c++/server;
 cp -r /proj/wrfhydro-PG0/www-itec.uni-klu.ac.at .;
+ln -s www-itec.uni-klu.ac.at ondemand;
 ndnsec-keygen /`whoami` | ndnsec-install-cert -;
 sudo mkdir -p /usr/local/etc/ndn/keys;
 ndnsec-cert-dump -i /`whoami` > default.ndncert;
