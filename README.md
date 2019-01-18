@@ -4,7 +4,7 @@
 ## STEP1: Server & client setup:
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_ndn.sh <br/>
 bash 1_ndn.sh <br/>
-<<routes to client>>  <br/>
+!!**routes to clien**t!!  <br/>
 sudo route del -net 10.0.0.0 netmask 255.0.0.0;  <br/>
 sudo ip route add 10.0.0.0/8 via 10.10.2.4; <br/>
 ### Additional step at server: (install vim,tmux,BB video files,apache2)
