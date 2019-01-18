@@ -23,12 +23,11 @@ class NDNRouter(app_manager.RyuApp):
         self.mac_to_port = {}
         self.NDN_to_port = {}
 
-    def add_flow(self, datapath, in_port, dst, actions):
+
+    def add_ipflow(self, datapath, in_port, mat, actions):
         ofproto = datapath.ofproto
-
-        match = datapath.ofproto_parser.OFPMatch(
-            in_port=in_port, dl_dst=haddr_to_bin(dst))
-
+        dltype = mat['dl_type']
+        match = datapath.ofproto_parser.OFPMatch(in_port=in_port, dl_type=dltype)
         mod = datapath.ofproto_parser.OFPFlowMod(
             datapath=datapath, match=match, cookie=0,
             command=ofproto.OFPFC_ADD, idle_timeout=0, hard_timeout=0,
@@ -36,65 +35,6 @@ class NDNRouter(app_manager.RyuApp):
             flags=ofproto.OFPFF_SEND_FLOW_REM, actions=actions)
         datapath.send_msg(mod)
 
-    def add_ipflow(self, datapath, in_port, dst, actions):
-        ofproto = datapath.ofproto
-
-        match = datapath.ofproto_parser.OFPMatch(
-            in_port=in_port)
-        mod = datapath.ofproto_parser.OFPFlowMod(
-            datapath=datapath, match=match, cookie=0,
-            command=ofproto.OFPFC_ADD, idle_timeout=0, hard_timeout=0,
-            priority=ofproto.OFP_DEFAULT_PRIORITY,
-            flags=ofproto.OFPFF_SEND_FLOW_REM, actions=actions)
-        datapath.send_msg(mod)
-
-    @set_ev_cls(ofp_event.EventOFPPacketIn, MAIN_DISPATCHER)
-    def _packet_in_handler(self, ev):
-        msg = ev.msg
-        datapath = msg.datapath
-        ofproto = datapath.ofproto
-        parser = datapath.ofproto_parser
-
-        # get Datapath ID to identify OpenFlow switches.
-        dpid = datapath.id
-        self.mac_to_port.setdefault(dpid, {})
-
-        # analyse the received packets using the packet library.
-        pkt = packet.Packet(msg.data)
-        eth_pkt = pkt.get_protocol(ethernet.ethernet)
-        dst = eth_pkt.dst
-        src = eth_pkt.src
-
-        # get the received port number from packet_in message.
-        in_port = msg.in_port
-
-        self.logger.info("packet in %s %s %s %s", dpid, src, dst, in_port)
-
-        # learn a mac address to avoid FLOOD next time.
-        self.mac_to_port[dpid][src] = in_port
-
-        # if the destination mac address is already learned,
-        # decide which port to output the packet, otherwise FLOOD.
-        if dst in self.mac_to_port[dpid]:
-            out_port = self.mac_to_port[dpid][dst]
-        else:
-            out_port = ofproto.OFPP_FLOOD
-
-        # construct action list.
-        actions = [parser.OFPActionOutput(out_port)]
-
-        # install a flow to avoid packet_in next time.
-        if out_port != ofproto.OFPP_FLOOD:
-            match = parser.OFPMatch(in_port=in_port, eth_dst=dst)
-            self.add_flow(datapath, 1, match, actions)
-
-        # construct packet_out message and send it.
-        out = parser.OFPPacketOut(datapath=datapath,
-                                  buffer_id=ofproto.OFP_NO_BUFFER,
-                                  in_port=in_port, actions=actions,
-                                  data=msg.data)
-        datapath.send_msg(out)
-        
     @set_ev_cls(ofp_event.EventOFPSwitchFeatures, CONFIG_DISPATCHER)
     def switch_features_handler(self, ev):
         datapath = ev.msg.datapath
@@ -111,7 +51,7 @@ class NDNRouter(app_manager.RyuApp):
         # Router1
         # virbr1 - port 4, virbr2 - port 5, eth2(client) - port 1 , eth3- port 2
         print datapath.id
-        if datapath.id == 73625580835398:
+        if datapath.id == 165481035660875:
             #Following are for NDN Packets
             match = parser.OFPMatch(in_port=1, dl_type=0x8624)
             out_port = 3
@@ -130,7 +70,7 @@ class NDNRouter(app_manager.RyuApp):
             out_port = 4
             actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
             self.add_ipflow(datapath, 2, match, actions)
-            
+
             #Following for IP Packets
             match = parser.OFPMatch(in_port=1, dl_type=0x0800)
             out_port = 5
@@ -140,12 +80,28 @@ class NDNRouter(app_manager.RyuApp):
             out_port = 1
             actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
             self.add_ipflow(datapath, 5, match, actions)
+            match = parser.OFPMatch(in_port=1, dl_type=0x0806)
+            out_port = 5
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 1, match, actions)
+            match = parser.OFPMatch(in_port=5, dl_type=0x0806)
+            out_port = 1
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 5, match, actions)
 
             match = parser.OFPMatch(in_port=6, dl_type=0x0800)
             out_port = 2
             actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
             self.add_ipflow(datapath, 6, match, actions)
             match = parser.OFPMatch(in_port=2, dl_type=0x0800)
+            out_port = 6
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 2, match, actions)
+            match = parser.OFPMatch(in_port=6, dl_type=0x0806)
+            out_port = 2
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 6, match, actions)
+            match = parser.OFPMatch(in_port=2, dl_type=0x0806)
             out_port = 6
             actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
             self.add_ipflow(datapath, 2, match, actions)
