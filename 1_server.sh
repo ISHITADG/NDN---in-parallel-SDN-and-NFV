@@ -24,7 +24,7 @@ cp -r /proj/wrfhydro-PG0/www-itec.uni-klu.ac.at .;
 ln -s www-itec.uni-klu.ac.at livedata;
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ondemand.py; 
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/livestream_timer.py
-sudo route del -net 10.0.0.0 netmask 255.0.0.0
-sudo ip route add 10.0.0.0/8 via 10.10.1.4
+#sudo route del -net 10.0.0.0 netmask 255.0.0.0
+#sudo ip route add 10.0.0.0/8 via 10.10.1.4
 
 echo done
