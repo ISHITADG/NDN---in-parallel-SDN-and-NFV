@@ -54,6 +54,7 @@ bash ipod.sh <br/>
 bash ipodqoe.sh <br/>
 
 @client2 NDN LIVE: <br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/startdockers.sh <br/>
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ndnlive.sh <br/>
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ndnqoe.sh <br/>
 bash ndnlive.sh <br/>
