@@ -16,7 +16,7 @@ wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV
 #wget 'http://emmy10.casa.umass.edu/CNP/BigBuckBunny_2s.mpd'
 #wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/BigBuckBunny_2s.mpd
 #mv /users/ishitadg/www-itec.uni-klu.ac.at/ .;
-cd /var/www/html/;
+cd /var/www/html;
 sudo apt-get update;
 sudo apt-get -y install apache2;
 /etc/init.d/apache2 restart;
