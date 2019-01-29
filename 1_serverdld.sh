@@ -16,7 +16,7 @@ wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ondemand.py; 
 
 #copy to IP directory
-cd /var/www/html/;
+cd /var/www/html;
 sudo apt-get update;
 sudo apt-get -y install apache2;
 /etc/init.d/apache2 restart;
