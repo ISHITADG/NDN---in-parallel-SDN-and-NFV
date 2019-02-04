@@ -1,6 +1,14 @@
 # NDN---in-parallel-SDN-and-NFV
 # An Evaluation of SDN and NFV Support for Parallel, Alternative Protocol Stack Operations on CloudLab
 
+git clone https://github.com/esnet/iperf.git<br/>
+cd iperf<br/>
+./configure<br/>
+make<br/>
+make install<br/>
+ldconfig<br/>
+iperf3 -v<br/>
+
 ## STEP1: Server & client setup:
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_ndn.sh <br/>
 bash 1_ndn.sh <br/>
