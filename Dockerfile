@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:14.04
 
 # Parse command line arguments (versions)
 ARG VERSION_CXX=master
@@ -47,11 +47,6 @@ RUN cp /usr/local/etc/ndn/nfd.conf.sample /usr/local/etc/ndn/nfd.conf \
 
 RUN mkdir /share \
     && mkdir /logs
-
-# cleanup
-RUN apt autoremove \
-    && apt-get remove -y git build-essential python pkg-config
-
 
 EXPOSE 6363/tcp
 EXPOSE 6363/udp
@@ -107,6 +102,7 @@ RUN apt-get install -y tmux \
     && apt-get install -y net-tools \
     && apt-get install -y iputils-ping \
     && apt-get install -y iproute2 \
+    && apt-get install -y iperf \
     && apt-get install -y tcpdump \
     && cd /AStream/dist/client \
     && wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/dash_client_udpD.py \
