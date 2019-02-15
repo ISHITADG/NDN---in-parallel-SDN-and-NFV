@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM ubuntu:18.04
 
 # Parse command line arguments (versions)
 ARG VERSION_CXX=master
@@ -47,6 +47,10 @@ RUN cp /usr/local/etc/ndn/nfd.conf.sample /usr/local/etc/ndn/nfd.conf \
 
 RUN mkdir /share \
     && mkdir /logs
+    
+RUN apt autoremove \
+    && apt-get remove -y git build-essential python pkg-config
+
 
 EXPOSE 6363/tcp
 EXPOSE 6363/udp
