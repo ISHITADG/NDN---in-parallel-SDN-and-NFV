@@ -9,6 +9,17 @@ make install<br/>
 ldconfig<br/>
 iperf3 -v<br/>
 
+## DOCKER - KERNEL VERSION ISSUE:
+run-apt get update <br/>
+sudo apt-get install --install-recommends linux-generic-lts-xenial <br/>
+dpkg -l | grep linux-image <br/>
+sudo apt-get update <br/>
+sudo apt-get dist-upgrade <br/>
+sudo apt-get upgrade linux-image-generic-lts-xenial <br/>
+Reboot <br/>
+Uname -r <br/>
+Kernel updated to 4.4.0-142-generic !!!!<br/>
+
 ## STEP1: Server & client setup:
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_ndn.sh <br/>
 bash 1_ndn.sh <br/>
