@@ -6,6 +6,12 @@ sudo apt-get purge libvirt-bin
 sudo apt-get -y install libvirt-bin
 sudo apt-get -y install qemu-kvm libvirt-bin ubuntu-vm-builder bridge-utils
 sudo virsh connect qemu:///system
+cd iperf;
+./configure;
+make;
+make install;
+ldconfig;
+iperf3 -v;
 
 #Run this second: add physical interfaces to eth without OVS bridge copying it
 sudo su 
