@@ -1,27 +1,22 @@
 # NDN---in-parallel-SDN-and-NFV
 # An Evaluation of SDN and NFV Support for Parallel, Alternative Protocol Stack Operations on CloudLab
 
-git clone https://github.com/esnet/iperf.git<br/>
-cd iperf<br/>
-./configure<br/>
-make<br/>
-make install<br/>
-ldconfig<br/>
-iperf3 -v<br/>
+
 
 
 ## STEP1: Server & client setup:
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_ndn.sh <br/>
 bash 1_ndn.sh <br/>
-!!**routes to clien**t!!  <br/>
+!!**route update for server**!!  <br/>
 sudo route del -net 10.0.0.0 netmask 255.0.0.0;  <br/>
-sudo ip route add 10.0.0.0/8 via 10.10.2.4; <br/>
+sudo ip route add 10.0.0.0/8 via 10.10.1.4; <br/>
 ### Additional step at server: (install vim,tmux,BB video files,apache2)
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_server.sh <br/>
 bash 1_server.sh <br/>
 *OR* <br/>
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_serverdld.sh <br/>
 bash 1_serverdld.sh <br/>
+
 
 ### Additional step at client: (run Dockerfile, download client, Astreamer)
 #### DOCKER - KERNEL VERSION ISSUE:
@@ -37,6 +32,11 @@ Kernel updated to 4.4.0-142-generic !!!!<br/>
 #### Run client setup now
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_client.sh <br/>
 bash 1_client.sh <br/>
+!!**route update for clients**!!  <br/>
+sudo route del -net 10.0.0.0 netmask 255.0.0.0;  <br/>
+sudo ip route add 10.0.0.0/8 via 10.10.2.4; <br/>
+sudo route del -net 10.0.0.0 netmask 255.0.0.0;  <br/>
+sudo ip route add 10.0.0.0/8 via 10.10.3.4; <br/>
 
 ## STEP 2: Controller setup:
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/2_ryu.sh <br/>
