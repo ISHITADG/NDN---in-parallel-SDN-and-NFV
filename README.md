@@ -7,17 +7,15 @@
 ## STEP1: Server & client setup:
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_ndn.sh <br/>
 bash 1_ndn.sh <br/>
-!!**route update for server**!!  <br/>
-sudo route del -net 10.0.0.0 netmask 255.0.0.0;  <br/>
-sudo ip route add 10.0.0.0/8 via 10.10.1.4; <br/>
 ### Additional step at server: (install vim,tmux,BB video files,apache2)
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_server.sh <br/>
 bash 1_server.sh <br/>
 *OR* <br/>
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_serverdld.sh <br/>
 bash 1_serverdld.sh <br/>
-
-
+!!**route update for server**!!  <br/>
+sudo route del -net 10.0.0.0 netmask 255.0.0.0;  <br/>
+sudo ip route add 10.0.0.0/8 via 10.10.1.4; <br/>
 ### Additional step at client: (run Dockerfile, download client, Astreamer)
 #### DOCKER - KERNEL VERSION ISSUE:
 run-apt get update <br/>
