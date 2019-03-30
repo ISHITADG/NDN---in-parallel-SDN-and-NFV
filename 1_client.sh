@@ -10,7 +10,12 @@ sudo pip install numpy scipy;
 sudo pip install sortedcontainers;
 sudo pip install pandas;
 sudo apt-get -y install python-numpy python-scipy python-matplotlib;
-
+cd iperf;
+./configure;
+make;
+make install;
+ldconfig;
+iperf3 -v;
 
 #SETUP DOCKER AND OPENVSWITCH
 sudo wget https://raw.githubusercontent.com/ISHITADG/dockerNDN/master/dockovs.sh;
