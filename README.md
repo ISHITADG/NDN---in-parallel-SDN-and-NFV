@@ -17,7 +17,7 @@ bash 1_serverdld.sh <br/>
 sudo route del -net 10.0.0.0 netmask 255.0.0.0;  <br/>
 sudo ip route add 10.0.0.0/8 via 10.10.1.4; <br/>
 ### Additional step at client: (run Dockerfile, download client, Astreamer)
-#### DOCKER - KERNEL VERSION ISSUE:
+#### DOCKER - KERNEL VERSION ISSUE (ONLY FOR NDN CLIENT):
 run-apt get update <br/>
 sudo apt-get install --install-recommends linux-generic-lts-xenial <br/>
 dpkg -l | grep linux-image <br/>
@@ -28,8 +28,10 @@ Reboot <br/>
 Uname -r <br/>
 Kernel updated to 4.4.0-142-generic !!!!<br/>
 #### Run client setup now
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_client.sh <br/>
-bash 1_client.sh <br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_ipclient.sh <br/>
+bash 1_ipclient.sh <br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_ndnclient.sh <br/>
+bash 1_ndnclient.sh <br/>
 !!**route update for clients**!!  <br/>
 sudo route del -net 10.0.0.0 netmask 255.0.0.0;  <br/>
 sudo ip route add 10.0.0.0/8 via 10.10.2.4; <br/>
