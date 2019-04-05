@@ -27,11 +27,11 @@ sudo apt-get upgrade linux-image-generic-lts-xenial <br/>
 Reboot <br/>
 Uname -r <br/>
 Kernel updated to 4.4.0-142-generic !!!!<br/>
-#### Run client setup now
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_ipclient.sh <br/>
-bash 1_ipclient.sh <br/>
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_ndnclient.sh <br/>
 bash 1_ndnclient.sh <br/>
+#### FOR IP CLIENT
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_ipclient.sh <br/>
+bash 1_ipclient.sh <br/>
 !!**route update for clients**!!  <br/>
 sudo route del -net 10.0.0.0 netmask 255.0.0.0;  <br/>
 sudo ip route add 10.0.0.0/8 via 10.10.2.4; <br/>
