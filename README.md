@@ -18,7 +18,7 @@ sudo route del -net 10.0.0.0 netmask 255.0.0.0;  <br/>
 sudo ip route add 10.0.0.0/8 via 10.10.1.4; <br/>
 ### Additional step at client: (run Dockerfile, download client, Astreamer)
 #### DOCKER - KERNEL VERSION ISSUE (ONLY FOR NDN CLIENT):
-run-apt get update <br/>
+apt-get update <br/>
 sudo apt-get install --install-recommends linux-generic-lts-xenial <br/>
 dpkg -l | grep linux-image <br/>
 sudo apt-get update <br/>
