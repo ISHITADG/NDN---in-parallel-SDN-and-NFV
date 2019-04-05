@@ -6,6 +6,7 @@ sudo apt-get purge libvirt-bin
 sudo apt-get -y install libvirt-bin
 sudo apt-get -y install qemu-kvm libvirt-bin ubuntu-vm-builder bridge-utils
 sudo virsh connect qemu:///system
+git clone https://github.com/esnet/iperf.git;
 cd iperf;
 ./configure;
 make;
