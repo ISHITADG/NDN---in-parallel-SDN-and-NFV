@@ -58,6 +58,21 @@ Password: test<br/>
 sudo ovs-vsctl set bridge ovsbr0 protocols=OpenFlow10,OpenFlow13<br/>
 
 ## Step 4: Streaming & QoE calcualtion over IP / NDN / IP+NDN:
+@server,@router,@client:<br/>
+ndnsec-keygen /`whoami` | ndnsec-install-cert -<br/>
+sudo mkdir -p /usr/local/etc/ndn/keys<br/>
+ndnsec-cert-dump -i /`whoami` > default.ndncert<br/>
+sudo mv default.ndncert /usr/local/etc/ndn/keys/default.ndncert<br/>
+
+@router:<br/>
+nfd-stop;nfd-start; nfdc register ndn:/edu/umass 257<br/>
+@client:<br/>
+nfd-stop;nfd-start; nfdc route add prefix /edu/umass nexthop 257;
+
+@server:
+nfd-stop;nfd-start;<br/>
+./ndnperfserver -p ndn:/edu/umass -c 1500 -f 3600000<br/>
+
 ### IP+NDN
 #### IP on-demand+ NDN live
 @client1 IP ondemand: <br/>
