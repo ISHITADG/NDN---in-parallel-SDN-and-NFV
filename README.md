@@ -73,6 +73,17 @@ nfd-stop;nfd-start; nfdc route add prefix /edu/umass nexthop 257;
 nfd-stop;nfd-start;<br/>
 ./ndnperfserver -p ndn:/edu/umass -c 1500 -f 3600000<br/>
 
+TEST WITH:<br/>
+"./ndnperf -p ndn:/edu/umass -d www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/BigBuckBunny_2s.mpd -w 16"<br/>
+"wget http://10.10.1.1/www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/BigBuckBunny_2s.mpd"<br/>
+
+
+##### Streaming over IP & NDN ####
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ipndn.sh;
+bash ipndn.sh;
+
+
+
 ### IP+NDN
 #### IP on-demand+ NDN live
 @client1 IP ondemand: <br/>
