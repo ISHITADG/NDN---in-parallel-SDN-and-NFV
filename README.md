@@ -158,45 +158,7 @@ bash ndnliveqoe.sh <br/>
 scp -r ishitadg@c220g1-030809.wisc.cloudlab.us:NDNO ~/ResearchZink/ndn-results/linetopo/NDNDN/;
 scp -r ishitadg@c220g1-030809.wisc.cloudlab.us:NDN ~/ResearchZink/ndn-results/linetopo/NDNDN/;
 
-## Others: Create and initialise an ubuntu VM from scratch
+## Others: Save updated IPvM , NDNvM, (Docker, Client, server image TBD)
+scp -r ishitadg@pc463.emulab.net:ipvm.qcow2 ~/ResearchZink/
+scp -r ishitadg@pc463.emulab.net:ndnvm.qcow2 ~/ResearchZink/
 
-sudo su<br/>
-ifconfig eth1 up<br/>
-ifconfig eth2 up<br/>
-vim /etc/network/interfaces<br/> 
-/etc/init.d/networking restart
-echo ' <network>
-		<name>ip</name>
-		<forward mode="route"/>
-		<bridge name="virbr1" stp="on" delay="0"/>
-		<ip address="10.10.2.4" netmask="255.255.255.0">
-		</ip>
-	        <bridge name="virbr2" stp="on" delay="0"/>
-		<ip address="10.10.1.4" netmask="255.255.255.0">
-		</ip>
-	</network>' >> ip.xml
-reboot
-echo ' <network>
-		<name>ip</name>
-		<forward mode="route"/>
-		<bridge name="virbr1" stp="on" delay="0"/>
-		<ip address="10.10.2.4" netmask="255.255.255.0">
-		</ip>
-	        <bridge name="virbr2" stp="on" delay="0"/>
-		<ip address="10.10.1.4" netmask="255.255.255.0">
-		</ip>
-	</network>' >> ip.xml
-
-  virsh net-define network.xml
-  virsh net-autostart vmbr0
-
-  virsh net-destroy default
-  virsh net-undefine default
-  service libvirt-bin restart
-  sed -i "/net.ipv4.ip_forward=1/ s/# *//" /etc/sysctl.conf
-
-sudo vmbuilder kvm ubuntu     --suite trusty     --flavour virtual     --addpkg=linux-image-generic     --addpkg=unattended-upgrades     --addpkg openssh-server     --addpkg=acpid     --arch amd64     --libvirt qemu:///system     --user ishita     --name ishita     --hostname=ishita     --pass ishita --ip 192.168.0.12 --mask 255.255.255.0 --net 192.168.0.0 --bcast 192.168.0.255 --gw 192.168.0.1 --dns 192.168.0.1
-
-sudo ubuntu-vm-builder kvm trusty --domain icnMZ --dest icnMZ --hostname ndnvm --user mzink --pass test --addpkg acpid --addpkg vim --addpkg openssh-server --addpkg linux-image-generic --libvirt qemu:///system -d /users/ishitadg/ubuntu-kvm
-
-virsh start <hostname>
