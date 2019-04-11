@@ -92,6 +92,14 @@ RUN git clone https://github.com/Kanemochi/ndnperf.git \
     && mv ../client.cpp . \
     && cmake . && make 
     
+# install iperf3
+RUN git clone https://github.com/esnet/iperf.git \
+    && cd iperf \
+    && ./configure \
+    && make \
+    && make install \
+    && ldconfig
+    
 # install dependencies for Astreamer
 RUN apt-get install -y tmux \
     && apt-get install -y vim \
