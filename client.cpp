@@ -30,12 +30,12 @@ void Client::run() {
         if (download) {
             _face.expressInterest(interest, boost::bind(&Client::onDataFile, this, _current_packet, _2),
                                   boost::bind(&Client::onNack, this, _1, _2),
-                                  boost::bind(&Client::onTimeoutFile, this, _current_packet, _1, 5));
+                                  boost::bind(&Client::onTimeoutFile, this, _current_packet, _1, 10));
         } else {
             std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
             _face.expressInterest(interest, boost::bind(&Client::onData, this, _1, _2, start),
                                   boost::bind(&Client::onNack, this, _1, _2),
-                                  boost::bind(&Client::onTimeout, this, _1, 5, start));
+                                  boost::bind(&Client::onTimeout, this, _1, 10, start));
         }
     }
     waitNextDisplay();
@@ -65,7 +65,7 @@ void Client::onData(const ndn::Interest &interest, const ndn::Data &data, std::c
     start = std::chrono::steady_clock::now();
     _face.expressInterest(i, boost::bind(&Client::onData, this, _1, _2, start),
                           boost::bind(&Client::onNack, this, _1, _2),
-                          boost::bind(&Client::onTimeout, this, _1, 5, start));
+                          boost::bind(&Client::onTimeout, this, _1, 10, start));
     ++_pkt_count;
     _payload_size += data.getContent().value_size();
 }
@@ -118,7 +118,7 @@ void Client::onDataFile(size_t segment, const ndn::Data &data) {
         interest.setMustBeFresh(true);
         _face.expressInterest(interest, boost::bind(&Client::onDataFile, this, _current_packet, _2),
                               boost::bind(&Client::onNack, this, _1, _2),
-                              boost::bind(&Client::onTimeoutFile, this, _current_packet, _1, 5));
+                              boost::bind(&Client::onTimeoutFile, this, _current_packet, _1, 10));
         ++_current_packet;
     }
 }
