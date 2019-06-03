@@ -28,7 +28,6 @@ wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV
 bash 1_ndnclient.sh <br/>
 <br/>
 OR<br/>
-<br/>
 #### EXPORT/IMPORT EARLIER IMAGE:
 export: docker image save -o ndndocker.tar ndndock<br/>
 import: docker image load -i /proj/WRFHydro/ndndocker.tar<br/>
@@ -54,11 +53,15 @@ ryu-manager controller.py <br/>
 
 ## Step 3: Bridge setup on Routers:
 ### INSTALL & START VMs
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/3_vmsetup.sh <br/>
-bash 3_vmsetup.sh <br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/3_vm3.sh <br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/3_vm3.sh <br/>
+bash 3_vm3.sh <br/>
+bash 3_vm4.sh <br/>
 virsh console ndnVM<br/>
 ipVM login: mzink<br/>
 Password: test<br/>
+ovs-ofctl dump-ports-desc ovsbr0<br/>
+ovs-ofctl dump-flows ovsbr0<br/>
 sudo ovs-vsctl set bridge ovsbr0 protocols=OpenFlow10,OpenFlow13<br/>
 
 ## Step 4: Streaming & QoE calcualtion over IP / NDN / IP+NDN:
@@ -105,6 +108,8 @@ bash ipodqoe.sh <br/>
 
 @client2 NDN LIVE: <br/>
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/startdockers.sh <br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/setupdocker.sh <br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/pingtest.sh <br/>
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ndnlive.sh <br/>
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ndnliveqoe.sh <br/>
 bash ndnlive.sh <br/>
