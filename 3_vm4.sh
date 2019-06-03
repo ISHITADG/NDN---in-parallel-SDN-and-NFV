@@ -71,8 +71,8 @@ sed -i '45s/.*/"<mac address="$v2"/>"/' ndnVM.xml
 sed -i '51s/.*/"<mac address="$v3"/>"/' ndnVM.xml
 sed -i '57s/.*/"<mac address="$v4"/>"/' ndnVM.xml
 #edit ipVM.xml
-sed -i '34s/.*/"<mac address="$ovs"/>"/' ndnVM.xml
-sed -i '43s/.*/"<mac address="$v1"/>"/' ndnVM.xml
-sed -i '49s/.*/"<mac address="$v2"/>"/' ndnVM.xml
-sed -i '55s/.*/"<mac address="$v3"/>"/' ndnVM.xml
-sed -i '61s/.*/"<mac address="$v4"/>"/' ndnVM.xml
+sed -i '34s/.*/"<mac address="$ovs"/>"/' ipVM.xml
+sed -i '43s/.*/"<mac address="$v5"/>"/' ipVM.xml
+sed -i '49s/.*/"<mac address="$v6"/>"/' ipVM.xml
+sed -i '55s/.*/"<mac address="$v7"/>"/' ipVM.xml
+sed -i '61s/.*/"<mac address="$v8"/>"/' ipVM.xml
