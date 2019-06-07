@@ -52,7 +52,7 @@ class NDNRouter(app_manager.RyuApp):
         # virbr1 - port 4, virbr2 - port 5, eth2(client) - port 1 , eth3- port 2
         print datapath.id
         #Router1
-        if datapath.id == 85856085897539:
+        if datapath.id == :
             #Following are for NDN Packets
             match = parser.OFPMatch(in_port=1, dl_type=0x8624)
             out_port = 6
@@ -134,7 +134,7 @@ class NDNRouter(app_manager.RyuApp):
             self.add_ipflow(datapath, 3, match, actions)
             
         #Router2
-        if datapath.id == 222696547036233:
+        if datapath.id == 248726561384006:
             #Following are for NDN Packets
             match = parser.OFPMatch(in_port=4, dl_type=0x8624)
             out_port = 5
@@ -242,7 +242,7 @@ class NDNRouter(app_manager.RyuApp):
             self.add_ipflow(datapath, 1, match, actions)
                 
         #Router3
-        if datapath.id == 152190537930831:
+        if datapath.id == 104299486084934:
             #Following are for NDN Packets
             match = parser.OFPMatch(in_port=2, dl_type=0x8624)
             out_port = 5
