@@ -2,7 +2,7 @@
 #!/bin/bash
 sudo apt-get update
 sudo apt-get -y install vim
-sudo apt-get purge libvirt-bin
+sudo apt-get purge -y libvirt-bin
 sudo apt-get -y install libvirt-bin
 sudo apt-get -y install qemu-kvm libvirt-bin ubuntu-vm-builder bridge-utils
 sudo virsh connect qemu:///system
