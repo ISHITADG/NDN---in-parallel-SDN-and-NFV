@@ -42,18 +42,24 @@ ip link add name virbr3 type bridge
 ip link add name virbr4 type bridge
 ip link add name virbr5 type bridge
 ip link add name virbr6 type bridge
+ip link add name virbr7 type bridge
+ip link add name virbr8 type bridge
 ip link set virbr1 up
 ip link set virbr2 up
 ip link set virbr3 up
 ip link set virbr4 up
 ip link set virbr5 up
 ip link set virbr6 up
+ip link set virbr7 up
+ip link set virbr8 up
 ovs-vsctl add-port ovsbr0 virbr1
 ovs-vsctl add-port ovsbr0 virbr2
 ovs-vsctl add-port ovsbr0 virbr3
 ovs-vsctl add-port ovsbr0 virbr4
 ovs-vsctl add-port ovsbr0 virbr5
 ovs-vsctl add-port ovsbr0 virbr6
+ovs-vsctl add-port ovsbr0 virbr7
+ovs-vsctl add-port ovsbr0 virbr8
 
 #instantiate VMs
 wget 'http://emmy10.casa.umass.edu/CNP/ishita/ipVM.qcow2'
