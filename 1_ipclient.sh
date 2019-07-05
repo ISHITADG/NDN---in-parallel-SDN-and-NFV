@@ -27,4 +27,15 @@ unzip client.zip;
 git clone --recursive https://github.com/pari685/AStream.git;
 rm client.zip;
 cd AStream/dist; rm -rf client; mv ../../client/ .;
+
+#install all scripts
+cd /users/ishitadg/AStream/dist/client;
+rm dash_client_od.py;
+rm configure_log_file.py;
+rm config_dash.py;
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/configure_log_file.py;
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/dash_client_od.py;
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/config_dash.py;
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ipod.sh; 
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ipodqoe.sh;
 echo done
