@@ -24,9 +24,9 @@ sudo wget https://raw.githubusercontent.com/ISHITADG/dockerNDN/master/dockovs.sh
 bash dockovs.sh;
 
 #SETUP NDN DOCKER
-mv /proj/WRFHydro/ndndocker.tar .;
+cp -r /proj/WRFHydro/ndndocker.tar .;
 docker image load -i ndndocker.tar
-mv ndndocker.tar /proj/WRFHydro/ ;
+rm ndndocker.tar;
 
 #FOR RUNNING ON THE HOST CLIENT
 #install cmake
