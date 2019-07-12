@@ -9,6 +9,7 @@ sudo pip install --upgrade pip;
 sudo pip install numpy scipy;
 sudo pip install sortedcontainers;
 sudo pip install pandas;
+sudo apt-get install bridge-utils;
 sudo apt-get -y install python-numpy python-scipy python-matplotlib;
 git clone https://github.com/esnet/iperf.git;
 cd iperf;
