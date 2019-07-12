@@ -113,12 +113,10 @@ wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ndnlive.sh <br/>
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ndnliveqoe.sh <br/>
 bash startdockers.sh <br/>
-
+bash setupdocker.sh <br/>
 @each NDN client, manually do this:(when using ovs-bridge)<br/>
 ovs-vsctl add-port ovs-br1 eth7<br/>
 ovs-vsctl set Bridge ovs-br1 other_config:hwaddr="da:d9:25:e7:30:46"<br/>
-
-bash setupdocker.sh <br/>
 
 bash pingtest.sh <br/>
 bash ndnlive.sh <br/>
