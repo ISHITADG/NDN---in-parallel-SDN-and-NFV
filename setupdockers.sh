@@ -7,6 +7,9 @@ port2=6365
 ip=173.16.1.
 network=2
 ##for ndn over OVS
+sudo ovs-vsctl del-br ovs-br1
+sudo ovs-vsctl add-br ovs-br1
+sudo ifconfig ovs-br1 173.16.1.1 netmask 255.255.255.0 up
 for (( i=0; i<$answer; i++ )); do
   docker kill ndn$i;
   docker run -d --rm --name ndn$i -p $port1:6363 -p $port2:6363/udp ndndock;
