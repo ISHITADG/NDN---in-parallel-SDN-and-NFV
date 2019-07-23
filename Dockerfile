@@ -116,5 +116,7 @@ RUN apt-get install -y tmux \
     && apt-get install -y iperf \
     && apt-get install -y tcpdump \
     && cd /AStream/dist/client \
-    && wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/dash_client_udpD.py
+    && wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/dash_client_udpD.py \
+    && rm dash_client.py \
+    && wget -L https://github.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/blob/master/dash_client.py
     
