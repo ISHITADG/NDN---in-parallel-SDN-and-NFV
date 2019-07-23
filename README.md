@@ -24,13 +24,8 @@ dpkg -l | grep linux-image <br/>
 sudo apt-get update; reboot <br/>
 Uname -r <br/>
 Kernel updated to 4.4.0-142-generic !!!!<br/>
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_ndnclient.sh <br/>
-bash 1_ndnclient.sh <br/>
-<br/>
-OR<br/>
-#### EXPORT/IMPORT EARLIER IMAGE:
-export: docker image save -o ndndocker.tar ndndock<br/>
-import: docker image load -i /proj/WRFHydro/ndndocker.tar<br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_ndnc.sh <br/>
+bash 1_ndnc.sh <br/>
 
 #### FOR IP CLIENT
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_ipclient.sh <br/>
