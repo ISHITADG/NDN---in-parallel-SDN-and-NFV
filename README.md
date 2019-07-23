@@ -59,13 +59,7 @@ ovs-ofctl dump-ports-desc ovsbr0<br/>
 ovs-ofctl dump-flows ovsbr0<br/>
 sudo ovs-vsctl set bridge ovsbr0 protocols=OpenFlow10,OpenFlow13<br/>
 
-## Step 4: Streaming & QoE calcualtion over IP / NDN / IP+NDN:
-@server,@router,@client:<br/>
-ndnsec-keygen /`whoami` | ndnsec-install-cert -<br/>
-sudo mkdir -p /usr/local/etc/ndn/keys<br/>
-ndnsec-cert-dump -i /`whoami` > default.ndncert<br/>
-sudo mv default.ndncert /usr/local/etc/ndn/keys/default.ndncert<br/>
-
+## Step 4: Streaming & QoE calcualtion over IP / NDN / IP+NDN
 @router:<br/>
 nfd-stop;nfd-start; nfdc register ndn:/edu/umass 257<br/>
 @client:<br/>
