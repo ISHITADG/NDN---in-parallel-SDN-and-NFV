@@ -118,8 +118,15 @@ bash pingtest.sh <br/>
 bash ndnlive.sh <br/>
 bash ndnqoe.sh <br/>
 
-scp -r ishitadg@c220g1-030809.wisc.cloudlab.us:IP ~/ResearchZink/ndn-results/linetopo/IPNDN/;
-scp -r ishitadg@c220g1-030809.wisc.cloudlab.us:NDN ~/ResearchZink/ndn-results/linetopo/IPNDN/;
+scp -r ishitadg@c220g1-030809.wisc.cloudlab.us:IP ~/ResearchZink/ndn-results/linetopo/IPNDN/;<br/>
+scp -r ishitadg@c220g1-030809.wisc.cloudlab.us:NDN ~/ResearchZink/ndn-results/linetopo/IPNDN/;<br/>
+#### NDN only MPD tests for interrupted downloads
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/dash_client_onlympd.py <br/>
+for (( i=0; i<$10; i++ )); do
+docker cp dash_client_onlympd.py ndn$i:AStream/dist/client/;
+done<br/>
+
+
 
 ### IP+IP
 #### IP on-demand+ IP live
