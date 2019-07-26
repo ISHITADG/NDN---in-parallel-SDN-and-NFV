@@ -82,6 +82,8 @@ bash ipndn.sh;
 
 ### IP+NDN
 #### IP on-demand+ NDN live
+TO KILL ALL CONTAINERS <br/>
+docker kill $(docker ps -q)  <br/>
 @client1 IP ondemand: <br/>
 cd /users/ishitadg/AStream/dist/client;<br/>
 rm dash_client_od.py;<br/>
