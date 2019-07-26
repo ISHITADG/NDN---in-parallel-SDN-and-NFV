@@ -137,7 +137,7 @@ def get_mpd(url):
     #connection.close()
     quic_cmd="/ndnperf/c++/client/bin/ndnperf -p ndn:/edu/umass -d "+url+" -w 16"
     config_dash.LOG.info(quic_cmd)
-    stream=subprocess.popen('quic_cmd'.split(),
+    stream=subprocess.Popen('quic_cmd'.split(),
                      stdout=subprocess.PIPE)
     preprocessed, _ = stream.communicate()
     mpd_file = url.split('/')[-1]
