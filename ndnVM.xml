@@ -27,7 +27,7 @@
     </disk>
      <controller type='pci' index='0' model='pci-root'/>
     <interface type='bridge'>
-     <mac address='1e:dd:d7:8c:76:42'/>
+     <mac address='4a:df:3a:f1:46:46'/>
       <source bridge='ovsbr0'/>
       <virtualport type='openvswitch'>
         <parameters interfaceid='38752f77-e9ad-4143-ad6b-d89f57ad0e31'/>
@@ -36,22 +36,28 @@
       <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x0'/>
     </interface>
     <interface type='bridge'>
-      <mac address='ba:88:5d:78:91:c4'/>
+      <mac address='82:1a:7d:b1:09:35'/>
       <source bridge='virbr1'/>
       <model type='virtio'/>
       <address type='pci' domain='0x0000' bus='0x00' slot='0x06' function='0x0'/>
     </interface>
     <interface type='bridge'>
-      <mac address='26:fe:04:5a:44:59'/>
+      <mac address='52:c1:23:18:f3:54'/>
       <source bridge='virbr2'/>
       <model type='virtio'/>
       <address type='pci' domain='0x0000' bus='0x00' slot='0x07' function='0x0'/>
     </interface>
     <interface type='bridge'>
-      <mac address='fa:99:46:7b:43:c2'/>
+      <mac address='5a:f4:2e:67:a3:ef'/>
       <source bridge='virbr3'/>
       <model type='virtio'/>
       <address type='pci' domain='0x0000' bus='0x00' slot='0x08' function='0x0'/>
+    </interface>
+    <interface type='bridge'>
+      <mac address='e6:b3:03:26:cf:b9'/>
+      <source bridge='virbr4'/>
+      <model type='virtio'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x09' function='0x0'/>
     </interface>
     <serial type='pty'>
       <target port='0'/>
