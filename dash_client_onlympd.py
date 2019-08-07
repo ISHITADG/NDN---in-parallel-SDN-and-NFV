@@ -15,6 +15,7 @@ import read_mpd
 import urlparse
 import urllib2
 import subprocess
+from subprocess import Popen, PIPE
 import urllib3
 import Queue
 from urllib3 import HTTPConnectionPool
@@ -137,7 +138,9 @@ def get_mpd(url):
     #connection.close()
     quic_cmd="/ndnperf/c++/client/bin/ndnperf -p ndn:/edu/umass -d "+url+" -w 16"
     config_dash.LOG.info(quic_cmd)
-    stream=os.popen(quic_cmd)
+    log = open('out.txt', 'w')
+    log.flush()
+    proc = Popen(quic_cmd, stdout=log, stderr=log, shell=True)
     mpd_file = url.split('/')[-1]
 
     #mpd_file_handle = open(mpd_file, 'wb')
