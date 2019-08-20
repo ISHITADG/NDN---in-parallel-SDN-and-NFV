@@ -109,10 +109,7 @@ bash startdockers.sh <br/>
 #### NDN only MPD tests for interrupted downloads
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/dash_client_onlympd.py <br/>
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/nfd.conf <br/>
-for (( i=0; i<10; i++ )); do docker cp dash_client_onlympd.py ndn$i:AStream/dist/client/; done<br/>
-
-for (( i=0; i<10; i++ )); do docker cp ndn$i:AStream/dist/client/BigBuckBunny_2s.mpd BB$i.mpd; done
-<br/>
+for (( i=0; i<10; i++ )); do docker cp dash_client_onlympd.py ndn$i:AStream/dist/client/; docker cp nfd.conf ndn$i:/usr/local/etc/ndn/nfd.conf; done <br/>
 
 bash setupdockers.sh <br/>
 
