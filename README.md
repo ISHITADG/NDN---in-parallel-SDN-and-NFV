@@ -106,14 +106,17 @@ wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ndnliveqoe.sh <br/>
 
 bash startdockers.sh <br/>
+#### NDN only MPD tests for interrupted downloads
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/dash_client_onlympd.py <br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/nfd.conf <br/>
+for (( i=0; i<10; i++ )); do docker cp dash_client_onlympd.py ndn$i:AStream/dist/client/; done<br/>
+
+for (( i=0; i<10; i++ )); do docker cp ndn$i:AStream/dist/client/BigBuckBunny_2s.mpd BB$i.mpd; done
+<br/>
 
 bash setupdockers.sh <br/>
-@each NDN client, manually do this:(when using ovs-bridge)<br/>
-ovs-vsctl add-port ovs-br1 eth7<br/>
-ovs-vsctl set Bridge ovs-br1 other_config:hwaddr="da:d9:25:e7:30:46"<br/>
-OR <br/>
-bash setupdockersimple.sh <br/>
 
+bash setupdockersimple.sh <br/>
 bash pingtest.sh <br/>
 bash ndnlive.sh <br/>
 bash ndnqoe.sh <br/>
@@ -122,6 +125,7 @@ scp -r ishitadg@c220g1-030809.wisc.cloudlab.us:IP ~/ResearchZink/ndn-results/lin
 scp -r ishitadg@c220g1-030809.wisc.cloudlab.us:NDN ~/ResearchZink/ndn-results/linetopo/IPNDN/;<br/>
 #### NDN only MPD tests for interrupted downloads
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/dash_client_onlympd.py <br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/nfd.conf <br/>
 for (( i=0; i<10; i++ )); do docker cp dash_client_onlympd.py ndn$i:AStream/dist/client/; done<br/>
 
 for (( i=0; i<10; i++ )); do docker cp ndn$i:AStream/dist/client/BigBuckBunny_2s.mpd BB$i.mpd; done
