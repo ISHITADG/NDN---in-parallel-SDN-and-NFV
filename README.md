@@ -1,9 +1,6 @@
 # NDN---in-parallel-SDN-and-NFV
 # An Evaluation of SDN and NFV Support for Parallel, Alternative Protocol Stack Operations on CloudLab
 
-
-
-
 ## STEP1: Server & client setup:
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_ndn.sh <br/>
 bash 1_ndn.sh <br/>
@@ -13,9 +10,6 @@ bash 1_server.sh <br/>
 *OR* <br/>
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_serverdld.sh <br/>
 bash 1_serverdld.sh <br/>
-!!**route update for server**!!  <br/>
-sudo route del -net 10.0.0.0 netmask 255.0.0.0;  <br/>
-sudo ip route add 10.0.0.0/8 via 10.10.1.4; <br/>
 ### Additional step at client: (run Dockerfile, download client, Astreamer)
 #### DOCKER - KERNEL VERSION ISSUE (ONLY FOR NDN CLIENT):
 apt-get update <br/>
@@ -26,15 +20,9 @@ Uname -r <br/>
 Kernel updated to 4.4.0-142-generic !!!!<br/>
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_ndnc.sh <br/>
 bash 1_ndnc.sh <br/>
-
 #### FOR IP CLIENT
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_ipclient.sh <br/>
 bash 1_ipclient.sh <br/>
-!!**route update for clients**!!  <br/>
-sudo route del -net 10.0.0.0 netmask 255.0.0.0;  <br/>
-sudo ip route add 10.0.0.0/8 via 10.10.2.4; <br/>
-sudo route del -net 10.0.0.0 netmask 255.0.0.0;  <br/>
-sudo ip route add 10.0.0.0/8 via 10.10.3.4; <br/>
 
 ## STEP 2: Controller setup:
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/2_ryu.sh <br/>
@@ -44,20 +32,18 @@ wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV
 ryu-manager controller.py <br/>
 (print dpid and modify line 66 accordingly) <br/>
 (Run controller again) <br/>
- 
-
 ## Step 3: Bridge setup on Routers:
 ### INSTALL & START VMs
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/3_vm3.sh <br/>
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/3_vm3.sh <br/>
-bash 3_vm3.sh <br/>
-bash 3_vm4.sh <br/>
-virsh console ndnVM<br/>
-ipVM login: mzink<br/>
-Password: test<br/>
-ovs-ofctl dump-ports-desc ovsbr0<br/>
-ovs-ofctl dump-flows ovsbr0<br/>
-sudo ovs-vsctl set bridge ovsbr0 protocols=OpenFlow10,OpenFlow13<br/>
+follow 3_vmsetup.sh <br/>
+
+!!Update Routes!!  <br/>
+sudo route del -net 10.0.0.0 netmask 255.0.0.0;  <br/>
+sudo ip route add 10.0.0.0/8 via 10.10.2.4; <br/>
+sudo route del -net 10.0.0.0 netmask 255.0.0.0;  <br/>
+sudo ip route add 10.0.0.0/8 via 10.10.3.4; <br/>
+sudo route del -net 10.0.0.0 netmask 255.0.0.0;  <br/>
+sudo ip route add 10.0.0.0/8 via 10.10.4.4; <br/>
+
 
 ## Step 4: Streaming & QoE calcualtion over IP / NDN / IP+NDN
 @router:<br/>
@@ -86,24 +72,11 @@ TO KILL ALL CONTAINERS <br/>
 docker kill $(docker ps -q)  <br/>
 @client1 IP ondemand: <br/>
 cd /users/ishitadg/AStream/dist/client;<br/>
-rm dash_client_od.py;<br/>
-rm configure_log_file.py;<br/>
-rm config_dash.py;<br/>
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/configure_log_file.py <br/>
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/dash_client_od.py <br/>
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/config_dash.py <br/>
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ipod.sh <br/>
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ipodqoe.sh <br/>
 bash ipod.sh <br/>
 bash ipodqoe.sh <br/>
 
 @client2 NDN LIVE: <br/>
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/startdockers.sh <br/>
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/setupdockers.sh <br/>
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/setupdockersimple.sh <br/>
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/pingtest.sh <br/>
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ndnlive.sh <br/>
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ndnliveqoe.sh <br/>
 
 bash startdockers.sh <br/>
 #### NDN only MPD tests for interrupted downloads
