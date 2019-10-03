@@ -103,7 +103,7 @@ for (( i=0; i<20; i++ )); do docker cp dash_client_onlympd.py ndn$i:AStream/dist
 ##### AFTER running ndnclients
 for (( i=0; i<20; i++ )); do docker cp ndn$i:AStream/dist/client/BigBuckBunny_2s.mpd BB$i.mpd; done <br/>
 for (( i=0; i<20; i++ )); do docker cp ndn$i:AStream/dist/client/out.txt out$i.txt; done<br/>
-for (( i=0; i<20; i++ )); do docker cp ndn$i:AStream/dist/client/tcpdump.pcap tcp$i.pcap; done<br/>
+for (( i=0; i<20; i++ )); do docker cp ndn$i:tcpdump.pcap tcp$i.pcap; done<br/>
 
 python sample.py -m /www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/BigBuckBunny_2s.mpd -p bola <br/>
 
