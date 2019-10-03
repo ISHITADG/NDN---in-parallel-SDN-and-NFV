@@ -97,12 +97,17 @@ scp -r ishitadg@c220g1-030809.wisc.cloudlab.us:NDN ~/ResearchZink/ndn-results/li
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/dash_client_onlympd.py <br/>
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/nfd.conf <br/>
 ifconfig docker0 down;<br/>
-for (( i=0; i<10; i++ )); do docker cp dash_client_onlympd.py ndn$i:AStream/dist/client/; done<br/>
+####BEFORE running ndnclients
+rm out*;rm *.mpd; rm trace*;<br/>
+for (( i=0; i<20; i++ )); do docker cp dash_client_onlympd.py ndn$i:AStream/dist/client/; docker cp nfd.conf ndn$i:/usr/local/etc/ndn/nfd.conf; done<br/>
+####AFTER running ndnclients
 
-for (( i=0; i<10; i++ )); do docker cp ndn$i:AStream/dist/client/BigBuckBunny_2s.mpd BB$i.mpd; done
-<br/>
 
+for (( i=0; i<20; i++ )); do docker cp ndn$i:AStream/dist/client/BigBuckBunny_2s.mpd BB$i.mpd; done <br/>
+for (( i=0; i<20; i++ )); do docker cp ndn$i:AStream/dist/client/out.txt out$i.txt; done<br/>
+for (( i=0; i<20; i++ )); do docker cp ndn$i:AStream/dist/client/tcpdump.pcap tcp$i.pcap; done<br/>
 
+python sample.py -m /www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/BigBuckBunny_2s.mpd -p bola <br/>
 
 ### IP+IP
 #### IP on-demand+ IP live
