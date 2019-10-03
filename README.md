@@ -97,12 +97,10 @@ scp -r ishitadg@c220g1-030809.wisc.cloudlab.us:NDN ~/ResearchZink/ndn-results/li
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/dash_client_onlympd.py <br/>
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/nfd.conf <br/>
 ifconfig docker0 down;<br/>
-####BEFORE running ndnclients
+##### BEFORE running ndnclients
 rm out*;rm *.mpd; rm trace*;<br/>
 for (( i=0; i<20; i++ )); do docker cp dash_client_onlympd.py ndn$i:AStream/dist/client/; docker cp nfd.conf ndn$i:/usr/local/etc/ndn/nfd.conf; done<br/>
-####AFTER running ndnclients
-
-
+##### AFTER running ndnclients
 for (( i=0; i<20; i++ )); do docker cp ndn$i:AStream/dist/client/BigBuckBunny_2s.mpd BB$i.mpd; done <br/>
 for (( i=0; i<20; i++ )); do docker cp ndn$i:AStream/dist/client/out.txt out$i.txt; done<br/>
 for (( i=0; i<20; i++ )); do docker cp ndn$i:AStream/dist/client/tcpdump.pcap tcp$i.pcap; done<br/>
