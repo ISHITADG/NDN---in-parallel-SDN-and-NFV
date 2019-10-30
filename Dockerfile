@@ -26,6 +26,8 @@ RUN git clone --recursive https://github.com/named-data/NFD \
     && ./waf \
     && ./waf install \
     && cd .. \
+    && wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/nfd.conf \
+    && cp nfd.conf /usr/local/etc/ndn/nfd.conf \
     && rm -Rf NFD
 
 # install ndn-tools
@@ -56,6 +58,8 @@ EXPOSE 6363/udp
 
 ENV CONFIG=/usr/local/etc/ndn/nfd.conf
 ENV LOG_FILE=/logs/nfd.log
+
+CMD /usr/local/bin/nfd -c $CONFIG > $LOG_FILE 2>&1
 
 # install Astreamer
 RUN apt-get install wget \
@@ -113,8 +117,6 @@ RUN apt-get install -y tmux \
     && apt-get install -y tcpdump \
     && apt-get install -y psmisc \
     && cd /AStream/dist/client \
-    && wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/nfd.conf \
-    && cp nfd.conf /usr/local/etc/ndn/nfd.conf \
     && wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/dash_client_udpD.py \
     && rm dash_client.py \
     && wget -L https://github.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/blob/master/dash_client_onlympd.py
