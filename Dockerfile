@@ -5,20 +5,7 @@ ARG VERSION_CXX=master
 ARG VERSION_NFD=master
 
 RUN apt-get update && \
-    apt-get install -y build-essential dpkg-dev git libboost-all-dev libpcap-dev libsqlite3-dev libssl-dev pkg-config
-    
-# install Astreamer
-RUN apt-get install wget \
-    && wget -L https://github.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/blob/master/client.zip?raw=true \
-    && mv client.zip\?raw\=true client.zip \
-    && apt-get install unzip \
-    && unzip client.zip
-RUN apt-get install git \
-    && git clone --recursive https://github.com/pari685/AStream.git \
-    && cd AStream/dist \
-    && rm -rf client \
-    && mv ../../client/ . \
-    && cd ../../    
+    apt-get install -y build-essential dpkg-dev git libboost-all-dev libpcap-dev libsqlite3-dev libssl-dev pkg-config  
     
 #install ndn-cxx
 RUN git clone https://github.com/named-data/ndn-cxx.git \
@@ -39,8 +26,6 @@ RUN git clone --recursive https://github.com/named-data/NFD \
     && ./waf \
     && ./waf install \
     && cd .. \
-    && wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/nfd.conf \
-    && cp nfd.conf /usr/local/etc/ndn/nfd.conf \
     && rm -Rf NFD
 
 # install ndn-tools
@@ -54,7 +39,9 @@ RUN git clone --recursive https://github.com/named-data/ndn-tools.git \
     && rm -Rf ndn-tools
 
 # initial configuration
-RUN cp /usr/local/etc/ndn/nfd.conf.sample /usr/local/etc/ndn/nfd.conf \
+RUN apt-get install wget \
+    && wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/nfd.conf \
+    && cp nfd.conf /usr/local/etc/ndn/nfd.conf \
     && ndnsec-keygen /`whoami` | ndnsec-install-cert - \
     && mkdir -p /usr/local/etc/ndn/keys \
     && ndnsec-cert-dump -i /`whoami` > default.ndncert \
@@ -89,6 +76,18 @@ RUN git clone https://github.com/Kanemochi/ndnperf.git \
     && rm client.cpp \
     && mv ../client.cpp . \
     && cmake . && make 
+    
+# install Astreamer
+RUN wget -L https://github.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/blob/master/client.zip?raw=true \
+    && mv client.zip\?raw\=true client.zip \
+    && apt-get install unzip \
+    && unzip client.zip
+RUN apt-get install git \
+    && git clone --recursive https://github.com/pari685/AStream.git \
+    && cd AStream/dist \
+    && rm -rf client \
+    && mv ../../client/ . \
+    && cd ../../  
     
 # install iperf3
 RUN git clone https://github.com/esnet/iperf.git \
