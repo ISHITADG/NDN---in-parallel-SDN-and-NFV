@@ -59,5 +59,11 @@ unzip client.zip;
 git clone --recursive https://github.com/pari685/AStream.git;
 rm client.zip;
 cd AStream/dist; rm -rf client; mv ../../client/ .;
-
+#download all scripts
+cd /users/ishitadg;
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/startdockers.sh;
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/setupdockers.sh;
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/pingtest.sh;
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ndnlive.sh;
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ndnliveqoe.sh; 
 echo done
