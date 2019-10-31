@@ -50,9 +50,6 @@ RUN apt-get install wget \
 RUN mkdir /share \
     && mkdir /logs
     
-RUN apt autoremove \
-    && apt-get remove -y git build-essential python pkg-config 
-
 EXPOSE 6363/tcp
 EXPOSE 6363/udp
 
