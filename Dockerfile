@@ -94,6 +94,14 @@ RUN git clone https://github.com/Kanemochi/ndnperf.git \
     && mv ../client.cpp . \
     && cmake . && make 
     
+# install iperf3
+RUN git clone https://github.com/esnet/iperf.git \
+    && cd iperf \
+    && ./configure \
+    && make \
+    && make install \
+    && ldconfig
+    
 # install dependencies for Astreamer
 RUN apt-get install -y tmux \
     && apt-get install -y vim \
@@ -110,3 +118,5 @@ RUN apt-get install -y tmux \
     && apt-get install -y tcpdump \
     && cd /AStream/dist/client \
     && wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/dash_client_udpD.py \
+    && rm dash_client.py \
+    && wget -L https://github.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/blob/master/dash_client_onlympd.py
