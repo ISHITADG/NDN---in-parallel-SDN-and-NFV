@@ -6,7 +6,20 @@ ARG VERSION_NFD=master
 
 RUN apt-get update && \
     apt-get install -y build-essential dpkg-dev git libboost-all-dev libpcap-dev libsqlite3-dev libssl-dev pkg-config
-
+    
+# install Astreamer
+RUN apt-get install wget \
+    && wget -L https://github.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/blob/master/client.zip?raw=true \
+    && mv client.zip\?raw\=true client.zip \
+    && apt-get install unzip \
+    && unzip client.zip
+RUN apt-get install git \
+    && git clone --recursive https://github.com/pari685/AStream.git \
+    && cd AStream/dist \
+    && rm -rf client \
+    && mv ../../client/ . \
+    && cd ../../    
+    
 #install ndn-cxx
 RUN git clone https://github.com/named-data/ndn-cxx.git \
     && cd ndn-cxx \
@@ -60,22 +73,7 @@ ENV CONFIG=/usr/local/etc/ndn/nfd.conf
 ENV LOG_FILE=/logs/nfd.log
 
 CMD /usr/local/bin/nfd -c $CONFIG > $LOG_FILE 2>&1
-
-# install Astreamer
-RUN apt-get install wget \
-    && wget -L https://github.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/blob/master/client.zip?raw=true \
-    && mv client.zip\?raw\=true client.zip \
-    && apt-get install unzip \
-    && unzip client.zip
-
-RUN apt-get install git \
-    && git clone --recursive https://github.com/pari685/AStream.git \
-    && cd AStream/dist \
-    && rm -rf client \
-    && mv ../../client/ . \
-    && cd ../../
     
-
 # install cmake & ndnperf-client app & net-tools
 RUN git clone https://github.com/Kanemochi/ndnperf.git \
     && wget https://cmake.org/files/v3.12/cmake-3.12.2.tar.gz \
