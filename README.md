@@ -28,7 +28,7 @@ bash 1_ipclient.sh <br/>
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/2_ryu.sh <br/>
 bash 2_ryu.sh <br/>
 cd ryu/ <br/>
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/controller.py <br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/controllerhalfbig.py <br/>
 ryu-manager controller.py <br/>
 (print dpid and modify line 66 accordingly) <br/>
 (Run controller again) <br/>
