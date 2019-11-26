@@ -8,6 +8,5 @@ sudo pip install -r tools/pip-requires
 sudo python setup.py install
 wget https://bootstrap.pypa.io/ez_setup.py -O - | sudo python
 sudo pip install oslo.config
-sudo pip install tinyrpc
+sudo pip install tinyrpc==0.8
 sudo pip install six --upgrade
-sudo apt-get -y install tmux
