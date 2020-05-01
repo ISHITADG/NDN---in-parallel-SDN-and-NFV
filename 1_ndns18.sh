@@ -20,7 +20,6 @@ sudo add-apt-repository ppa:named-data/ppa
 sudo apt update
 sudo apt install -y nfd
 sudo cp /usr/local/etc/ndn/nfd.conf.sample /usr/local/etc/ndn/nfd.conf
-
 sudo apt-get install -y ndn-cxx-dev
 #adding security element
 sudo ndnsec-keygen /`whoami` | ndnsec-install-cert -
@@ -30,8 +29,9 @@ sudo mv default.ndncert /usr/local/etc/ndn/keys/default.ndncert
 
 #install ndnperf & tools
 sudo apt-get install -y ndn-tools
-nfd-start
 git clone https://github.com/Kanemochi/ndnperf.git
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/server.cpp
+mv server.cpp ndnperf/c++/server/
 cd ndnperf/c++/server/
 cmake . && make
 
