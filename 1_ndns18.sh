@@ -27,6 +27,20 @@ sudo mkdir -p /usr/local/etc/ndn/keys
 sudo ndnsec-cert-dump -i /`whoami` > default.ndncert
 sudo mv default.ndncert /usr/local/etc/ndn/keys/default.ndncert
 
+#install cmake
+cd /users/ishitadg;
+version=3.12;
+build=2;
+mkdir temp;
+cd temp;
+wget https://cmake.org/files/v$version/cmake-$version.$build.tar.gz;
+tar -xzvf cmake-$version.$build.tar.gz;
+cd cmake-$version.$build/;
+./bootstrap;
+make -j4;
+sudo make install;
+cmake --version;
+
 #install ndnperf & tools
 sudo apt-get install -y ndn-tools
 git clone https://github.com/Kanemochi/ndnperf.git
