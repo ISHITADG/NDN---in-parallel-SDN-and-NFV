@@ -1,6 +1,42 @@
 # NDN---in-parallel-SDN-and-NFV
 # An Evaluation of SDN and NFV Support for Parallel, Alternative Protocol Stack Operations on CloudLab
+#UBUNTU18 versions
+## STEP1: Server & client setup:
+###SERVER setup:
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_ndn.sh <br/>
+bash 1_ndns18.sh <br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_server.sh <br/>
+bash 1_server.sh <br/>
+*OR* <br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_serverdld.sh <br/>
+bash 1_serverdld.sh <br/>
 
+### CLIENT SETUP:
+#### FOR NDN CLIENTS
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_ndn.sh <br/>
+bash 1_ndnc18.sh <br/>
+wget - L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_ndnclient.sh <br/>
+#### FOR IP CLIENTS
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_ipclient.sh <br/>
+bash 1_ipclient.sh <br/>
+
+## STEP 2: Controller setup:
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/2_ryu.sh <br/>
+bash 2_ryu.sh <br/>
+cd ryu/ <br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/controllerhalfbig.py <br/>
+ryu-manager controller.py <br/>
+(print dpid and modify line 66 accordingly) <br/>
+(Run controller again) <br/>
+## Step 3: Bridge setup on Routers:
+### INSTALL & START VMs
+follow 3_vmsetup.sh <br/>
+
+
+
+
+
+#earlier UBUNTU versions
 ## STEP1: Server & client setup:
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_ndn.sh <br/>
 bash 1_ndn.sh <br/>
