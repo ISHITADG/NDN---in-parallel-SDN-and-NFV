@@ -49,4 +49,20 @@ mv client.cpp ndnperf/c++/client/
 cd ndnperf/c++/server/
 cmake . && make
 
+#other systemctl updates
+sudo cp nfd.service /etc/systemd/system
+sudo systemctl daemon-reload
+sudo mkdir -p /usr/local/var/log/ndn
+sudo chown -R ndn:ndn /usr/local/var/log/ndn
+sudo sh -c ' \
+  mkdir -p /usr/local/var/lib/ndn/nfd/.ndn; \
+  export HOME=/usr/local/var/lib/ndn/nfd; \
+  ndnsec-keygen /localhost/daemons/nfd | ndnsec-install-cert -; \
+'
+sudo sh -c '\
+  mkdir -p /usr/local/etc/ndn/certs || true; \
+  export HOME=/usr/local/var/lib/ndn/nfd; \
+  ndnsec-dump-certificate -i /localhost/daemons/nfd > \
+    /usr/local/etc/ndn/certs/localhost_daemons_nfd.ndncert; \
+'
 echo done
