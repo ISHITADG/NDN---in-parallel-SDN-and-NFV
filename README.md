@@ -1,6 +1,6 @@
 # NDN---in-parallel-SDN-and-NFV
 # An Evaluation of SDN and NFV Support for Parallel, Alternative Protocol Stack Operations on CloudLab
-#UBUNTU18 versions
+# Ubuntu18 version
 ## STEP1: Server & client setup:
 ###SERVER setup:
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_ndn.sh <br/>
@@ -36,7 +36,7 @@ follow 3_vmsetup.sh <br/>
 
 
 
-#earlier UBUNTU versions
+# earlier UBUNTU versions
 ## STEP1: Server & client setup:
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_ndn.sh <br/>
 bash 1_ndn.sh <br/>
