@@ -19,6 +19,13 @@ wget - L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NF
 #### FOR IP CLIENTS
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_ipclient.sh <br/>
 bash 1_ipclient.sh <br/>
+#### NDN LOGS
+
+sudo systemctl stop nfd<br/>
+sudo systemctl start nfd<br/>
+router: nfdc route add prefix /edu/umass nexthop 266
+client: nfdc route add prefix /edu/umass nexthop 262
+journalctl -u nfd
 
 ## STEP 2: Controller setup:
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/2_ryu.sh <br/>
