@@ -14,6 +14,7 @@ cd ndn-cxx/
 CXXFLAGS="-std=c++14" ./waf configure
 ./waf
 sudo ./waf install
+cd ..;
 
 #install nfd
 sudo add-apt-repository ppa:named-data/ppa
@@ -28,7 +29,6 @@ sudo ndnsec-cert-dump -i /`whoami` > default.ndncert
 sudo mv default.ndncert /usr/local/etc/ndn/keys/default.ndncert
 
 #install cmake
-cd /users/ishitadg;
 version=3.12;
 build=2;
 mkdir temp;
@@ -40,13 +40,17 @@ cd cmake-$version.$build/;
 make -j4;
 sudo make install;
 cmake --version;
+cd ../..;
 
 #install ndnperf & tools
 sudo apt-get install -y ndn-tools
 git clone https://github.com/Kanemochi/ndnperf.git
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/client.cpp
 mv client.cpp ndnperf/c++/client/
-cd ndnperf/c++/server/
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/CMakeLists.txt
+mv CMakeLists.txt ndnperf/c++/client/
+cd ndnperf/c++/client/
+
 cmake . && make
 
 #other systemctl updates
