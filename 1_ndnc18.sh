@@ -47,11 +47,9 @@ sudo apt-get install -y ndn-tools
 git clone https://github.com/Kanemochi/ndnperf.git
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/client.cpp
 mv client.cpp ndnperf/c++/client/
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/CMakeLists.txt
-mv CMakeLists.txt ndnperf/c++/client/
 cd ndnperf/c++/client/
-
-cmake . && make
+cmake . && make;
+cd ../../..;
 
 #other systemctl updates
 sudo cp nfd.service /etc/systemd/system
