@@ -5,45 +5,35 @@ ARG VERSION_CXX=master
 ARG VERSION_NFD=master
 
 RUN apt-get update && \
-    apt-get install -y build-essential dpkg-dev git libboost-all-dev libpcap-dev libsqlite3-dev libssl-dev pkg-config
+    apt-get install -y build-essential dpkg-dev git libboost-all-dev libpcap-dev libsqlite3-dev libssl-dev pkg-config && \
+    apt-get install -y software-properties-common && \
+    add-apt-repository ppa:named-data/ppa -y && \
+    apt-get update && \
+    apt install -y build-essential libboost-all-dev libssl-dev libsqlite3-dev pkg-config python-minimal && \
+    apt install -y doxygen graphviz python3-pip && \
+    pip3 install sphinx sphinxcontrib-doxylink
+    
 
 #install ndn-cxx
 RUN git clone https://github.com/named-data/ndn-cxx.git \
     && cd ndn-cxx \
-    && git checkout $VERSION_CXX \
-    && ./waf configure \
+    && CXXFLAGS="-std=c++14" ./waf configure \
     && ./waf \
     && ./waf install \
     && cd .. \
     && rm -Rf ndn-cxx \
     && ldconfig
 
-# install NFD
-RUN git clone --recursive https://github.com/named-data/NFD \
-    && cd NFD \
-    && git checkout $VERSION_NFD \
-    && ./waf configure \
-    && ./waf \
-    && ./waf install \
-    && cd .. \
-    && rm -Rf NFD
-
-# install ndn-tools
-RUN git clone --recursive https://github.com/named-data/ndn-tools.git \
-    && cd ndn-tools \
-    && git checkout 48cb0b6f2eb2594064432692a56a4ccee4085d20 \
-    && ./waf configure \
-    && ./waf \
-    && ./waf install \
-    && cd .. \
-    && rm -Rf ndn-tools
-
-# initial configuration
-RUN cp /usr/local/etc/ndn/nfd.conf.sample /usr/local/etc/ndn/nfd.conf \
+# install NFD & other ndn tools
+RUN sudo apt install -y nfd \
+    && cp /usr/local/etc/ndn/nfd.conf.sample /usr/local/etc/ndn/nfd.conf \
+    && apt-get install -y ndn-cxx-dev \
     && ndnsec-keygen /`whoami` | ndnsec-install-cert - \
     && mkdir -p /usr/local/etc/ndn/keys \
     && ndnsec-cert-dump -i /`whoami` > default.ndncert \
-    && mv default.ndncert /usr/local/etc/ndn/keys/default.ndncert
+    && mv default.ndncert /usr/local/etc/ndn/keys/default.ndncert \
+    && apt-get install -y ndn-tools 
+
 
 RUN mkdir /share \
     && mkdir /logs
@@ -75,7 +65,7 @@ RUN apt-get install git \
     && cd ../../
     
 
-# install cmake & ndnperf-client app & net-tools
+# install cmake & ndnperf-client app
 RUN git clone https://github.com/Kanemochi/ndnperf.git \
     && wget https://cmake.org/files/v3.12/cmake-3.12.2.tar.gz \
     && tar -xzvf cmake-3.12.2.tar.gz \
@@ -84,11 +74,9 @@ RUN git clone https://github.com/Kanemochi/ndnperf.git \
     && make -j4 \
     && make install \
     && cd .. \
-    && cd ndnperf/c++ \
     && wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/client.cpp \
-    && cd client \
-    && rm client.cpp \
-    && mv ../client.cpp . \
+    && mv client.cpp ndnperf/c++/client/ \
+    && cd ndnperf/c++/client \
     && cmake . && make 
     
 # install iperf3
