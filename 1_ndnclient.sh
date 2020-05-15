@@ -29,7 +29,7 @@ bash dockovs.sh;
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/Dockerfile;
 
 #build docker ndn docker type
-sudo docker build -t ndndock --build-arg VERSION_CXX=ndn-cxx-0.6.2 --build-arg VERSION_NFD=NFD-0.6.2 .;
+sudo docker build -t ndndock --build-arg VERSION_CXX=ndn-cxx-0.7.0 --build-arg VERSION_NFD=NFD-0.7.0 .;
 
 #FOR RUNNING ON THE HOST CLIENT
 #install Astreamer for host streaming tests
