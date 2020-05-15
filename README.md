@@ -21,11 +21,20 @@ wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV
 bash 1_ipclient.sh <br/>
 #### NDN LOGS
 
+wget -L nfd.conf
+mv nfd.conf /etc/ndn/
 sudo systemctl stop nfd<br/>
 sudo systemctl start nfd<br/>
-router: nfdc route add prefix /edu/umass nexthop 266
-client: nfdc route add prefix /edu/umass nexthop 262
-journalctl -u nfd
+router: nfdc route add prefix /edu/umass nexthop 260<br/>
+client: nfdc route add prefix /edu/umass nexthop 257<br/>
+journalctl -u nfd<br/>
+tcpdump -i eno4 -w 1.pcap "(ether proto 0x8624) or (tcp port 6363) or (udp port 6363) or (udp port 56363)"<br/>
+tcpdump -i enp5s0f1 -w 1.pcap "(ether proto 0x8624) or (tcp port 6363) or (udp port 6363) or (udp port 56363)"<br/>
+tcpdump -i enp5sof0 -w 1.pcap "(ether proto 0x8624) or (tcp port 6363) or (udp port 6363) or (udp port 56363)"<br/>
+##### PING TEST
+ndnpingserver -t /edu/umass | ndnping -c 4 -t ndn:/edu/umass<br/>
+##### NDNPERF TEST
+./ndnperfserver -p ndn:/edu/umass -c 1500 -f 3600000 | "./ndnperf -p ndn:/edu/umass -d www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/BigBuckBunny_2s.mpd -w 16"<br/>
 
 ## STEP 2: Controller setup:
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/2_ryu.sh <br/>
