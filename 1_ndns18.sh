@@ -17,8 +17,8 @@ sudo ./waf install
 cd ..;
 
 #install nfd
-sudo add-apt-repository ppa:named-data/ppa
-sudo apt update
+sudo add-apt-repository ppa:named-data/ppa -y
+sudo apt-get update
 sudo apt install -y nfd
 sudo cp /usr/local/etc/ndn/nfd.conf.sample /usr/local/etc/ndn/nfd.conf
 sudo apt-get install -y ndn-cxx-dev
