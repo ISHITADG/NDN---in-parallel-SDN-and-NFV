@@ -34,7 +34,7 @@ tcpdump -i enp5sof0 -w 1.pcap "(ether proto 0x8624) or (tcp port 6363) or (udp p
 ##### PING TEST
 ndnpingserver -t /edu/umass | ndnping -c 4 -t ndn:/edu/umass<br/>
 ##### NDNPERF TEST
-./ndnperfserver -p ndn:/edu/umass -c 1500 -f 3600000 | "./ndnperf -p ndn:/edu/umass -d www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/BigBuckBunny_2s.mpd -w 16"<br/>
+./ndnperfserver -p ndn:/edu/umass -c 1500 -f 3600000 | "./ndnperf -p ndn:/edu/umass -d <filename> -w 16"<br/>
 
 ## STEP 2: Controller setup:
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/2_ryu.sh <br/>
