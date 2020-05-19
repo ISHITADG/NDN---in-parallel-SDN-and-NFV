@@ -8,6 +8,13 @@ git clone https://github.com/esnet/iperf.git;
 cd iperf && ./configure && make && make install;
 ldconfig;
 iperf3 -v;
+cd ..;
+
+#new installations
+sudo apt-get update
+sudo apt-get install -y openvswitch-switch
+sudo /etc/init.d/openvswitch-switch start 
+ovs-vsctl --version
 
 #Run this second: add physical interfaces to eth without OVS bridge copying it
 sudo su 
