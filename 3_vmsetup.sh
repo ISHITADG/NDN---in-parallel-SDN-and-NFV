@@ -20,18 +20,23 @@ ovs-vsctl --version
 sudo su 
 ovs-vsctl del-br ovsbr0
 ovs-vsctl add-br ovsbr0
-ovs-vsctl add-port ovsbr0 eth1
-ovs-vsctl add-port ovsbr0 eth2
-ovs-vsctl add-port ovsbr0 eth4
-#ovs-vsctl add-port ovsbr0 eth3
-#ovs-vsctl set Bridge ovsbr0 other_config:hwaddr="42:f6:4a:97:92:46"
+ifconfig ovsbr0 up
+ovsadd=$(cat /sys/class/net/ovsbr0/address)
+
+echo "enter ethernet ports in order: " 
+read e1 e2 e3 e4
+ovs-vsctl add-port ovsbr0 $e1
+ovs-vsctl add-port ovsbr0 $e2
+ovs-vsctl add-port ovsbr0 $e3
+ovs-vsctl add-port ovsbr0 $e4
 ovs-vsctl set Bridge ovsbr0 other_config:hwaddr="1e:70:f6:a4:0a:48"
-ovs-vsctl set-controller ovsbr0 tcp:155.98.39.152:6633
+echo "IP address of SDN controller: "
+read sdnip
+ovs-vsctl set-controller ovsbr0 tcp:$sdnip:6633
 
 #test with
 ovs-ofctl dump-ports-desc ovsbr0
-#ovs-appctl fdb/show ovsbr0
-#ovs-ofctl dump-flows ovsbr0
+ovs-ofctl dump-flows ovsbr0
 
 #creating virtual interface and adding to ovs-bridge (http://www.pocketnix.org/posts/Linux%20Networking:%20Dummy%20Interfaces%20and%20Virtual%20Bridges)
 ip link del virbr1
@@ -68,7 +73,4 @@ wget 'http://emmy10.casa.umass.edu/CNP/ishita/ipVM.qcow2'
 wget -L 'https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ipVM.xml'
 wget 'http://emmy10.casa.umass.edu/CNP/ishita/ndnVM.qcow2'
 wget -L 'https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ndnVM.xml'
-sudo virsh define ipVM.xml
-sudo virsh define ndnVM.xml
-sudo virsh start ipVM
-sudo virsh start ndnVM
+echo done
