@@ -73,4 +73,43 @@ wget 'http://emmy10.casa.umass.edu/CNP/ishita/ipVM.qcow2'
 wget -L 'https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ipVM.xml'
 wget 'http://emmy10.casa.umass.edu/CNP/ishita/ndnVM.qcow2'
 wget -L 'https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ndnVM.xml'
+
+#modify ipvm.xml & ndnvm.xml
+MYCUSTOMTAB='      '
+v1=$(cat /sys/class/net/virbr1/address)
+v2=$(cat /sys/class/net/virbr2/address)
+v3=$(cat /sys/class/net/virbr3/address)
+v4=$(cat /sys/class/net/virbr4/address)
+v5=$(cat /sys/class/net/virbr5/address)
+v6=$(cat /sys/class/net/virbr6/address)
+v7=$(cat /sys/class/net/virbr7/address)
+v8=$(cat /sys/class/net/virbr8/address)
+lineo=${MYCUSTOMTAB}"<mac address='$ovsadd'/>"
+line1=${MYCUSTOMTAB}"<mac address='$v1'/>"
+line2=${MYCUSTOMTAB}"<mac address='$v2'/>"
+line3=${MYCUSTOMTAB}"<mac address='$v3'/>"
+line4=${MYCUSTOMTAB}"<mac address='$v4'/>"
+line5=${MYCUSTOMTAB}"<mac address='$v5'/>"
+line6=${MYCUSTOMTAB}"<mac address='$v6'/>"
+line7=${MYCUSTOMTAB}"<mac address='$v7'/>"
+line8=${MYCUSTOMTAB}"<mac address='$v8'/>"
+#ndnVM
+sed -i "30s|.*|$lineo|g" ndnVM.xml
+sed -i "39s|.*|$line1|g" ndnVM.xml
+sed -i "45s|.*|$line2|g" ndnVM.xml
+sed -i "51s|.*|$line3|g" ndnVM.xml
+sed -i "57s|.*|$line4|g" ndnVM.xml
+#ipVM
+sed -i "34s|.*|$lineo|g" ipVM.xml
+sed -i "43s|.*|$line5|g" ipVM.xml
+sed -i "49s|.*|$line6|g" ipVM.xml
+sed -i "55s|.*|$line7|g" ipVM.xml
+sed -i "61s|.*|$line8|g" ipVM.xml
+
+#start vms
+virsh define ndnVM.xml
+virsh define ipVM.xml
+virsh start ipVM
+virsh start ndnVM
+
 echo done
