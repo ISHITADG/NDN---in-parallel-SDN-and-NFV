@@ -20,10 +20,10 @@ wget - L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NF
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_ipclient.sh <br/>
 bash 1_ipclient.sh <br/>
 #### NDN LOGS
-wget -L nfd.conf
-mv nfd.conf /etc/ndn/
-sudo systemctl stop nfd<br/>
-sudo systemctl start nfd<br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/nfd.conf <br/>
+mv nfd.conf /etc/ndn/<br/>
+sudo systemctl stop nfd;sudo systemctl start nfd<br/>
+nfd-stop; nfd-start<br/>
 router: nfdc route add prefix /edu/umass nexthop 260<br/>
 router old vm: nfdc register ndn:/edu/umass 257<br/>
 client: nfdc route add prefix /edu/umass nexthop 257<br/>
