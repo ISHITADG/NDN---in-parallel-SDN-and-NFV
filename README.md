@@ -46,7 +46,10 @@ ryu-manager controller.py <br/>
 (Run controller again) <br/>
 ## Step 3: Bridge setup on Routers:
 ### INSTALL & START VMs
-follow 3_vmsetup.sh <br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/3_vmsetup.sh <br/>
+bash 3_vmsetup.sh <br/>
+virsh console ipVM<br/>
+virsh console ndnVM<br/>
 
 
 
