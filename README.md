@@ -20,12 +20,12 @@ wget - L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NF
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_ipclient.sh <br/>
 bash 1_ipclient.sh <br/>
 #### NDN LOGS
-
 wget -L nfd.conf
 mv nfd.conf /etc/ndn/
 sudo systemctl stop nfd<br/>
 sudo systemctl start nfd<br/>
 router: nfdc route add prefix /edu/umass nexthop 260<br/>
+router old vm: nfdc register ndn:/edu/umass 257<br/>
 client: nfdc route add prefix /edu/umass nexthop 257<br/>
 journalctl -u nfd<br/>
 tcpdump -i eno4 -w 1.pcap "(ether proto 0x8624) or (tcp port 6363) or (udp port 6363) or (udp port 56363)"<br/>
@@ -44,16 +44,53 @@ wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV
 ryu-manager controller.py <br/>
 (print dpid and modify line 66 accordingly) <br/>
 (Run controller again) <br/>
+
 ## Step 3: Bridge setup on Routers:
 ### INSTALL & START VMs
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/3_vmsetup.sh <br/>
 bash 3_vmsetup.sh <br/>
 virsh console ipVM<br/>
 virsh console ndnVM<br/>
+// reset & check ipVM, ndnVM network config.
 
+!!Update Routes!!  <br/>
+sudo route del -net 10.0.0.0 netmask 255.0.0.0;  <br/>
+sudo ip route add 10.0.0.0/8 via 10.10.1.4; <br/>
+sudo route del -net 10.0.0.0 netmask 255.0.0.0;  <br/>
+sudo ip route add 10.0.0.0/8 via 10.10.2.4; <br/>
+sudo route del -net 10.0.0.0 netmask 255.0.0.0;  <br/>
+sudo ip route add 10.0.0.0/8 via 10.10.3.4; <br/>
+sudo route del -net 10.0.0.0 netmask 255.0.0.0;  <br/>
+sudo ip route add 10.0.0.0/8 via 10.10.4.4; <br/>
 
-
-
+!!!TC RULE INSTALLATION!!! <br/>
+>>SERVER <br/>
+tc qdisc del dev eno4 root
+tc qdisc add dev eno4 handle 1: root htb default 11 <br/>
+tc class add dev eno4 parent 1: classid 1:1 htb rate 10mbit  <br/>
+tc class add dev eno4 parent 1:1 classid 1:11 htb rate 6mbit <br/>
+tc class add dev eno4 parent 1:1 classid 1:12 htb rate 4mbit <br/>
+tc filter add dev eno4 parent 1: protocol ip prio 1 u32 match ip src 10.10.1.2 match ip dst 10.10.4.2 flowid 1:12 <br/>
+>>ROUTER (server's link) <br/>
+tc qdisc del dev enp5s0f1 root <br/>
+tc qdisc add dev enp5s0f1 handle 1: root htb default 11 <br/>
+tc class add dev enp5s0f1 parent 1: classid 1:1 htb rate 10mbit  <br/>
+tc class add dev enp5s0f1 parent 1:1 classid 1:11 htb rate 6mbit <br/>
+tc class add dev enp5s0f1 parent 1:1 classid 1:12 htb rate 4mbit <br/>
+tc filter add dev enp5s0f1 parent 1: protocol ip prio 1 u32 match ip src 10.10.4.2 match ip dst 10.10.1.2 flowid 1:12  <br/>
+>>OTHERS <br/>
+tc qdisc del dev eno2 root <br/>
+tc qdisc add dev eno2 handle 1: root htb default 11 <br/>
+tc class add dev eno2 parent 1:1 classid 1:11 htb rate 100mbit <br/>
+tc qdisc del dev eno4 root <br/>
+tc qdisc add dev eno4 handle 1: root htb default 11 <br/>
+tc class add dev eno4 parent 1:1 classid 1:11 htb rate 100mbit <br/>
+tc qdisc del dev enp5s0f1 root <br/>
+tc qdisc add dev enp5s0f1 handle 1: root htb default 11 <br/> 
+tc class add dev enp5s0f1 parent 1:1 classid 1:11 htb rate 100mbit  <br/>
+tc qdisc del dev enp5s0f0 root <br/>
+tc qdisc add dev enp5s0f0 handle 1: root htb default 11 <br/>
+tc class add dev enp5s0f0 parent 1:1 classid 1:11 htb rate 100mbit <br/>
 
 # earlier UBUNTU versions
 ## STEP1: Server & client setup:
