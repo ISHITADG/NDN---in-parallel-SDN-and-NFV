@@ -56,7 +56,7 @@ void Client::onNack(const ndn::Interest &interest, const ndn::lp::Nack &nack) {
 void Client::onData(const ndn::Interest &interest, const ndn::Data &data, std::chrono::steady_clock::time_point start) {
     _rtt += std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::steady_clock::now() - start).count();
     if (_first) {
-        std::cout << "Server signature type = " << data.getSignature().getType() << std::endl;
+        std::cout << "Server signature type = " << data.getSignatureType() << std::endl;
         std::cout << "Server packet size = " << data.getContent().value_size() << std::endl;
         _first = false;
     }
