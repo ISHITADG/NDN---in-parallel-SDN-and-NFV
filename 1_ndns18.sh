@@ -1,34 +1,26 @@
 #!/bin/bash
 #install all NDN dependencies and tools
 sudo apt-get update
-sudo apt-get install -y software-properties-common
-sudo add-apt-repository ppa:named-data/ppa -y
-sudo apt-get update
 sudo apt install -y build-essential libboost-all-dev libssl-dev libsqlite3-dev pkg-config python-minimal
 sudo apt install -y doxygen graphviz python3-pip
 sudo pip3 install sphinx sphinxcontrib-doxylink
-
-#install ndn-cxx
-git clone https://github.com/named-data/ndn-cxx.git
-cd ndn-cxx/
-CXXFLAGS="-std=c++14" ./waf configure
-./waf
-sudo ./waf install
-cd ..;
-
-#install nfd
+sudo apt-get install -y software-properties-common
 sudo add-apt-repository ppa:named-data/ppa -y
 sudo apt-get update
-sudo apt install -y nfd
-sudo cp /usr/local/etc/ndn/nfd.conf.sample /usr/local/etc/ndn/nfd.conf
+
+#install nfd & others
 sudo apt-get install -y ndn-cxx-dev
+sudo apt-get install -y ndn-cxx
+sudo apt install -y nfd
+sudo apt-get install -y ndn-tools
+sudo cp /usr/local/etc/ndn/nfd.conf.sample /usr/local/etc/ndn/nfd.conf
 #adding security element
 sudo ndnsec-keygen /`whoami` | ndnsec-install-cert -
 sudo mkdir -p /usr/local/etc/ndn/keys
 sudo ndnsec-cert-dump -i /`whoami` > default.ndncert
 sudo mv default.ndncert /usr/local/etc/ndn/keys/default.ndncert
 
-#install cmake
+#install cmake for ndnperf
 version=3.12;
 build=2;
 mkdir temp;
@@ -40,21 +32,19 @@ cd cmake-$version.$build/;
 make -j4;
 sudo make install;
 cmake --version;
-cd ../..;
+cd /users/ishitadg;
 
-#install ndnperf & tools
-sudo apt-get install -y ndn-tools
+#install ndnperf
 git clone https://github.com/Kanemochi/ndnperf.git
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/server.cpp
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/CMakeLists.txt
 mv server.cpp ndnperf/c++/server/
 mv CMakeLists.txt ndnperf/c++/server/
 cd ndnperf/c++/server/
-
-cmake . && make
+cmake . && make 
+cd /users/ishitadg;
 
 #other systemctl updates
-sudo cp nfd.service /etc/systemd/system
 sudo systemctl daemon-reload
 sudo mkdir -p /usr/local/var/log/ndn
 sudo chown -R ndn:ndn /usr/local/var/log/ndn
