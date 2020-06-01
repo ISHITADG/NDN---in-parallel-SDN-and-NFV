@@ -40,6 +40,7 @@ wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV
 mv client.cpp ndnperf/c++/client/
 cd ndnperf/c++/client/
 cmake . && make;
+mv bin/ndnperf .;
 cd ../../..;
 
 #other systemctl updates
