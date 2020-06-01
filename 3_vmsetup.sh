@@ -29,7 +29,7 @@ ovs-vsctl add-port ovsbr0 $e1
 ovs-vsctl add-port ovsbr0 $e2
 ovs-vsctl add-port ovsbr0 $e3
 ovs-vsctl add-port ovsbr0 $e4
-ovs-vsctl set Bridge ovsbr0 other_config:hwaddr="1e:70:f6:a4:0a:48"
+ovs-vsctl set Bridge ovsbr0 other_config:hwaddr=$ovsadd
 echo "IP address of SDN controller: "
 read sdnip
 ovs-vsctl set-controller ovsbr0 tcp:$sdnip:6633
@@ -69,10 +69,11 @@ ovs-vsctl add-port ovsbr0 virbr7
 ovs-vsctl add-port ovsbr0 virbr8
 
 #instantiate VMs
-wget 'http://emmy10.casa.umass.edu/CNP/ishita/ipVM.qcow2'
-wget -L 'https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ipVM.xml'
-wget 'http://emmy10.casa.umass.edu/CNP/ishita/ndnVM.qcow2'
-wget -L 'https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ndnVM.xml'
+cp -r /proj/CDNABRTest/ipVM.qcow2 .
+cp -r /proj/CDNABRTest/ipVM.xml .
+cp -r /proj/CDNABRTest/ub18vm.qcow2 .
+cp -r /proj/CDNABRTest/ndnIP.xml .
+
 
 #modify ipvm.xml & ndnvm.xml
 MYCUSTOMTAB='      '
@@ -94,11 +95,11 @@ line6=${MYCUSTOMTAB}"<mac address='$v6'/>"
 line7=${MYCUSTOMTAB}"<mac address='$v7'/>"
 line8=${MYCUSTOMTAB}"<mac address='$v8'/>"
 #ndnVM
-sed -i "30s|.*|$lineo|g" ndnVM.xml
-sed -i "39s|.*|$line1|g" ndnVM.xml
-sed -i "45s|.*|$line2|g" ndnVM.xml
-sed -i "51s|.*|$line3|g" ndnVM.xml
-sed -i "57s|.*|$line4|g" ndnVM.xml
+sed -i "87s|.*|$lineo|g" ndnVM.xml
+sed -i "96s|.*|$line1|g" ndnVM.xml
+sed -i "102s|.*|$line2|g" ndnVM.xml
+sed -i "108s|.*|$line3|g" ndnVM.xml
+sed -i "114s|.*|$line4|g" ndnVM.xml
 #ipVM
 sed -i "34s|.*|$lineo|g" ipVM.xml
 sed -i "43s|.*|$line5|g" ipVM.xml
