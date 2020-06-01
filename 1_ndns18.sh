@@ -42,6 +42,7 @@ mv server.cpp ndnperf/c++/server/
 mv CMakeLists.txt ndnperf/c++/server/
 cd ndnperf/c++/server/
 cmake . && make 
+mv bin/ndnperfserver .;
 cd /users/ishitadg;
 
 #other systemctl updates
