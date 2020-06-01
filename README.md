@@ -24,8 +24,7 @@ wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV
 mv nfd.conf /etc/ndn/<br/>
 sudo systemctl stop nfd;sudo systemctl start nfd<br/>
 nfd-stop; nfd-start<br/>
-router: nfdc route add prefix /edu/umass nexthop 260<br/>
-router old vm: nfdc register ndn:/edu/umass 257<br/>
+router: nfdc route add prefix /edu/umass nexthop 261<br/>
 client: nfdc route add prefix /edu/umass nexthop 257<br/>
 journalctl -u nfd<br/>
 tcpdump -i eno4 -w 1.pcap "(ether proto 0x8624) or (tcp port 6363) or (udp port 6363) or (udp port 56363)"<br/>
