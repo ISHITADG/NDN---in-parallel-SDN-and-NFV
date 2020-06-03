@@ -43,7 +43,6 @@ RUN apt-get install -y ndn-cxx-dev \
     && apt-get install -y ndn-cxx \
     && apt install -y nfd \
     && apt-get install -y ndn-tools \
-    && cp /usr/local/etc/ndn/nfd.conf.sample /usr/local/etc/ndn/nfd.conf \
     && ndnsec-keygen /`whoami` | ndnsec-install-cert - \
     && mkdir -p /usr/local/etc/ndn/keys \
     && ndnsec-cert-dump -i /`whoami` > default.ndncert \
