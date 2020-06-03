@@ -18,6 +18,7 @@ make;
 make install;
 ldconfig;
 iperf3 -v;
+cd ..
 
 #SETUP DOCKER AND OPENVSWITCH
 sudo wget https://raw.githubusercontent.com/ISHITADG/dockerNDN/master/dockovs.sh;
