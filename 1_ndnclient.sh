@@ -26,11 +26,9 @@ bash dockovs.sh;
 
 #SETUP NDN DOCKER
 
-#download Dockerfile(includes downloading Astreamer and Bhushan's client code)
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/Dockerfile;
-
-#build docker ndn docker type
-sudo docker build -t ndndock --build-arg VERSION_CXX=ndn-cxx-0.7.0 --build-arg VERSION_NFD=NFD-0.7.0 .;
+#download docker(includes downloading Astreamer,Bhushan's client code,ubuntu18+latest nfd on systemd)
+sudo docker load < /proj/CDNABRTest/ndn.tar;
+cat /proj/CDNABRTest/ndnexp.tar | sudo docker load import - jrei/systemd-ubuntu:18.04;
 
 #FOR RUNNING ON THE HOST CLIENT
 #install Astreamer for host streaming tests
