@@ -27,8 +27,7 @@ bash dockovs.sh;
 #SETUP NDN DOCKER
 
 #download docker(includes downloading Astreamer,Bhushan's client code,ubuntu18+latest nfd on systemd)
-sudo docker load < /proj/CDNABRTest/ndn.tar;
-cat /proj/CDNABRTest/ndnexp.tar | sudo docker load import - jrei/systemd-ubuntu:18.04;
+docker pull ishitadg/ndn18
 
 #FOR RUNNING ON THE HOST CLIENT
 #install Astreamer for host streaming tests
