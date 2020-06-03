@@ -52,6 +52,7 @@ RUN apt-get install -y ndn-cxx-dev \
 # install cmake & ndnperf-client app
 RUN apt-get install git \
     && git clone https://github.com/Kanemochi/ndnperf.git \
+    && apt-get install wget \
     && wget https://cmake.org/files/v3.12/cmake-3.12.2.tar.gz \
     && tar -xzvf cmake-3.12.2.tar.gz \
     && cd cmake-3.12.2 \
@@ -81,8 +82,7 @@ ENV LOG_FILE=/logs/nfd.log
 
 
 # install Astreamer
-RUN apt-get install wget \
-    && wget -L https://github.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/blob/master/client.zip?raw=true \
+RUN wget -L https://github.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/blob/master/client.zip?raw=true \
     && mv client.zip\?raw\=true client.zip \
     && apt-get install unzip \
     && unzip client.zip
