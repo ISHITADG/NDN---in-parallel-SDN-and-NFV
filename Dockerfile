@@ -39,10 +39,10 @@ RUN apt-get install git \
     && cd ../../..
     
 RUN systemctl daemon-reload \
-    && mkdir -p /usr/local/var/log/ndn
-    && chown -R ndn:ndn /usr/local/var/log/ndn
+    && mkdir -p /usr/local/var/log/ndn \
+    && chown -R ndn:ndn /usr/local/var/log/ndn \
     && sh -c ' \ mkdir -p /usr/local/var/lib/ndn/nfd/.ndn; \ export HOME=/usr/local/var/lib/ndn/nfd; \ ndnsec-keygen /localhost/daemons/nfd | ndnsec-install-cert -; \' \
-    && sh -c '\ mkdir -p /usr/local/etc/ndn/certs || true; \export HOME=/usr/local/var/lib/ndn/nfd; \ ndnsec-dump-certificate -i /localhost/daemons/nfd > \/usr/local/etc/ndn/certs/localhost_daemons_nfd.ndncert; \'
+    && sh -c '\ mkdir -p /usr/local/etc/ndn/certs || true; \ export HOME=/usr/local/var/lib/ndn/nfd; \ ndnsec-dump-certificate -i /localhost/daemons/nfd > \/usr/local/etc/ndn/certs/localhost_daemons_nfd.ndncert; \'
 
 
 EXPOSE 6363/tcp
