@@ -94,12 +94,12 @@ line5=${MYCUSTOMTAB}"<mac address='$v5'/>"
 line6=${MYCUSTOMTAB}"<mac address='$v6'/>"
 line7=${MYCUSTOMTAB}"<mac address='$v7'/>"
 line8=${MYCUSTOMTAB}"<mac address='$v8'/>"
-#ndnVM
-sed -i "87s|.*|$lineo|g" ndnVM.xml
-sed -i "96s|.*|$line1|g" ndnVM.xml
-sed -i "102s|.*|$line2|g" ndnVM.xml
-sed -i "108s|.*|$line3|g" ndnVM.xml
-sed -i "114s|.*|$line4|g" ndnVM.xml
+#ndnIP
+sed -i "87s|.*|$lineo|g" ndnIP.xml
+sed -i "96s|.*|$line1|g" ndnIP.xml
+sed -i "102s|.*|$line2|g" ndnIP.xml
+sed -i "108s|.*|$line3|g" ndnIP.xml
+sed -i "114s|.*|$line4|g" ndnIP.xml
 #ipVM
 sed -i "34s|.*|$lineo|g" ipVM.xml
 sed -i "43s|.*|$line5|g" ipVM.xml
@@ -108,9 +108,9 @@ sed -i "55s|.*|$line7|g" ipVM.xml
 sed -i "61s|.*|$line8|g" ipVM.xml
 
 #start vms
-virsh define ndnVM.xml
+virsh define ndnIP.xml
 virsh define ipVM.xml
 virsh start ipVM
-virsh start ndnVM
+virsh start ndnIP
 
 echo done
