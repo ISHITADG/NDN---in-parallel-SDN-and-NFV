@@ -18,7 +18,7 @@ ovs-vsctl add-port ovs-br1 $e1
 ovs-vsctl set Bridge ovs-br1 other_config:hwaddr=$ovsadd
 echo "IP address of SDN controller: "
 read sdnip
-ovs-vsctl set-controller ovsbr0 tcp:$sdnip:6633
+ovs-vsctl set-controller ovs-br1 tcp:$sdnip:6633
 ##for ndn over OVS
 for (( i=0; i<$answer; i++ )); do
   docker run -d --name ndn$i -p $port1:6363 -p $port2:6365/udp --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro ishitadg/ndn18
