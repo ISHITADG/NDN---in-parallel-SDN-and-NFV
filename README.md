@@ -64,7 +64,7 @@ sudo ip route add 10.0.0.0/8 via 10.10.4.4; <br/>
 
 !!!TC RULE INSTALLATION!!! <br/>
 >>SERVER <br/>
-tc qdisc del dev eno4 root
+tc qdisc del dev eno4 root <br/>
 tc qdisc add dev eno4 handle 1: root htb default 11 <br/>
 tc class add dev eno4 parent 1: classid 1:1 htb rate 10mbit  <br/>
 tc class add dev eno4 parent 1:1 classid 1:11 htb rate 6mbit <br/>
