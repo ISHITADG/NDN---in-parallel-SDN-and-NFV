@@ -41,8 +41,12 @@ ovs-ofctl dump-flows ovsbr0
 #creating virtual interface and adding to ovs-bridge (http://www.pocketnix.org/posts/Linux%20Networking:%20Dummy%20Interfaces%20and%20Virtual%20Bridges)
 ip link del virbr1
 ip link del virbr2
-ovs-vsctl del-port ovsbr0 virbr1
-ovs-vsctl del-port ovsbr0 virbr2
+ip link del virbr3
+ip link del virbr4
+ip link del virbr5
+ip link del virbr6
+ip link del virbr7
+ip link del virbr8
 ip link add name virbr1 type bridge
 ip link add name virbr2 type bridge
 ip link add name virbr3 type bridge
@@ -69,7 +73,7 @@ ovs-vsctl add-port ovsbr0 virbr7
 ovs-vsctl add-port ovsbr0 virbr8
 
 #instantiate VMs
-cp -r /proj/CDNABRTest/ipVM.qcow2 .
+cp -r /proj/CDNABRTest/ub18ip.qcow2 .
 cp -r /proj/CDNABRTest/ipVM.xml .
 cp -r /proj/CDNABRTest/ub18vm.qcow2 .
 cp -r /proj/CDNABRTest/ndnIP.xml .
@@ -101,11 +105,11 @@ sed -i "102s|.*|$line2|g" ndnIP.xml
 sed -i "108s|.*|$line3|g" ndnIP.xml
 sed -i "114s|.*|$line4|g" ndnIP.xml
 #ipVM
-sed -i "34s|.*|$lineo|g" ipVM.xml
-sed -i "43s|.*|$line5|g" ipVM.xml
-sed -i "49s|.*|$line6|g" ipVM.xml
-sed -i "55s|.*|$line7|g" ipVM.xml
-sed -i "61s|.*|$line8|g" ipVM.xml
+sed -i "87s|.*|$lineo|g" ipVM.xml
+sed -i "96s|.*|$line5|g" ipVM.xml
+sed -i "102s|.*|$line6|g" ipVM.xml
+sed -i "108s|.*|$line7|g" ipVM.xml
+sed -i "114s|.*|$line8|g" ipVM.xml
 
 #start vms
 virsh define ndnIP.xml
