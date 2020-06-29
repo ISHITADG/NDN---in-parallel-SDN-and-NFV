@@ -37,7 +37,7 @@
     <emulator>/usr/bin/kvm-spice</emulator>
     <disk type='file' device='disk'>
       <driver name='qemu' type='qcow2'/>
-      <source file='/var/lib/libvirt/images/ub18vm/ub18ip.qcow2'/>
+      <source file='/users/ishitadg/ub18ip.qcow2'/>
       <backingStore/>
       <target dev='vda' bus='virtio'/>
       <alias name='virtio-disk0'/>
