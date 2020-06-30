@@ -25,6 +25,7 @@ ovsadd=$(cat /sys/class/net/ovsbr0/address)
 
 echo "enter ethernet ports in order: " 
 read e1 e2 e3 e4
+#eno2 eno4 enp5s0f0 enp5s0f1
 ovs-vsctl add-port ovsbr0 $e1
 ovs-vsctl add-port ovsbr0 $e2
 ovs-vsctl add-port ovsbr0 $e3
@@ -32,6 +33,7 @@ ovs-vsctl add-port ovsbr0 $e4
 ovs-vsctl set Bridge ovsbr0 other_config:hwaddr=$ovsadd
 echo "IP address of SDN controller: "
 read sdnip
+#155.98.38.126
 ovs-vsctl set-controller ovsbr0 tcp:$sdnip:6633
 
 #test with
