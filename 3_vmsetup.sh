@@ -17,7 +17,6 @@ sudo /etc/init.d/openvswitch-switch start
 ovs-vsctl --version
 
 #Run this second: add physical interfaces to eth without OVS bridge copying it
-sudo su 
 ovs-vsctl del-br ovsbr0
 ovs-vsctl add-br ovsbr0
 ifconfig ovsbr0 up
