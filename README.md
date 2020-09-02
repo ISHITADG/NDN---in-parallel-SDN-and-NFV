@@ -64,19 +64,19 @@ sudo ip route add 10.0.0.0/8 via 10.10.4.4; <br/>
 
 !!!TC RULE INSTALLATION!!! <br/>
 >>SERVER <br/>
-tc qdisc del dev enp9s4f0 root <br/>
-tc qdisc add dev enp9s4f0 handle 1: root htb default 11 <br/>
-tc class add dev enp9s4f0 parent 1: classid 1:1 htb rate 10mbit  <br/>
-tc class add dev enp9s4f0 parent 1:1 classid 1:11 htb rate 6mbit <br/>
-tc class add dev enp9s4f0 parent 1:1 classid 1:12 htb rate 4mbit <br/>
-tc filter add dev enp9s4f0 parent 1: protocol ip prio 1 u32 match ip src 10.10.1.2 match ip dst 10.10.4.2 flowid 1:12 <br/>
+tc qdisc del dev enp10s3f1 root <br/>
+tc qdisc add dev enp10s3f1 handle 1: root htb default 11 <br/>
+tc class add dev enp10s3f1 parent 1: classid 1:1 htb rate 10mbit  <br/>
+tc class add dev enp10s3f1 parent 1:1 classid 1:11 htb rate 6mbit <br/>
+tc class add dev enp10s3f1 parent 1:1 classid 1:12 htb rate 4mbit <br/>
+tc filter add dev enp10s3f1 parent 1: protocol ip prio 1 u32 match ip src 10.10.1.2 match ip dst 10.10.4.2 flowid 1:12 <br/>
 >>ROUTER (server's link) <br/>
-tc qdisc del dev enp5s0f0 root <br/>
-tc qdisc add dev enp5s0f0 handle 1: root htb default 11 <br/>
-tc class add dev enp5s0f0 parent 1: classid 1:1 htb rate 10mbit  <br/>
-tc class add dev enp5s0f0 parent 1:1 classid 1:11 htb rate 6mbit <br/>
-tc class add dev enp5s0f0 parent 1:1 classid 1:12 htb rate 4mbit <br/>
-tc filter add dev enp5s0f0 parent 1: protocol ip prio 1 u32 match ip src 10.10.4.2 match ip dst 10.10.1.2 flowid 1:12  <br/>
+tc qdisc del dev eno4 root <br/>
+tc qdisc add dev eno4 handle 1: root htb default 11 <br/>
+tc class add dev eno4 parent 1: classid 1:1 htb rate 10mbit  <br/>
+tc class add dev eno4 parent 1:1 classid 1:11 htb rate 6mbit <br/>
+tc class add dev eno4 parent 1:1 classid 1:12 htb rate 4mbit <br/>
+tc filter add dev eno4 parent 1: protocol ip prio 1 u32 match ip src 10.10.4.2 match ip dst 10.10.1.2 flowid 1:12  <br/>
 >>OTHERS <br/>
 tc qdisc del dev eno2 root <br/>
 tc qdisc add dev eno2 handle 1: root htb default 11 <br/>
@@ -90,6 +90,9 @@ tc class add dev enp5s0f1 parent 1:1 classid 1:11 htb rate 100mbit  <br/>
 tc qdisc del dev enp5s0f0 root <br/>
 tc qdisc add dev enp5s0f0 handle 1: root htb default 11 <br/>
 tc class add dev enp5s0f0 parent 1:1 classid 1:11 htb rate 100mbit <br/>
+tc qdisc del dev enp6s0f3 root <br/>
+tc qdisc add dev enp6s0f3 handle 1: root htb default 11 <br/>
+tc class add dev enp6s0f3 parent 1:1 classid 1:11 htb rate 100mbit <br/>
 
 # earlier UBUNTU versions
 ## STEP1: Server & client setup:
