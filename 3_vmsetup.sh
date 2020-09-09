@@ -1,9 +1,11 @@
 ##Run this first: This installs all the dependencies
 #!/bin/bash
-sudo apt-get update
-sudo apt-get -y install vim && sudo apt-get purge libvirt-bin
-sudo apt-get -y install libvirt-bin
-sudo apt-get -y install qemu-kvm ubuntu-vm-builder bridge-utils && sudo virsh connect qemu:///system
+sudo apt-get update;
+sudo apt-get -y install vim && sudo apt-get purge libvirt-bin;
+sudo apt-get -y install libvirt-bin;
+sudo apt-get -y install qemu-kvm ubuntu-vm-builder bridge-utils && sudo virsh connect qemu:///system;
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/qemu.conf;
+service libvirtd restart;
 git clone https://github.com/esnet/iperf.git;
 cd iperf && ./configure && make && make install;
 ldconfig;
@@ -11,16 +13,16 @@ iperf3 -v;
 cd ..;
 
 #new installations
-sudo apt-get update
-sudo apt-get install -y openvswitch-switch
-sudo /etc/init.d/openvswitch-switch start 
-ovs-vsctl --version
+sudo apt-get update;
+sudo apt-get install -y openvswitch-switch;
+sudo /etc/init.d/openvswitch-switch start;
+ovs-vsctl --version;
 
 #Run this second: add physical interfaces to eth without OVS bridge copying it
-ovs-vsctl del-br ovsbr0
-ovs-vsctl add-br ovsbr0
-ifconfig ovsbr0 up
-ovsadd=$(cat /sys/class/net/ovsbr0/address)
+ovs-vsctl del-br ovsbr0;
+ovs-vsctl add-br ovsbr0;
+ifconfig ovsbr0 up;
+ovsadd=$(cat /sys/class/net/ovsbr0/address);
 
 echo "enter ethernet ports in order: " 
 read e1 e2 e3 e4
@@ -74,11 +76,8 @@ ovs-vsctl add-port ovsbr0 virbr7
 ovs-vsctl add-port ovsbr0 virbr8
 
 #instantiate VMs
-cp -r /proj/CDNABRTest/ub18ip.qcow2 .
 cp -r /proj/CDNABRTest/ipVM.xml .
-cp -r /proj/CDNABRTest/ub18vm.qcow2 .
 cp -r /proj/CDNABRTest/ndnIP.xml .
-
 
 #modify ipvm.xml & ndnvm.xml
 MYCUSTOMTAB='      '
