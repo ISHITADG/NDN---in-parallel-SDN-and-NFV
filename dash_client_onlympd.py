@@ -136,7 +136,7 @@ def get_mpd(url):
     #mpd_data = mpd_conn.read()
 
     #connection.close()
-    quic_cmd="/ndnperf/c++/client/bin/ndnperf -p ndn:/edu/umass -d "+url+" -w 16"
+    quic_cmd="python3 getfile.py -r bigbuckbunny -n /edu/umass/"+url
     config_dash.LOG.info(quic_cmd)
     log = open('out.txt', 'w')
     log.flush()
@@ -232,7 +232,7 @@ def download_segment_bola(domain, dp_list, segment_number, segment_url, dash_fol
                     '''             
                     chunk_start_time = timeit.default_timer()
 		    segment_url=segment_url.strip("://")
-    		    quic_cmd="/ndnperf/c++/client/bin/ndnperf -p ndn:/edu/umass -d "+segment_url+" -w 16"
+    		    quic_cmd="python3 getfile.py -r bigbuckbunny -n /edu/umass/"+segment_url
                     stream=os.system(quic_cmd)
     		    timenow = timeit.default_timer()
                     chunk_dl_time = timenow - chunk_start_time
@@ -459,7 +459,7 @@ def start_playback_smart(dp_object, domain, playback_type=None, download=False, 
     # Initialize the DASH buffer
     video_segment_duration = 2
     bola_init_state = False
-    timer_cmd="/ndnperf/c++/client/bin/ndnperf -p ndn:/edu/umass -d livestream.txt -w 16"
+    timer_cmd="python3 getfile.py -r bigbuckbunny -n /edu/umass/livestream.txt"
     stream=os.system(timer_cmd)
     f_timer=open("livestream.txt",'r')
     for line in f_timer.readlines():
