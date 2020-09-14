@@ -5,6 +5,7 @@ sudo apt-get -y install vim && sudo apt-get purge libvirt-bin;
 sudo apt-get -y install libvirt-bin;
 sudo apt-get -y install qemu-kvm ubuntu-vm-builder bridge-utils && sudo virsh connect qemu:///system;
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/qemu.conf;
+mv qemu.conf /etc/libvirt/qemu.conf;
 service libvirtd restart;
 git clone https://github.com/esnet/iperf.git;
 cd iperf && ./configure && make && make install;
