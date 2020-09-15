@@ -30,4 +30,4 @@ logging_config:
   # one of 'CRITICAL', 'ERROR', 'WARNING', 'INFO', 'DEBUG'
   'level': 'INFO'
   # absolute path to log file. If not given, logs to stdout
-  'file': '/users/ishitadg/repo.log'
+  'file': 'repo.log'
