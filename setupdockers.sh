@@ -1,9 +1,5 @@
 #!/bin/bash
 read -p "Run how many clients? " answer
-rm nfd.conf*;
-rm dash_client_onlympd.py*;
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/nfd.conf;
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/dash_client_onlympd.py;
 ##for ndn over OVS
 for (( i=0; i<$answer; i++ )); do
   #reset nfd config & simple mpd download script copy
