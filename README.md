@@ -1,9 +1,9 @@
 # NDN---in-parallel-SDN-and-NFV
 # An Evaluation of SDN and NFV Support for Parallel, Alternative Protocol Stack Operations on CloudLab
 # Ubuntu18 version
-## STEP1: Server & client setup:
-###SERVER setup:
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_ndns18.sh <br/>
+## STEP 1: Server & client setup:
+### SERVER setup:
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_ndn18.sh <br/>
 bash 1_ndns18.sh <br/>
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_server.sh <br/>
 bash 1_server.sh <br/>
@@ -13,27 +13,12 @@ bash 1_serverdld.sh <br/>
 
 ### CLIENT SETUP:
 #### FOR NDN CLIENTS
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_ndnc18.sh <br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_ndn18.sh <br/>
 bash 1_ndnc18.sh <br/>
 wget - L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_ndnclient.sh <br/>
 #### FOR IP CLIENTS
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_ipclient.sh <br/>
 bash 1_ipclient.sh <br/>
-#### NDN LOGS
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/nfd.conf <br/>
-mv nfd.conf /etc/ndn/<br/>
-sudo systemctl stop nfd;sudo systemctl start nfd<br/>
-nfd-stop; nfd-start<br/>
-router: nfdc route add prefix /edu/umass nexthop 261<br/>
-client: nfdc route add prefix /edu/umass nexthop 257<br/>
-journalctl -u nfd<br/>
-tcpdump -i eno4 -w 1.pcap "(ether proto 0x8624) or (tcp port 6363) or (udp port 6363) or (udp port 56363)"<br/>
-tcpdump -i enp5s0f1 -w 1.pcap "(ether proto 0x8624) or (tcp port 6363) or (udp port 6363) or (udp port 56363)"<br/>
-tcpdump -i enp5sof0 -w 1.pcap "(ether proto 0x8624) or (tcp port 6363) or (udp port 6363) or (udp port 56363)"<br/>
-##### PING TEST
-ndnpingserver -t /edu/umass | ndnping -c 4 -t ndn:/edu/umass<br/>
-##### NDNPERF TEST
-./ndnperfserver -p ndn:/edu/umass -c 1500 -f 3600000 | "./ndnperf -p ndn:/edu/umass -d <filename> -w 16"<br/>
 
 ## STEP 2: Controller setup:
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/2_ryu.sh <br/>
@@ -44,14 +29,20 @@ ryu-manager controller.py <br/>
 (print dpid and modify line 66 accordingly) <br/>
 (Run controller again) <br/>
 
-## Step 3: Bridge setup on Routers:
+## STEP 3: Bridge setup on Routers:
 ### INSTALL & START VMs
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/3_vmsetup.sh <br/>
 bash 3_vmsetup.sh <br/>
-virsh console ipVM<br/>
-virsh console ndnVM<br/>
 // reset & check ipVM, ndnVM network config.
 
+## STEP 4: SETUP ROUTER VMs
+### Setup IPVM - check end-to-end pings
+#### @ Router VM:
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/00-installer-config.yaml;<br/>
+mv  00-installer-config.yaml /etc/netplan/;<br/>
+sysctl -w net.ipv4.ip_forward=1;<br/>
+sudo netplan apply;<br/>
+#### @ server & other client nodes: 
 !!Update Routes!!  <br/>
 sudo route del -net 10.0.0.0 netmask 255.0.0.0;  <br/>
 sudo ip route add 10.0.0.0/8 via 10.10.1.4; <br/>
@@ -61,7 +52,7 @@ sudo route del -net 10.0.0.0 netmask 255.0.0.0;  <br/>
 sudo ip route add 10.0.0.0/8 via 10.10.3.4; <br/>
 sudo route del -net 10.0.0.0 netmask 255.0.0.0;  <br/>
 sudo ip route add 10.0.0.0/8 via 10.10.4.4; <br/>
-
+#### ADD Traffic control rules
 !!!TC RULE INSTALLATION!!! <br/>
 >>SERVER <br/>
 tc qdisc del dev enp10s3f1 root <br/>
@@ -94,7 +85,61 @@ tc qdisc del dev enp6s0f3 root <br/>
 tc qdisc add dev enp6s0f3 handle 1: root htb default 11 <br/>
 tc class add dev enp6s0f3 parent 1:1 classid 1:11 htb rate 100mbit <br/>
 
-# earlier UBUNTU versions
+
+### Setup NDNVM
+#### At router VM:
+ifconfig ens7 up<br/>
+ifconfig ens8 up<br/>
+ifconfig ens9 up<br/>
+ifconfig ens16 up<br/>
+ifconfig ens17 up<br/>
+#### At all:
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/nfd.conf <br/>
+mv nfd.conf /etc/ndn/<br/>
+sudo systemctl stop nfd;sudo systemctl start nfd<br/>
+#### Add routes
+nfdc face<br/>
+router: nfdc route add prefix /edu/umass nexthop 259<br/>
+client: nfdc route add prefix /edu/umass nexthop 257<br/>
+##### SEE LOGS OR DUMP TRACES
+journalctl -u nfd<br/>
+tcpdump -i eno4 -w 1.pcap "(ether proto 0x8624) or (tcp port 6363) or (udp port 6363) or (udp port 56363)"<br/>
+tcpdump -i enp5s0f1 -w 1.pcap "(ether proto 0x8624) or (tcp port 6363) or (udp port 6363) or (udp port 56363)"<br/>
+tcpdump -i enp5sof0 -w 1.pcap "(ether proto 0x8624) or (tcp port 6363) or (udp port 6363) or (udp port 56363)"<br/>
+##### NDNPING TEST
+ndnpingserver -t /edu/umass <br/>
+ndnping -c 4 -t ndn:/edu/umass<br/>
+##### NDNPERF TEST
+./ndnperfserver -p ndn:/edu/umass -c 1500 -f 3600000 | "./ndnperf -p ndn:/edu/umass -d <filename> -w 16"<br/>
+
+## STEP 5: START & SETUP NDN DOCKER CLIENTS
+cd /users/ishitadg/ndn-python-repo/examples/;<br/>
+vim startdockermcv1.sh;<br/>
+bash startdockermcv1.sh;<br/>
+vim startdockermcv2.sh;<br/>
+bash startdockermcv2.sh;<br/>
+bash setupdockers.sh;<br/>
+for (( i=0; i<10; i++ )); do docker cp dash_client_onlympd.py ndn$i:AStream/dist/client/; docker cp nfd.conf ndn$i:/usr/local/etc/ndn/nfd.conf; done
+
+## STEP 6: REPORT QoE 
+### @ NDN CLIENT
+#### BEFORE running ndnclients
+rm out*; rm *.mpd; rm trace*;<br/>
+bash ndnlive.sh;<br/>
+bash ndnqoe.sh;<br/>
+#### AFTER running ndnclients
+for (( i=0; i<20; i++ )); do docker cp ndn$i:AStream/dist/client/BigBuckBunny_2s.mpd BB$i.mpd; done <br/>
+for (( i=0; i<20; i++ )); do docker cp ndn$i:AStream/dist/client/out.txt out$i.txt; done<br/>
+for (( i=0; i<20; i++ )); do docker cp ndn$i:tcpdump.pcap tcp$i.pcap; done<br/>
+
+### @ IP CLIENT
+cd /users/ishitadg/AStream/dist/client;<br/>
+bash ipod.sh <br/>
+bash ipodqoe.sh <br/>
+python sample.py -m /www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/BigBuckBunny_2s.mpd -p bola <br/>
+
+
+# ***IGNORE**** OLDER VERSION INSTRUCTIONS earlier UBUNTU versions ***IGNORE****
 ## STEP1: Server & client setup:
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_ndn.sh <br/>
 bash 1_ndn.sh <br/>
