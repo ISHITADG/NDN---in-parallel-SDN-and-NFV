@@ -21,4 +21,17 @@ ln -s /proj/CDNABRTest/www-itec.uni-klu.ac.at livedata;
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ondemand.py; 
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/livestream_timer.py
 
+#install data to be downloaded over ndn
+cd /users/ishitadg/ndn-python-repo/examples/
+#cp -r /proj/CDNABRTest/www-itec.uni-klu.ac.at .;
+#ln -s www-itec.uni-klu.ac.at ondemand;
+ln -s /proj/CDNABRTest/www-itec.uni-klu.ac.at www-itec.uni-klu.ac.at;
+ln -s /proj/CDNABRTest/www-itec.uni-klu.ac.at ondemand;
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/livestream_timer.py;
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ondemand.py; 
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/upload.sh; 
+echo "BEGIN SERVER DATABASE UPLOAD"
+sleep 3
+bash upload.sh
+
 echo done
