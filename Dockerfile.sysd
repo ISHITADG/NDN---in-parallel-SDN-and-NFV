@@ -47,25 +47,20 @@ RUN apt-get install -y ndn-cxx-dev \
     && mkdir -p /usr/local/etc/ndn/keys \
     && ndnsec-cert-dump -i /`whoami` > default.ndncert \
     && mv default.ndncert /usr/local/etc/ndn/keys/default.ndncert
-
-# install cmake & ndnperf-client app
-RUN apt-get install git \
-    && git clone https://github.com/Kanemochi/ndnperf.git \
-    && apt-get install wget \
-    && wget https://cmake.org/files/v3.12/cmake-3.12.2.tar.gz \
-    && tar -xzvf cmake-3.12.2.tar.gz \
-    && cd cmake-3.12.2 \
-    && ./bootstrap \
-    && make -j4 \
-    && make install \
-    && cd .. \
-    && wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/client.cpp \
-    && mv client.cpp ndnperf/c++/client/ \
-    && cd ndnperf/c++/client \
-    && cmake . && make \
-    && mv bin/ndnperf . \
-    && cd ../../..
     
+#install ndn-python-repo
+RUN apt install python3-pip \
+    && pip3 install python-ndn \
+    && git clone https://github.com/JonnyKong/ndn-python-repo.git \
+    && cd ndn-python-repo && /usr/bin/pip3 install -e . \
+    && sudo ndn-python-repo-install \
+    && apt-get install -y sqlite3 libsqlite3-devs \
+    && cd ndn_python_repo \
+    && wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ndn-python-repo.conf.sample \
+    && systemctl stop ndn-python-repo; systemctl start ndn-python-repo \
+    && systemctl status ndn-python-repo \
+    && cd ../../
+ 
 RUN systemctl daemon-reload \
     && mkdir -p /usr/local/var/log/ndn \
     && chown -R ndn:ndn /usr/local/var/log/ndn \
