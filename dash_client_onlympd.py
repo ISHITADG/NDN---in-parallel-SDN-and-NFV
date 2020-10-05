@@ -137,7 +137,7 @@ def get_mpd(url):
 
     #connection.close()
     print("ishita: url: "+url) 
-    quic_cmd="python3 /users/ishitadg/ndn-python-repo/examples/getfile.py -r bigbuckbunny -n /edu/umass/"+url
+    quic_cmd="python3 ../../../getfile.py -r bigbuckbunny -n /edu/umass/"+url
     config_dash.LOG.info(quic_cmd)
     log = open('out.txt', 'w')
     log.flush()
