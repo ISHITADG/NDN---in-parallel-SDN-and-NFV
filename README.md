@@ -121,6 +121,9 @@ for (( i=0; i<10; i++ )); do docker cp dash_client_onlympd.py ndn$i:AStream/dist
 
 ## STEP 6: SAMPLE TEST SINGLE FILE DOWNLOADS AT CLIENTS OVER NDN-PYTHON-REPO
 ### @ Server (only for single file upload dwnload test)
+@cd /users/ishitadg/ndn-python-repo/ndn_python_repo;<br/>
+systemctl stop ndn-python-repo; systemctl start ndn-python-repo;<br/>
+systemctl status ndn-python-repo;<br/>
 cd /users/ishitadg/ndn-python-repo/examples/;<br/>
 python3 putfile.py -r bigbuckbunny --register_prefix /edu/umass -f www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/BigBuckBunny_2s.mpd  -n /edu/umass/BigBuckBunny_2s.mpd;<br/>
 ### @ Router NDNVM
