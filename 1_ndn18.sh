@@ -33,6 +33,22 @@ sudo sh -c '\
   ndnsec-dump-certificate -i /localhost/daemons/nfd > \
     /usr/local/etc/ndn/certs/localhost_daemons_nfd.ndncert; \
 '
+#ndnperf server & client
+cd /users/ishitadg;
+git clone https://github.com/Kanemochi/ndnperf.git
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/server.cpp
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/client.cpp
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/CMakeLists.txt
+mv server.cpp ndnperf/c++/server/;
+mv CMakeLists.txt ndnperf/c++/server/;
+mv client.cpp ndnperf/c++/client/
+cd ndnperf/c++/server/;
+cmake . && make;
+mv bin/ndnperfserver .;
+cd ../client;
+cmake . && make;
+mv bin/ndnperf .;
+cd ./users/ishitadg;
 
 #install & start ndn-python-repo
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ndnpyrepo_install.sh;
