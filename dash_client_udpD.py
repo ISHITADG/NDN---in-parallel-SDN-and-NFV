@@ -458,7 +458,7 @@ def start_playback_smart(dp_object, domain, playback_type=None, download=False, 
     # Initialize the DASH buffer
     video_segment_duration = 2
     bola_init_state = False
-    timer_cmd="../../../ndnperf -p ndn:/edu/umass -d ishita.txt -w 16"
+    timer_cmd="../../../ndnperf/c++/client/ndnperf -p ndn:/edu/umass -d ishita.txt -w 16"
     stream=os.system(timer_cmd)
     f_timer=open("ishita.txt",'r')
     for line in f_timer.readlines():
