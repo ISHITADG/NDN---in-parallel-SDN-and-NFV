@@ -4,7 +4,7 @@
   <Period duration="PT0H4M56.46S">
     <AdaptationSet mimeType="video/mp4" segmentAlignment="true" group="1" maxWidth="480" maxHeight="360" maxFrameRate="24" par="4:3">
       <Representation id="320x240 89.0kbps" mimeType="video/mp4" codecs="avc1.42c00d" width="320"  height="240" frameRate="24" sar="1:1" startWithSAP="1"  bandwidth="89283" >
-	  	<SegmentTemplate timescale="96" media="www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/bunny_$Bandwidth$bps/BigBuckBunny_2s$Number$%d.m4s" startNumber="1" duration="192" initialization="www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/bunny_$Bandwidth$bps/BigBuckBunny_2s_init.mp4" />
+	  	<SegmentTemplate timescale="96" media="bunny_$Bandwidth$bps/bunny_$Bandwidth$bps_BigBuckBunny_2s$Number$%d.m4s" startNumber="1" duration="192" initialization="bunny_$Bandwidth$bps/bunny_$Bandwidth$bps_BigBuckBunny_2s_init.mp4" />
 		<SegmentSize id="BigBuckBunny_2s1.m4s" size="200.0" scale="Kbits"/>
 	    <SegmentSize id="BigBuckBunny_2s2.m4s" size="144.0" scale="Kbits"/>
 	    <SegmentSize id="BigBuckBunny_2s3.m4s" size="176.0" scale="Kbits"/>
@@ -157,7 +157,7 @@
 	    <SegmentSize id="BigBuckBunny_2s150.m4s" size="152.0" scale="Kbits"/>
       </Representation>
 	  <Representation id="320x240 129.0kbps" mimeType="video/mp4" codecs="avc1.42c00d" width="320" height="240" frameRate="24" sar="1:1" startWithSAP="1" bandwidth="131087" >
-	  	<SegmentTemplate timescale="96" media="www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/bunny_$Bandwidth$bps/BigBuckBunny_2s$Number$%d.m4s" startNumber="1" duration="192" initialization="www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/bunny_$Bandwidth$bps/BigBuckBunny_2s_init.mp4" />
+	  	<SegmentTemplate timescale="96" media="bunny_$Bandwidth$bps/bunny_$Bandwidth$bps_BigBuckBunny_2s$Number$%d.m4s" startNumber="1" duration="192" initialization="bunny_$Bandwidth$bps/bunny_$Bandwidth$bps_BigBuckBunny_2s_init.mp4" />
 		<SegmentSize id="BigBuckBunny_2s1.m4s" size="288.0" scale="Kbits"/>
 	    <SegmentSize id="BigBuckBunny_2s2.m4s" size="224.0" scale="Kbits"/>
 	    <SegmentSize id="BigBuckBunny_2s3.m4s" size="272.0" scale="Kbits"/>
@@ -310,7 +310,7 @@
 	    <SegmentSize id="BigBuckBunny_2s150.m4s" size="224.0" scale="Kbits"/> 
       </Representation>
 	  <Representation id="480x360 177.0kbps" mimeType="video/mp4" codecs="avc1.42c015" width="480" height="360" frameRate="24" sar="1:1" startWithSAP="1" bandwidth="178351" >
-	  	<SegmentTemplate timescale="96" media="www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/bunny_$Bandwidth$bps/BigBuckBunny_2s$Number$%d.m4s" startNumber="1" duration="192" initialization="www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/bunny_$Bandwidth$bps/BigBuckBunny_2s_init.mp4" />
+	  	<SegmentTemplate timescale="96" media="bunny_$Bandwidth$bps/bunny_$Bandwidth$bps_BigBuckBunny_2s$Number$%d.m4s" startNumber="1" duration="192" initialization="bunny_$Bandwidth$bps/bunny_$Bandwidth$bps_BigBuckBunny_2s_init.mp4" />
 		<SegmentSize id="BigBuckBunny_2s1.m4s" size="384.0" scale="Kbits"/>
 		<SegmentSize id="BigBuckBunny_2s2.m4s" size="280.0" scale="Kbits"/>
 		<SegmentSize id="BigBuckBunny_2s3.m4s" size="376.0" scale="Kbits"/>
@@ -463,7 +463,7 @@
 		<SegmentSize id="BigBuckBunny_2s150.m4s" size="296.0" scale="Kbits"/>
 	  </Representation>
       <Representation id="480x360 218.0kbps" mimeType="video/mp4" codecs="avc1.42c015" width="480" height="360" frameRate="24" sar="1:1" startWithSAP="1" bandwidth="221600" >
- 	    <SegmentTemplate timescale="96" media="www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/bunny_$Bandwidth$bps/BigBuckBunny_2s$Number$%d.m4s" startNumber="1" duration="192" initialization="www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/bunny_$Bandwidth$bps/BigBuckBunny_2s_init.mp4" />
+ 	    <SegmentTemplate timescale="96" media="bunny_$Bandwidth$bps/bunny_$Bandwidth$bps_BigBuckBunny_2s$Number$%d.m4s" startNumber="1" duration="192" initialization="bunny_$Bandwidth$bps/bunny_$Bandwidth$bps_BigBuckBunny_2s_init.mp4" />
 		<SegmentSize id="BigBuckBunny_2s1.m4s" size="472.0" scale="Kbits"/>
 	    <SegmentSize id="BigBuckBunny_2s2.m4s" size="360.0" scale="Kbits"/>
 	    <SegmentSize id="BigBuckBunny_2s3.m4s" size="480.0" scale="Kbits"/>
@@ -616,7 +616,7 @@
 	    <SegmentSize id="BigBuckBunny_2s150.m4s" size="368.0" scale="Kbits"/>
 	  </Representation>
 	  <Representation id="480x360 256.0kbps" mimeType="video/mp4" codecs="avc1.42c015" width="480" height="360" frameRate="24" sar="1:1" startWithSAP="1" bandwidth="262537" >
-	  	<SegmentTemplate timescale="96" media="www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/bunny_$Bandwidth$bps/BigBuckBunny_2s$Number$%d.m4s" startNumber="1" duration="192" initialization="www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/bunny_$Bandwidth$bps/BigBuckBunny_2s_init.mp4" />
+	  	<SegmentTemplate timescale="96" media="bunny_$Bandwidth$bps/bunny_$Bandwidth$bps_BigBuckBunny_2s$Number$%d.m4s" startNumber="1" duration="192" initialization="bunny_$Bandwidth$bps/bunny_$Bandwidth$bps_BigBuckBunny_2s_init.mp4" />
 		<SegmentSize id="BigBuckBunny_2s1.m4s" size="568.0" scale="Kbits"/>
 	    <SegmentSize id="BigBuckBunny_2s2.m4s" size="448.0" scale="Kbits"/>
 	    <SegmentSize id="BigBuckBunny_2s3.m4s" size="568.0" scale="Kbits"/>
@@ -770,7 +770,7 @@
 	  </Representation>
 
 	  <Representation id="480x360 323.0kbps" mimeType="video/mp4" codecs="avc1.42c015" width="480" height="360" frameRate="24" sar="1:1" startWithSAP="1" bandwidth="334349" >
-	  	<SegmentTemplate timescale="96" media="www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/bunny_$Bandwidth$bps/BigBuckBunny_2s$Number$%d.m4s" startNumber="1" duration="192" initialization="www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/bunny_$Bandwidth$bps/BigBuckBunny_2s_init.mp4" />
+	  	<SegmentTemplate timescale="96" media="bunny_$Bandwidth$bps/bunny_$Bandwidth$bps_BigBuckBunny_2s$Number$%d.m4s" startNumber="1" duration="192" initialization="bunny_$Bandwidth$bps/bunny_$Bandwidth$bps_BigBuckBunny_2s_init.mp4" />
 		<SegmentSize id="BigBuckBunny_2s1.m4s" size="712.0" scale="Kbits"/>
 	    <SegmentSize id="BigBuckBunny_2s2.m4s" size="632.0" scale="Kbits"/>
 	    <SegmentSize id="BigBuckBunny_2s3.m4s" size="760.0" scale="Kbits"/>
@@ -923,7 +923,7 @@
 	    <SegmentSize id="BigBuckBunny_2s150.m4s" size="528.0" scale="Kbits"/>
       </Representation>
 	  <Representation id="854x480 578.0kbps" mimeType="video/mp4" codecs="avc1.42c01e" width="854" height="480" frameRate="24" sar="1:1" startWithSAP="1" bandwidth="595491" >
-	  	<SegmentTemplate timescale="96" media="www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/bunny_$Bandwidth$bps/BigBuckBunny_2s$Number$%d.m4s" startNumber="1" duration="192" initialization="www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/bunny_$Bandwidth$bps/BigBuckBunny_2s_init.mp4" />
+	  	<SegmentTemplate timescale="96" media="bunny_$Bandwidth$bps/bunny_$Bandwidth$bps_BigBuckBunny_2s$Number$%d.m4s" startNumber="1" duration="192" initialization="bunny_$Bandwidth$bps/bunny_$Bandwidth$bps_BigBuckBunny_2s_init.mp4" />
 		<SegmentSize id="BigBuckBunny_2s1.m4s" size="1208.0" scale="Kbits"/>
 	    <SegmentSize id="BigBuckBunny_2s2.m4s" size="1040.0" scale="Kbits"/>
 	    <SegmentSize id="BigBuckBunny_2s3.m4s" size="1264.0" scale="Kbits"/>
@@ -1077,7 +1077,7 @@
       </Representation>
 
 	  <Representation id="1280x720 783.0kbps" mimeType="video/mp4" codecs="avc1.42c01f" width="1280" height="720" frameRate="24" sar="1:1" startWithSAP="1" bandwidth="791182" >
-	  	<SegmentTemplate timescale="96" media="www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/bunny_$Bandwidth$bps/BigBuckBunny_2s$Number$%d.m4s" startNumber="1" duration="192" initialization="www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/bunny_$Bandwidth$bps/BigBuckBunny_2s_init.mp4" />
+	  	<SegmentTemplate timescale="96" media="bunny_$Bandwidth$bps/bunny_$Bandwidth$bps_BigBuckBunny_2s$Number$%d.m4s" startNumber="1" duration="192" initialization="bunny_$Bandwidth$bps/bunny_$Bandwidth$bps_BigBuckBunny_2s_init.mp4" />
 		<SegmentSize id="BigBuckBunny_2s1.m4s" size="1504.0" scale="Kbits"/>
 	    <SegmentSize id="BigBuckBunny_2s2.m4s" size="1144.0" scale="Kbits"/>
 	    <SegmentSize id="BigBuckBunny_2s3.m4s" size="1712.0" scale="Kbits"/>
@@ -1230,7 +1230,7 @@
 	    <SegmentSize id="BigBuckBunny_2s150.m4s" size="1344.0" scale="Kbits"/>
       </Representation>
 	  <Representation id="1280x720 1.0Mbps" mimeType="video/mp4" codecs="avc1.42c01f" width="1280" height="720" frameRate="24" sar="1:1" startWithSAP="1" bandwidth="1032682" >
-	  	<SegmentTemplate timescale="96" media="www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/bunny_$Bandwidth$bps/BigBuckBunny_2s$Number$%d.m4s" startNumber="1" duration="192" initialization="www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/bunny_$Bandwidth$bps/BigBuckBunny_2s_init.mp4" />
+	  	<SegmentTemplate timescale="96" media="bunny_$Bandwidth$bps/bunny_$Bandwidth$bps_BigBuckBunny_2s$Number$%d.m4s" startNumber="1" duration="192" initialization="bunny_$Bandwidth$bps/bunny_$Bandwidth$bps_BigBuckBunny_2s_init.mp4" />
 		<SegmentSize id="BigBuckBunny_2s1.m4s" size="2136.0" scale="Kbits"/>
 	    <SegmentSize id="BigBuckBunny_2s2.m4s" size="1776.0" scale="Kbits"/>
 	    <SegmentSize id="BigBuckBunny_2s3.m4s" size="2272.0" scale="Kbits"/>
@@ -1383,7 +1383,7 @@
 	    <SegmentSize id="BigBuckBunny_2s150.m4s" size="1664.0" scale="Kbits"/>
       </Representation>
 	  <Representation id="1280x720 1.2Mbps" mimeType="video/mp4" codecs="avc1.42c01f" width="1280" height="720" frameRate="24" sar="1:1" startWithSAP="1" bandwidth="1244778" >
-	  	<SegmentTemplate timescale="96" media="www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/bunny_$Bandwidth$bps/BigBuckBunny_2s$Number$%d.m4s" startNumber="1" duration="192" initialization="www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/bunny_$Bandwidth$bps/BigBuckBunny_2s_init.mp4" />
+	  	<SegmentTemplate timescale="96" media="bunny_$Bandwidth$bps/bunny_$Bandwidth$bps_BigBuckBunny_2s$Number$%d.m4s" startNumber="1" duration="192" initialization="bunny_$Bandwidth$bps/bunny_$Bandwidth$bps_BigBuckBunny_2s_init.mp4" />
 		<SegmentSize id="BigBuckBunny_2s1.m4s" size="2712.0" scale="Kbits"/>
 	    <SegmentSize id="BigBuckBunny_2s2.m4s" size="2216.0" scale="Kbits"/>
 	    <SegmentSize id="BigBuckBunny_2s3.m4s" size="2832.0" scale="Kbits"/>
@@ -1536,7 +1536,7 @@
 	    <SegmentSize id="BigBuckBunny_2s150.m4s" size="2024.0" scale="Kbits"/>
       </Representation>
 	  <Representation id="1280x720 1.5Mbps" mimeType="video/mp4" codecs="avc1.42c01f" width="1280" height="720" frameRate="24" sar="1:1" startWithSAP="1" bandwidth="1546902" >
-	  	<SegmentTemplate timescale="96" media="www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/bunny_$Bandwidth$bps/BigBuckBunny_2s$Number$%d.m4s" startNumber="1" duration="192" initialization="www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/bunny_$Bandwidth$bps/BigBuckBunny_2s_init.mp4" />
+	  	<SegmentTemplate timescale="96" media="bunny_$Bandwidth$bps/bunny_$Bandwidth$bps_BigBuckBunny_2s$Number$%d.m4s" startNumber="1" duration="192" initialization="bunny_$Bandwidth$bps/bunny_$Bandwidth$bps_BigBuckBunny_2s_init.mp4" />
 		<SegmentSize id="BigBuckBunny_2s1.m4s" size="3312.0" scale="Kbits"/>
 	    <SegmentSize id="BigBuckBunny_2s2.m4s" size="2960.0" scale="Kbits"/>
 	    <SegmentSize id="BigBuckBunny_2s3.m4s" size="3848.0" scale="Kbits"/>
@@ -1689,7 +1689,7 @@
 	    <SegmentSize id="BigBuckBunny_2s150.m4s" size="2352.0" scale="Kbits"/>
       </Representation>
 	  <Representation id="1920x1080 2.4Mbps" mimeType="video/mp4" codecs="avc1.42c032" width="1920" height="1080" frameRate="24" sar="1:1" startWithSAP="1" bandwidth="2484135" >
-	  	<SegmentTemplate timescale="96" media="www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/bunny_$Bandwidth$bps/BigBuckBunny_2s$Number$%d.m4s" startNumber="1" duration="192" initialization="www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/bunny_$Bandwidth$bps/BigBuckBunny_2s_init.mp4" />
+	  	<SegmentTemplate timescale="96" media="bunny_$Bandwidth$bps/bunny_$Bandwidth$bps_BigBuckBunny_2s$Number$%d.m4s" startNumber="1" duration="192" initialization="bunny_$Bandwidth$bps/bunny_$Bandwidth$bps_BigBuckBunny_2s_init.mp4" />
 		<SegmentSize id="BigBuckBunny_2s1.m4s" size="5376.0" scale="Kbits"/>
 	    <SegmentSize id="BigBuckBunny_2s2.m4s" size="4560.0" scale="Kbits"/>
 	    <SegmentSize id="BigBuckBunny_2s3.m4s" size="5688.0" scale="Kbits"/>
@@ -1842,7 +1842,7 @@
 	    <SegmentSize id="BigBuckBunny_2s150.m4s" size="4064.0" scale="Kbits"/>
       </Representation>
 	  <Representation id="1920x1080 3.3Mbps" mimeType="video/mp4" codecs="avc1.42c032" width="1920" height="1080" frameRate="24" sar="1:1" startWithSAP="1" bandwidth="3526922" >
-	  	<SegmentTemplate timescale="96" media="www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/bunny_$Bandwidth$bps/BigBuckBunny_2s$Number$%d.m4s" startNumber="1" duration="192" initialization="www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/bunny_$Bandwidth$bps/BigBuckBunny_2s_init.mp4" />
+	  	<SegmentTemplate timescale="96" media="bunny_$Bandwidth$bps/bunny_$Bandwidth$bps_BigBuckBunny_2s$Number$%d.m4s" startNumber="1" duration="192" initialization="bunny_$Bandwidth$bps/bunny_$Bandwidth$bps_BigBuckBunny_2s_init.mp4" />
 		<SegmentSize id="BigBuckBunny_2s1.m4s" size="7640.0" scale="Kbits"/>
 	    <SegmentSize id="BigBuckBunny_2s2.m4s" size="6944.0" scale="Kbits"/>
 	    <SegmentSize id="BigBuckBunny_2s3.m4s" size="9600.0" scale="Kbits"/>
@@ -1995,7 +1995,7 @@
 	    <SegmentSize id="BigBuckBunny_2s150.m4s" size="5696.0" scale="Kbits"/>
       </Representation>	  
 	  <Representation id="1920x1080 3.9Mbps" mimeType="video/mp4" codecs="avc1.42c032" width="1920" height="1080" frameRate="24" sar="1:1" startWithSAP="1" bandwidth="4219897" >
-	  	<SegmentTemplate timescale="96" media="www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/bunny_$Bandwidth$bps/BigBuckBunny_2s$Number$%d.m4s" startNumber="1" duration="192" initialization="www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/bunny_$Bandwidth$bps/BigBuckBunny_2s_init.mp4" />
+	  	<SegmentTemplate timescale="96" media="bunny_$Bandwidth$bps/bunny_$Bandwidth$bps_BigBuckBunny_2s$Number$%d.m4s" startNumber="1" duration="192" initialization="bunny_$Bandwidth$bps/bunny_$Bandwidth$bps_BigBuckBunny_2s_init.mp4" />
 		<SegmentSize id="BigBuckBunny_2s1.m4s" size="8000.0" scale="Kbits"/>
 	    <SegmentSize id="BigBuckBunny_2s2.m4s" size="8000.0" scale="Kbits"/>
 	    <SegmentSize id="BigBuckBunny_2s3.m4s" size="11200.0" scale="Kbits"/>
