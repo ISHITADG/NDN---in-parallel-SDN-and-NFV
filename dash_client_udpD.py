@@ -228,10 +228,11 @@ def download_segment_bola(domain, dp_list, segment_number, segment_url, dash_fol
                     #config_dash.LOG.info("Start_Abandonment_Logic")
                     start_abandon = timeit.default_timer()
                     '''             
-                    chunk_start_time = timeit.default_timer()
+                    
 		    segment_url=segment_url.strip("://")
                     config_dash.LOG.info("ishita checks segment_url"+segment_url)
-    		    quic_cmd="python3 ../../../getfile.py -r bigbuckbunny -n /edu/umass/"+segment_url
+		    quic_cmd="python3 ../../../getfile.py -r bigbuckbunny -n /edu/umass/"+segment_url
+		    chunk_start_time = timeit.default_timer()
                     stream=os.system(quic_cmd)
     		    timenow = timeit.default_timer()
                     chunk_dl_time = timenow - chunk_start_time
@@ -353,7 +354,6 @@ def download_segment_queue(segment_url, dash_folder, q1, q2, q3):
     try:
         #print segment_url
         total_data_dl_time = 0
-        
         chunk_number = 0
         chunk_start_time = timeit.default_timer()
         with closing(connection.get(segment_url, stream=True)) as seg_conn:
@@ -465,7 +465,6 @@ def start_playback_smart(dp_object, domain, playback_type=None, download=False, 
         print int(line)
     segment_number = int(line)
     dash_player = dash_buffer.DashPlayer((dp_object.playback_duration - (segment_number*video_segment_duration)), video_segment_duration)
-    start_dload_time = timeit.default_timer()
     dash_player.start()
     # A folder to save the segments in
     file_identifier = id_generator()
@@ -490,14 +489,12 @@ def start_playback_smart(dp_object, domain, playback_type=None, download=False, 
     segment_files = []
     # For basic adaptation
     global segment_w_chunks
-    init_dl_start_time = timeit.default_timer() 
     segment_w_chunks = []
     previous_segment_times = []
     #BOLA lists
     last_requests_start = []
     last_requests_finish = []
     last_requests_tput = []
-
     recent_download_sizes = []
     bitrate_history = []
     #segment_dl_rates = []
@@ -524,6 +521,8 @@ def start_playback_smart(dp_object, domain, playback_type=None, download=False, 
     #for segment_number, segment in enumerate(dp_list, dp_object.video[current_bitrate].start):
     #for segment_number in dp_list:s
     original_segment_number = 1
+    start_dload_time = timeit.default_timer()
+    init_dl_start_time = timeit.default_timer() 
     while segment_number < len(dp_list):
 
         #print len(dp_list)
