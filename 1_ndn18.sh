@@ -48,7 +48,7 @@ mv bin/ndnperfserver .;
 cd ../client;
 cmake . && make;
 mv bin/ndnperf .;
-cd ./users/ishitadg;
+cd /users/ishitadg;
 
 #install & start ndn-python-repo
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ndnpyrepo_install.sh;
