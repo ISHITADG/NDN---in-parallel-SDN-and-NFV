@@ -4,7 +4,7 @@ repo_config:
   repo_name: 'bigbuckbunny'
   # if true, the repo registers the root prefix. If false, client needs to tell repo
   # which prefix to register/unregister
-  register_root: False
+  register_root: true
 
 
 db_config:
