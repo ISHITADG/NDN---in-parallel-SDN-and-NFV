@@ -10,7 +10,7 @@ network:
       routes:
               - to: 10.10.3.0/24
                 scope: link
-    ens8:
+    ens9:
       dhcp4: false
       addresses:
               - 10.10.4.4/24
