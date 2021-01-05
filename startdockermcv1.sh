@@ -1,7 +1,7 @@
 #!/bin/bash
 read -p "Run how many clients? " answer
 docker rm -f $(docker ps -aq)
-docker network rm mymcvn2
+docker network rm mymcvn1
 #setup mcvlan network 
 docker network create -d macvlan --subnet=10.10.3.0/24 --gateway=10.10.3.2 --aux-address="exclude1=10.10.3.1" --aux-address="exclude2=10.10.3.4" --ip-range=10.10.3.10/27 -o parent=enp5s0f0 mymcvn1
 #NDN Docker setup
