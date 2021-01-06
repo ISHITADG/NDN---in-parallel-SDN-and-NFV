@@ -86,9 +86,13 @@ for name in DASH_BUFFER_FILENAME:#glob.glob(DASH_BUFFER_FILENAME):
 	list_time=np.genfromtxt(name,delimiter=',', usecols=0, dtype=float)
 	#print list_time
 	list_quals=list_quals[~np.isnan(list_quals)]
-	
-	if list_quals.size>5:
-		rebuffering_perc = (list_time[len(list_time)-1] - 299.0)*100/ 299.0
+	lastseg=(list_quals[len(list_quals)-1])
+        print("Last Playback time:"+lastseg)
+        if lastseg<295:
+            print("INCOMPLETE PLAYBACK")
+        if list_quals.size>5:
+                rebuffering_perc = (list_time[len(list_time)-1] - 299.0)*100/ 299.0
+                #rebuffering_perc = (list_time[len(list_time)-1] - 296.46)*100/296.46 (Discuss whetehr 295 or 296.46)
 		#Check if player terminates during playback (e.g. unreachable server)
 		if (list_time[len(list_time)-1] - 299.0)<0:
 			rebuf_arr.append(0.0)
