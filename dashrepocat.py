@@ -136,7 +136,7 @@ def get_mpd(url):
 
     #connection.close()
     print("ishita: url: "+url)
-    quic_cmd="ndncatchunks -qTD /edu/umass/"+url+" > "+url+" 2>&1"
+    quic_cmd="ndncatchunks --fast-conv --init-ssthresh 12 --ignore-marks -qTD /edu/umass/"+url+" > "+url+" 2>&1"
     #quic_cmd="python3 ../../../getfile.py -r bigbuckbunny -n /edu/umass/"+url
     config_dash.LOG.info(quic_cmd)
     stream=os.popen(quic_cmd)
@@ -234,7 +234,7 @@ def download_segment_bola(domain, dp_list, segment_number, segment_url, dash_fol
                     config_dash.LOG.info("ishita checks segment_url"+segment_url)
 		    #quic_cmd="python3 ../../../getfile.py -r bigbuckbunny -n /edu/umass/"+segment_url
 		    segmentname=os.path.basename(segment_url)
-                    quic_cmd="ndncatchunks -qTD /edu/umass/"+segment_url+" > "+segmentname+" 2>&1"
+                    quic_cmd="ndncatchunks --fast-conv --init-ssthresh 12 --ignore-marks -vTD /edu/umass/"+segment_url+" > "+segmentname+" 2>&1"
                     chunk_start_time = timeit.default_timer()
                     stream=os.system(quic_cmd)
     		    timenow = timeit.default_timer()
@@ -461,8 +461,8 @@ def start_playback_smart(dp_object, domain, playback_type=None, download=False, 
     # Initialize the DASH buffer
     video_segment_duration = 2
     bola_init_state = False
-    timer_cmd="../../../ndnperf/c++/client/bin/ndnperf -p ndn:/edu/umass -d ishita.txt -w 16"
-    stream=os.system(timer_cmd)
+    #timer_cmd="../../../ndnperf/c++/client/bin/ndnperf -p ndn:/edu/umass -d ishita.txt -w 16"
+    #stream=os.system(timer_cmd)
     f_timer=open("ishita.txt",'r')
     for line in f_timer.readlines():
         print int(line)
