@@ -117,6 +117,12 @@ tcpdump -i enp5s0f1 -w 1.pcap "(ether proto 0x8624) or (tcp port 6363) or (udp p
 tcpdump -i enp5sof0 -w 1.pcap "(ether proto 0x8624) or (tcp port 6363) or (udp port 6363) or (udp port 56363)"<br/>
 
 ## STEP 5: START & SETUP NDN DOCKER CLIENTS FOR FINAL STEP
+### To remove limit on journal logs do the following
+wget https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/journald.conf; <br/>
+mv journald.conf /etc/systemd/; <br/>
+systemctl restart systemd-journald; <br/>
+
+### Start streaming
 cd /users/ishitadg/ndn-python-repo/examples/;<br/>
 vim startdockermcv1.sh;<br/>
 bash startdockermcv1.sh;<br/>
