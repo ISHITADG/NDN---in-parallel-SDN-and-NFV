@@ -13,7 +13,9 @@ iperf3 -v;
 #install data to be downloaded for IP
 sudo apt-get update;
 sudo apt-get -y install apache2;
+cp /proj/CDNABRTest/apache2.conf /etc/apache2/apache2.conf;
 /etc/init.d/apache2 restart;
+apachectl configtest && service apache2 restart;
 cd /var/www/html;
 cp -r /proj/CDNABRTest/www-itec.uni-klu.ac.at .;
 ln -s www-itec.uni-klu.ac.at livedata;
