@@ -19,6 +19,7 @@ cp -r /proj/CDNABRTest/www-itec.uni-klu.ac.at .;
 ln -s www-itec.uni-klu.ac.at livedata;
 #ln -s /proj/CDNABRTest/www-itec.uni-klu.ac.at livedata;
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ondemand.py; 
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ondemand.txt;
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/livestream_timer.py
 
 #install data to be downloaded over ndn
