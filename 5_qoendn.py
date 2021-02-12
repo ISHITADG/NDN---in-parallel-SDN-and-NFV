@@ -41,7 +41,6 @@ Here we use a video of length 299s.
 rebuf_arr = []
 rebuf_file=[]
 faultyclient=[]
-i=0
 for name in DASH_BUFFER_FILENAME:#glob.glob(DASH_BUFFER_FILENAME):
     list_quals=np.genfromtxt(name,delimiter=',', usecols=1, dtype=float)
     list_time=np.genfromtxt(name,delimiter=',', usecols=0, dtype=float)
@@ -52,12 +51,11 @@ for name in DASH_BUFFER_FILENAME:#glob.glob(DASH_BUFFER_FILENAME):
     lastpbstate=list_pbstate[len(list_pbstate)-1]
     #if streaming is not complete, flag and ignore stats for this state
     if lastpbstate!="END":
-        faultyclient.append(i)
-        i=i+1
+	filenum=name[len(name)-5]
+        faultyclient.append(filenum)
         print("!!!!!! INCOMPLETE PLAYBACK DETECTED. IGNORING STATS FOR CONTAINER: "+name+" !!!!!!")
         continue
     else:
-        i=i+1
         if list_quals.size>5:
             rebuffering_perc = (list_time[len(list_time)-1] - lastpbtime)*100/ lastpbtime
             rebuf_arr.append(rebuffering_perc)
