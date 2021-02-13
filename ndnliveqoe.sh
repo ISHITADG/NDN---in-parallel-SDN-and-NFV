@@ -1,7 +1,7 @@
 #!/bin/bash
 read -p "Run how many clients? " answer
 #COPY RESULTS
-mkdir /users/ishitadg/NDN; mkdir /users/ishitadg/NDN/DASH_BUFFER; mkdir /users/ishitadg/NDN/BOLA_LOG/;
+mkdir -p /users/ishitadg/NDN; mkdir -p /users/ishitadg/NDN/DASH_BUFFER; mkdir -p /users/ishitadg/NDN/BOLA_LOG/;
 cd /users/ishitadg/NDN/DASH_BUFFER;rm *;
 for (( i=0; i<$answer; i++ )); do
   docker cp ndn$i:/mnt/QUIClientServer0/ASTREAM_LOGS/ .;
@@ -16,8 +16,7 @@ done
 sudo rm -rf ASTREAM_LOGS/;
 
 #RUN QOE
-cd /users/ishitadg/; rm NDN/abr*; rm 5_qoendn.py;
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/5_qoendn.py;
+cd /users/ishitadg/; rm NDN/abr*;
 python 5_qoendn.py;
 mv abr* NDN/;
 echo done;
