@@ -107,47 +107,16 @@ class DashPlayback:
 def get_mpd(url):
     """ Module to download the MPD from the URL and save it to file"""
     global connection
-
-    '''
-    #try:
-        
-        #parse_url = urlparse.urlparse(url)
-        combine_url = str.join((parse_url.scheme, "://",parse_url.netloc))
-        config_dash.LOG.info("DASH URL %s" %combine_url)
-        connection = urllib3.connection_from_url(combine_url)
-        conn_mpd = connection.request('GET', combine_url)
-        config_dash.LOG.info("MPD URL %s" %parse_url.path)
-        #connection = HTTPConnectionPool(parse_url.netloc)
-        #mpd_conn = connection.get(url) 
-    #except urllib2.HTTPError, error:
-        #config_dash.LOG.error("Unable to download MPD file HTTP Error: %s" % error.code)
-        #return None
-    except urllib2.URLError:
-        error_message = "URLError. Unable to reach Server.Check if Server active"
-        config_dash.LOG.error(error_message)
-        print error_message
-        return None
-    except IOError, httplib.HTTPException:
-        message = "Unable to , file_identifierdownload MPD file HTTP Error."
-        config_dash.LOG.error(message)
-        return None
-    '''
-    #mpd_data = mpd_conn.read()
-
-    #connection.close()
     print("ishita: url: "+url)
-    quic_cmd="ndncatchunks --fast-conv --init-ssthresh 12 --ignore-marks -qTD /edu/umass/"+url+" > "+url+" 2>&1"
+    quic_cmd="ndncatchunks -qTD /edu/umass/"+url+" > "+url
     #quic_cmd="python3 ../../../getfile.py -r bigbuckbunny -n /edu/umass/"+url
     config_dash.LOG.info(quic_cmd)
-    stream=os.popen(quic_cmd)
+    stream=subprocess.Popen(quic_cmd, shell=True, stdin=None, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    out,err=stream.communicate()
+    #config_dash.LOG.info(url+" :NDNCAT OUTPUT:\n"+out)
+    #config_dash.LOG.info(url+" :NDNCAT ERROR:\n"+err)
+    #stream=os.popen(quic_cmd)
     mpd_file = url.split('/')[-1]
-
-    #mpd_file_handle = open(mpd_file, 'wb')
-    #mpd_file_handle.writelines(stream[:len(stream)])
-    #mpd_file_handle.close()
-    #mpd_conn.close()
-    #mpd_conn.release_conn()
-    #config_dash.LOG.info(mpd_conn.data)
     config_dash.LOG.info("Downloaded the MPD file {}".format(mpd_file))
     return mpd_file
 
@@ -232,16 +201,22 @@ def download_segment_bola(domain, dp_list, segment_number, segment_url, dash_fol
                     
 		    segment_url=segment_url.strip("://")
                     config_dash.LOG.info("ishita checks segment_url"+segment_url)
-		    #quic_cmd="python3 ../../../getfile.py -r bigbuckbunny -n /edu/umass/"+segment_url
-		    segmentname=os.path.basename(segment_url)
-                    quic_cmd="ndncatchunks --fast-conv --init-ssthresh 12 --ignore-marks -vTD /edu/umass/"+segment_url+" > "+segmentname+" 2>&1"
+                    #quic_cmd="python3 ../../../getfile.py -r bigbuckbunny -n /edu/umass/"+segment_url
+                    segmentname=os.path.basename(segment_url)
+                    quic_cmd="ndncatchunks -vTD /edu/umass/"+segment_url+" > "+segmentname+" 2>eror"
+                    config_dash.LOG.info("Starting system call for"+segment_url)
                     chunk_start_time = timeit.default_timer()
-                    stream=os.system(quic_cmd)
-    		    timenow = timeit.default_timer()
+                    #stream=os.system(quic_cmd)
+                    streams=subprocess.Popen(quic_cmd, shell=True, stdin=None, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                    outs,errs=streams.communicate()
+                    timenow = timeit.default_timer()
+                    #config_dash.LOG.info(segmentname+" :NDNCAT OUTPUT:\n"+out)
+                    #config_dash.LOG.info(segmentname+" :NDNCAT ERROR:\n"+err)
+                    config_dash.LOG.info("Ending system call for"+segmentname)
                     chunk_dl_time = timenow - chunk_start_time
- 		    segment_filename=segment_url.split('/')[-1]
+                    segment_filename=segment_url.split('/')[-1]
                     #segment_file_handle = open(segment_filename, 'wb')
-		    segment_size+=os.stat(segment_filename).st_size 
+                    segment_size+=os.stat(segment_filename).st_size
                     config_dash.LOG.info(segment_size)
                     #segment_file_handle.write(stream)
 
