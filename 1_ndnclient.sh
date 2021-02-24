@@ -32,8 +32,8 @@ docker pull ishitadg/ndn18
 #FOR RUNNING ON THE HOST CLIENT
 #install Astreamer for host streaming tests
 cd /users/ishitadg;
-wget -L https://github.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/blob/master/client.zip?raw=true;
-mv client.zip\?raw\=true client.zip;
+wget -L https://github.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/blob/master/clientndn.zip?raw=true;
+mv clientndn.zip\?raw\=true client.zip;
 sudo apt-get install unzip;
 unzip client.zip;
 git clone --recursive https://github.com/pari685/AStream.git;
