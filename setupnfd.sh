@@ -6,6 +6,7 @@ for (( i=0; i<$answer; i++ )); do
   #docker cp journald.conf ndn$i:/etc/systemd/;
   #docker exec -ti ndn$i systemctl restart systemd-journald;
   #restart nfd & ndn-py-repo in dockers
+  #docker cp /users/ishitadg/ndn-python-repo/examples/dashrepocat.py ndn$i:AStream/dist/client
   docker exec -ti ndn$i sudo systemctl stop nfd;
   docker exec -ti ndn$i sudo systemctl start nfd;
   docker exec -ti ndn$i nfdc route add /edu/umass nexthop 256;
