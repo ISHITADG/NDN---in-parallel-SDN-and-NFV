@@ -24,12 +24,11 @@ wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ondemand.txt;
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/livestream_timer.py
 
-#install data to be downloaded over ndn
-cd /users/ishitadg/ndn-python-repo/examples/
-#cp -r /proj/CDNABRTest/www-itec.uni-klu.ac.at .;
-#ln -s www-itec.uni-klu.ac.at ondemand;
-#ln -s /proj/CDNABRTest/www-itec.uni-klu.ac.at www-itec.uni-klu.ac.at;
-#ln -s /proj/CDNABRTest/www-itec.uni-klu.ac.at ondemand;
+#install ndnpyrepo &setup repo to be downloaded over ndn
+#install & start ndn-python-repo
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ndnpyrepo_install.sh;
+bash ndnpyrepo_install.sh;
+cd /users/ishitadg/ndn-python-repo/examples/;
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/livestream_timer.py;
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ondemand.py; 
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/upload.sh; 
