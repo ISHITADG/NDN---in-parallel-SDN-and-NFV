@@ -19,12 +19,6 @@ ldconfig;
 iperf3 -v;
 
 #ASTreamer for Client host too
-cd /users/ishitadg;
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/iplive.sh;
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ipliveqoe.sh;
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ipstartdockermcv1.sh;
-wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/5_qoeipl.py;
-wget -L https://raw.githubusercontent.com/ISHITADG/dockerNDN/master/dash_client_live.py ;
 wget -L https://github.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/blob/master/client.zip?raw=true;
 mv client.zip\?raw\=true client.zip;
 sudo apt-get install unzip;
@@ -33,7 +27,7 @@ git clone --recursive https://github.com/pari685/AStream.git;
 rm client.zip;
 cd AStream/dist; rm -rf client; mv ../../client/ .;
 
-#install all scripts
+#install all scripts for ondemand
 cd /users/ishitadg/AStream/dist/client;
 rm dash_client_od.py;
 rm configure_log_file.py;
@@ -43,4 +37,13 @@ wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/config_dash.py;
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ipod.sh; 
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ipodqoe.sh;
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/5_qoeip.py;
+#scripts for live
+cd /users/ishitadg;
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/iplive.sh;
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ipliveqoe.sh;
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ipstartdockermcv1.sh;
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/5_qoeipl.py;
+wget -L https://raw.githubusercontent.com/ISHITADG/dockerNDN/master/dash_client_live.py ;
+
 echo done
