@@ -40,10 +40,13 @@ wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/5_qoeip.py;
 #scripts for live
 cd /users/ishitadg;
+wget -L https://raw.githubusercontent.com/ISHITADG/dockerNDN/master/dockovs.sh;
+bash dockovs.sh;
+docker pull ishitadg/ndn18;
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/iplive.sh;
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ipliveqoe.sh;
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ipstartdockermcv1.sh;
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/5_qoeipl.py;
-wget -L https://raw.githubusercontent.com/ISHITADG/dockerNDN/master/dash_client_live.py ;
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/dash_client_live.py;
 
 echo done
