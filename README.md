@@ -11,7 +11,8 @@ wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV
 bash 1_serverdld.sh <br/>
 ### CLIENT SETUP:
 #### FOR NDN CLIENTS
-wget - L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_ndnclient.sh <br/>
+wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_ndnclient.sh <br/>
+bash 1_ndnclient.sh <br/>
 #### FOR IP CLIENTS
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/1_ipclient.sh <br/>
 bash 1_ipclient.sh <br/>
