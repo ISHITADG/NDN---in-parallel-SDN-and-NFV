@@ -26,6 +26,7 @@ wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV
 
 #install ndnpyrepo &setup repo to be downloaded over ndn
 #install & start ndn-python-repo
+cd /users/ishitadg;
 wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV/master/ndnpyrepo_install.sh;
 bash ndnpyrepo_install.sh;
 cd /users/ishitadg/ndn-python-repo/examples/;
