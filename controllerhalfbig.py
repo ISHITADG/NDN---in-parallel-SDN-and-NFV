@@ -51,26 +51,107 @@ class NDNRouter(app_manager.RyuApp):
         # Router1
         # virbr1 - port 4, virbr2 - port 5, eth2(client) - port 1 , eth3- port 2
         print datapath.id
-        #Router2
-        if datapath.id == 222696547036233:
+        #Router1
+        if datapath.id == 248726561384006:
             #Following are for NDN Packets
-            match = parser.OFPMatch(in_port=4, dl_type=0x8624)
-            out_port = 8
-            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
-            self.add_ipflow(datapath, 4, match, actions)
-            match = parser.OFPMatch(in_port=8, dl_type=0x8624)
+            match = parser.OFPMatch(in_port=1, dl_type=0x8624)
             out_port = 4
             actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
-            self.add_ipflow(datapath, 8, match, actions)
-
-            match = parser.OFPMatch(in_port=5, dl_type=0x8624)
+            self.add_ipflow(datapath, 1, match, actions)
+            match = parser.OFPMatch(in_port=4, dl_type=0x8624)
             out_port = 1
             actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 4, match, actions)
+
+            match = parser.OFPMatch(in_port=5, dl_type=0x8624)
+            out_port = 2
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
             self.add_ipflow(datapath, 5, match, actions)
+            match = parser.OFPMatch(in_port=2, dl_type=0x8624)
+            out_port = 5
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 2, match, actions)
+            
+            match = parser.OFPMatch(in_port=6, dl_type=0x8624)
+            out_port = 3
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 6, match, actions)
+            match = parser.OFPMatch(in_port=3, dl_type=0x8624)
+            out_port = 6
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 3, match, actions)
+
+            #Following for IP+ARP Packets
+            match = parser.OFPMatch(in_port=1, dl_type=0x0800)
+            out_port = 7
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 1, match, actions)
+            match = parser.OFPMatch(in_port=7, dl_type=0x0800)
+            out_port = 1
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 7, match, actions)
+            match = parser.OFPMatch(in_port=1, dl_type=0x0806)
+            out_port = 7
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 1, match, actions)
+            match = parser.OFPMatch(in_port=7, dl_type=0x0806)
+            out_port = 1
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 7, match, actions)
+
+            match = parser.OFPMatch(in_port=8, dl_type=0x0800)
+            out_port = 2
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 8, match, actions)
+            match = parser.OFPMatch(in_port=2, dl_type=0x0800)
+            out_port = 8
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 2, match, actions)
+            match = parser.OFPMatch(in_port=8, dl_type=0x0806)
+            out_port = 2
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 8, match, actions)
+            match = parser.OFPMatch(in_port=2, dl_type=0x0806)
+            out_port = 8
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 2, match, actions)
+            
+            match = parser.OFPMatch(in_port=9, dl_type=0x0800)
+            out_port = 3
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 9, match, actions)
+            match = parser.OFPMatch(in_port=3, dl_type=0x0800)
+            out_port = 9
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 3, match, actions)
+            match = parser.OFPMatch(in_port=9, dl_type=0x0806)
+            out_port = 3
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 9, match, actions)
+            match = parser.OFPMatch(in_port=3, dl_type=0x0806)
+            out_port = 9
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 3, match, actions)
+       #Router2
+        if datapath.id == 248726561384006:
+            #Following are for NDN Packets
             match = parser.OFPMatch(in_port=1, dl_type=0x8624)
             out_port = 5
             actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
             self.add_ipflow(datapath, 1, match, actions)
+            match = parser.OFPMatch(in_port=5, dl_type=0x8624)
+            out_port = 1
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 5, match, actions)
+
+            match = parser.OFPMatch(in_port=6, dl_type=0x8624)
+            out_port = 2
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 6, match, actions)
+            match = parser.OFPMatch(in_port=2, dl_type=0x8624)
+            out_port = 6
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 2, match, actions)
             
             match = parser.OFPMatch(in_port=7, dl_type=0x8624)
             out_port = 3
@@ -81,14 +162,14 @@ class NDNRouter(app_manager.RyuApp):
             actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
             self.add_ipflow(datapath, 3, match, actions)
             
-            match = parser.OFPMatch(in_port=6, dl_type=0x8624)
-            out_port = 2
+            match = parser.OFPMatch(in_port=8, dl_type=0x8624)
+            out_port = 4
             actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
-            self.add_ipflow(datapath, 6, match, actions)
-            match = parser.OFPMatch(in_port=2, dl_type=0x8624)
-            out_port = 6
+            self.add_ipflow(datapath, 8, match, actions)
+            match = parser.OFPMatch(in_port=4, dl_type=0x8624)
+            out_port = 8
             actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
-            self.add_ipflow(datapath, 2, match, actions)
+            self.add_ipflow(datapath, 4, match, actions)
 
             #Following for IP+ARP Packets
             match = parser.OFPMatch(in_port=2, dl_type=0x0800)
@@ -124,6 +205,114 @@ class NDNRouter(app_manager.RyuApp):
             out_port = 9
             actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
             self.add_ipflow(datapath, 1, match, actions)
+            
+            match = parser.OFPMatch(in_port=11, dl_type=0x0800)
+            out_port = 3
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 11, match, actions)
+            match = parser.OFPMatch(in_port=3, dl_type=0x0800)
+            out_port = 11
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 3, match, actions)
+            match = parser.OFPMatch(in_port=11, dl_type=0x0806)
+            out_port = 3
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 11, match, actions)
+            match = parser.OFPMatch(in_port=3, dl_type=0x0806)
+            out_port = 11
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 3, match, actions)
+            
+            match = parser.OFPMatch(in_port=12, dl_type=0x0800)
+            out_port = 4
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 12, match, actions)
+            match = parser.OFPMatch(in_port=4, dl_type=0x0800)
+            out_port = 12
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 4, match, actions)
+            match = parser.OFPMatch(in_port=12, dl_type=0x0806)
+            out_port = 4
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 12, match, actions)
+            match = parser.OFPMatch(in_port=4, dl_type=0x0806)
+            out_port = 12
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 4, match, actions)
+                
+        #Router3
+        if datapath.id == 104299486084934:
+            #Following are for NDN Packets
+            match = parser.OFPMatch(in_port=1, dl_type=0x8624)
+            out_port = 5
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 1, match, actions)
+            match = parser.OFPMatch(in_port=5, dl_type=0x8624)
+            out_port = 1
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 5, match, actions)
+
+            match = parser.OFPMatch(in_port=6, dl_type=0x8624)
+            out_port = 2
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 6, match, actions)
+            match = parser.OFPMatch(in_port=2, dl_type=0x8624)
+            out_port = 6
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 2, match, actions)
+            
+            match = parser.OFPMatch(in_port=7, dl_type=0x8624)
+            out_port = 3
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 7, match, actions)
+            match = parser.OFPMatch(in_port=3, dl_type=0x8624)
+            out_port = 7
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 3, match, actions)
+            
+            match = parser.OFPMatch(in_port=8, dl_type=0x8624)
+            out_port = 4
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 8, match, actions)
+            match = parser.OFPMatch(in_port=4, dl_type=0x8624)
+            out_port = 8
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 4, match, actions)
+
+            #Following for IP+ARP Packets
+            match = parser.OFPMatch(in_port=1, dl_type=0x0800)
+            out_port = 9
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 1, match, actions)
+            match = parser.OFPMatch(in_port=9, dl_type=0x0800)
+            out_port = 1
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 9, match, actions)
+            match = parser.OFPMatch(in_port=1, dl_type=0x0806)
+            out_port = 9
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 1, match, actions)
+            match = parser.OFPMatch(in_port=9, dl_type=0x0806)
+            out_port = 1
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 9, match, actions)
+
+            match = parser.OFPMatch(in_port=10, dl_type=0x0800)
+            out_port = 2
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 10, match, actions)
+            match = parser.OFPMatch(in_port=2, dl_type=0x0800)
+            out_port = 10
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 2, match, actions)
+            match = parser.OFPMatch(in_port=10, dl_type=0x0806)
+            out_port = 2
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 10, match, actions)
+            match = parser.OFPMatch(in_port=2, dl_type=0x0806)
+            out_port = 10
+            actions = [datapath.ofproto_parser.OFPActionOutput(out_port)]
+            self.add_ipflow(datapath, 2, match, actions)
             
             match = parser.OFPMatch(in_port=11, dl_type=0x0800)
             out_port = 3
