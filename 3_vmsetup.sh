@@ -105,9 +105,9 @@ sed -i "100s|.*|$line1|g" ndnr1vm.xml
 sed -i "106s|.*|$line2|g" ndnr1vm.xml
 sed -i "112s|.*|$line3|g" ndnr1vm.xml
 sed -i "91s|.*|$lineo|g" ipr1vm.xml
-sed -i "100s|.*|$line5|g" ipr1vm.xml
-sed -i "106s|.*|$line6|g" ipr1vm.xml
-sed -i "112s|.*|$line7|g" ipr1vm.xml
+sed -i "100s|.*|$line4|g" ipr1vm.xml
+sed -i "106s|.*|$line5|g" ipr1vm.xml
+sed -i "112s|.*|$line6|g" ipr1vm.xml
 #R2
 sed -i "91s|.*|$lineo|g" ndnr2vm.xml
 sed -i "100s|.*|$line1|g" ndnr2vm.xml
@@ -118,7 +118,7 @@ sed -i "91s|.*|$lineo|g" ipr2vm.xml
 sed -i "100s|.*|$line5|g" ipr2vm.xml
 sed -i "106s|.*|$line6|g" ipr2vm.xml
 sed -i "112s|.*|$line7|g" ipr2vm.xml
-sed -i "118s|.*|$line4|g" ipr2vm.xml
+sed -i "118s|.*|$line8|g" ipr2vm.xml
 #R3
 sed -i "91s|.*|$lineo|g" ndnr3vm.xml
 sed -i "100s|.*|$line1|g" ndnr3vm.xml
@@ -129,7 +129,7 @@ sed -i "91s|.*|$lineo|g" ipr3vm.xml
 sed -i "100s|.*|$line5|g" ipr3vm.xml
 sed -i "106s|.*|$line6|g" ipr3vm.xml
 sed -i "112s|.*|$line7|g" ipr3vm.xml
-sed -i "118s|.*|$line4|g" ipr3vm.xml
+sed -i "118s|.*|$line8|g" ipr3vm.xml
 
 #start vms
 virsh define ndnr1vm.xml
