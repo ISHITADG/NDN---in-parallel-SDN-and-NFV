@@ -99,23 +99,49 @@ line5=${MYCUSTOMTAB}"<mac address='$v5'/>"
 line6=${MYCUSTOMTAB}"<mac address='$v6'/>"
 line7=${MYCUSTOMTAB}"<mac address='$v7'/>"
 line8=${MYCUSTOMTAB}"<mac address='$v8'/>"
-#ndnIP
-sed -i "87s|.*|$lineo|g" ndnIP.xml
-sed -i "96s|.*|$line1|g" ndnIP.xml
-sed -i "102s|.*|$line2|g" ndnIP.xml
-sed -i "108s|.*|$line3|g" ndnIP.xml
-sed -i "114s|.*|$line4|g" ndnIP.xml
-#ipVM
-sed -i "87s|.*|$lineo|g" ipVM.xml
-sed -i "96s|.*|$line5|g" ipVM.xml
-sed -i "102s|.*|$line6|g" ipVM.xml
-sed -i "108s|.*|$line7|g" ipVM.xml
-sed -i "114s|.*|$line8|g" ipVM.xml
+#R1
+sed -i "91s|.*|$lineo|g" ndnr1vm.xml
+sed -i "100s|.*|$line1|g" ndnr1vm.xml
+sed -i "106s|.*|$line2|g" ndnr1vm.xml
+sed -i "112s|.*|$line3|g" ndnr1vm.xml
+sed -i "91s|.*|$lineo|g" ipr1vm.xml
+sed -i "100s|.*|$line5|g" ipr1vm.xml
+sed -i "106s|.*|$line6|g" ipr1vm.xml
+sed -i "112s|.*|$line7|g" ipr1vm.xml
+#R2
+sed -i "91s|.*|$lineo|g" ndnr2vm.xml
+sed -i "100s|.*|$line1|g" ndnr2vm.xml
+sed -i "106s|.*|$line2|g" ndnr2vm.xml
+sed -i "112s|.*|$line3|g" ndnr2vm.xml
+sed -i "118s|.*|$line4|g" ndnr2vm.xml
+sed -i "91s|.*|$lineo|g" ipr2vm.xml
+sed -i "100s|.*|$line5|g" ipr2vm.xml
+sed -i "106s|.*|$line6|g" ipr2vm.xml
+sed -i "112s|.*|$line7|g" ipr2vm.xml
+sed -i "118s|.*|$line4|g" ipr2vm.xml
+#R3
+sed -i "91s|.*|$lineo|g" ndnr3vm.xml
+sed -i "100s|.*|$line1|g" ndnr3vm.xml
+sed -i "106s|.*|$line2|g" ndnr3vm.xml
+sed -i "112s|.*|$line3|g" ndnr3vm.xml
+sed -i "118s|.*|$line4|g" ndnr3vm.xml
+sed -i "91s|.*|$lineo|g" ipr3vm.xml
+sed -i "100s|.*|$line5|g" ipr3vm.xml
+sed -i "106s|.*|$line6|g" ipr3vm.xml
+sed -i "112s|.*|$line7|g" ipr3vm.xml
+sed -i "118s|.*|$line4|g" ipr3vm.xml
 
 #start vms
-virsh define ndnIP.xml
-virsh define ipVM.xml
-virsh start ipVM
-virsh start ndnIP
-
+virsh define ndnr1vm.xml
+virsh define ndnr2vm.xml
+virsh define ndnr3vm.xml
+virsh define ipr1vm.xml
+virsh define ipr2vm.xml
+virsh define ipr3vm.xml
+virsh start ipr1vm
+virsh start ipr2vm
+virsh start ipr3vm
+virsh start ndnr1vm
+virsh start ndnr2vm
+virsh start ndnr3vm
 echo done
