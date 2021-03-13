@@ -615,3 +615,6 @@
 	    <SegmentSize id="BigBuckBunny_2s149.m4s" size="2264.0" scale="Kbits"/>
 	    <SegmentSize id="BigBuckBunny_2s150.m4s" size="2024.0" scale="Kbits"/>
       </Representation>
+    </AdaptationSet>
+ </Period>
+</MPD>
