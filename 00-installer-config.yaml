@@ -6,29 +6,29 @@ network:
     ens8:
       dhcp4: false
       addresses:
-              - 10.10.3.4/24
+              - 10.10.5.5/24
       routes:
-              - to: 10.10.3.0/24
+              - to: 10.10.5.0/24
                 scope: link
     ens9:
       dhcp4: false
       addresses:
-              - 10.10.4.4/24
+              - 10.10.6.5/24
       routes:
-              - to: 10.10.4.0/24
+              - to: 10.10.6.0/24
                 scope: link
     ens16:
       dhcp4: false
       addresses:
-              - 10.10.2.4/24
+              - 10.10.4.5/24
       routes:
-              - to: 10.10.2.0/24
+              - to: 10.10.4.0/24
                 scope: link
     ens17:
       dhcp4: false
       addresses:
-              - 10.10.1.4/24
+              - 10.10.3.5/24
       routes:
-              - to: 10.10.1.0/24
+              - to: 10.10.3.0/24
                 scope: link
   version: 2
