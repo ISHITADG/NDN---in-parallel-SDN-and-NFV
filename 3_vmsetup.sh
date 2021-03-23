@@ -76,9 +76,18 @@ ovs-vsctl add-port ovsbr0 virbr6
 ovs-vsctl add-port ovsbr0 virbr7
 ovs-vsctl add-port ovsbr0 virbr8
 
-#instantiate VMs
-cp -r /proj/CDNABRTest/ipVM.xml .
-cp -r /proj/CDNABRTest/ndnIP.xml .
+#copy old XML files
+cp -r /proj/CDNABRTest/ipr1vm.xml .
+cp -r /proj/CDNABRTest/ndnr1vm.xml .
+cp -r /proj/CDNABRTest/ipr2vm.xml .
+cp -r /proj/CDNABRTest/ndnr2vm.xml .
+cp -r /proj/CDNABRTest/ipr3vm.xml .
+cp -r /proj/CDNABRTest/ndnr3vm.xml .
+#if need to rewrite 
+sed -n '1,89p' /proj/CDNABRTest/ndnr2vm.xml >> new.xml
+sed -n '86,118p' /proj/CDNABRTest/ndnIP.xml >> new.xml
+sed -n '90,130p' /proj/CDNABRTest/ndnr2vm.xml >> new.xml
+mv new.xml ndnr2vm.xml
 
 #modify ipvm.xml & ndnvm.xml
 MYCUSTOMTAB='      '
@@ -133,15 +142,18 @@ sed -i "118s|.*|$line8|g" ipr3vm.xml
 
 #start vms
 virsh define ndnr1vm.xml
-virsh define ndnr2vm.xml
-virsh define ndnr3vm.xml
 virsh define ipr1vm.xml
-virsh define ipr2vm.xml
-virsh define ipr3vm.xml
 virsh start ipr1vm
-virsh start ipr2vm
-virsh start ipr3vm
 virsh start ndnr1vm
+
+virsh define ndnr2vm.xml
 virsh start ndnr2vm
+virsh define ipr2vm.xml
+virsh start ipr2vm
+
+virsh define ndnr3vm.xml
 virsh start ndnr3vm
+virsh define ipr3vm.xml
+virsh start ipr3vm
+
 echo done
