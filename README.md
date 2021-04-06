@@ -38,6 +38,9 @@ wget -L https://raw.githubusercontent.com/ISHITADG/NDN---in-parallel-SDN-and-NFV
 mv  00-installer-config.yaml /etc/netplan/;<br/>
 sysctl -w net.ipv4.ip_forward=1;<br/>
 sudo netplan apply;<br/>
+R1,R2,R3: ip route add 10.0.0.0/8 via 10.10.3.5 dev ens16<br/>
+R1: ip route add 10.10.7.0/24 via 10.10.2.5 dev ens8<br/>
+R1: ip route add 10.10.8.0/21 via 10.10.2.5 dev ens8<br/>
 #### @ server & other client nodes: 
 !!Update Routes!!  <br/>
 sudo route del -net 10.0.0.0 netmask 255.0.0.0;  <br/>
