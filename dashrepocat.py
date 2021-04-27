@@ -181,7 +181,7 @@ def download_segment_bola(domain, dp_list, segment_number, segment_url, dash_fol
                     #(pipe_r, pipe_w) = os.pipe()
                     #get command & define file to write ndncat output to
                     #quic_cmd = "ndncatchunks -vTD /edu/umass/"+segment_url+" >segmentname"
-                    quic_cmd = "ndncatchunks --fast-conv --init-ssthresh 12 -vTD /edu/umass/"+segment_url
+                    quic_cmd = "ndncatchunks --fast-conv --init-ssthresh 12 -qTD /edu/umass/"+segment_url
                     log = open(segment_filename, "wb")
                     #execute process
                     config_dash.LOG.info("Starting system call for"+segment_url)
@@ -911,8 +911,8 @@ def start_playback_smart(dp_object, domain, playback_type=None, download=False, 
     while dash_player.playback_state not in dash_buffer.EXIT_STATES:
         time.sleep(1)
     write_json()
-    #if not download:
-    #    clean_files(file_identifier)
+    if not download:
+        clean_files(file_identifier)
 
 
 def get_segment_sizes(dp_object, segment_number):
