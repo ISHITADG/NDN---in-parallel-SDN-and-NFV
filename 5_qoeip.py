@@ -192,3 +192,29 @@ with open('abr_spectrum_20Qualities-parallelIPforNDN.csv', 'w') as f:
     writer = csv.writer(f)
     writer.writerow(spectrum_array)
 f.close()
+'''
+Here we compute the average throughput as a mathematical average of all the entries in the custom file 
+SERVER_LOG_<timestamp.log> in the dash_client.py file of the AStream player. 
+'''
+i=0
+for name in SERVER_LOG_FILENAME:#glob.glob(SERVER_LOG_FILENAME):
+     #ignore stats from clients that didn't end properly
+     if i in faultyclient:
+         i=i+1
+         continue
+     else:
+         i=i+1
+         list_quals=np.genfromtxt(name,delimiter=',', usecols=3, dtype=float)
+         if list_quals.size>5:
+             x = list_quals[~np.isnan(list_quals)].mean()
+             throughput_array.append((x*8.0)/1000000.0)
+nparry = np.asarray(throughput_array)
+avg_avtpt=nparry.mean()
+sd_avtpt=np.std(nparry)
+print("Throughput")
+print(avg_avtpt)
+print(sd_avtpt)
+with open('abr_throughput_rate_20Qualities-parallelIPforNDN.csv', 'w') as f:
+    writer = csv.writer(f)
+    writer.writerow(throughput_array)
+f.close()
